@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import com.chuys.gshp.diageo.splash.view.Splash
 import com.chuys.gshp.pdv.view.ListPdv
-import com.chuys.gshp.shared.constant.Activities
+import com.chuys.gshp.shared.domain.constant.Activities
 
 class ActivityManager() {
 
