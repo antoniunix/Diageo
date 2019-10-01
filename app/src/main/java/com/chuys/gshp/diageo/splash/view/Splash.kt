@@ -2,10 +2,11 @@ package com.chuys.gshp.diageo.splash.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.chuys.gshp.diageo.R
+import com.chuys.gshp.diageo.activityProvider.ActivityManager
 import com.chuys.gshp.diageo.splash.contract.SplashContract
 import com.chuys.gshp.diageo.splash.presenter.SplashPresenter
+import com.chuys.gshp.shared.domain.constant.Activities
 
 class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
 
@@ -25,7 +26,7 @@ class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
     }
 
     override fun endTime() {
-        Log.d(tag, "change to other module")
+        ActivityManager.changeToActivity(Activities.PDV_LIST,this)
     }
 
     override fun onDestroy() {
