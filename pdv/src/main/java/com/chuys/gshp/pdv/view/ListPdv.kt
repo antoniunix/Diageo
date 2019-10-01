@@ -1,7 +1,7 @@
 package com.chuys.gshp.pdv.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.chuys.gshp.pdv.R
 import com.chuys.gshp.pdv.contract.PdvContract
 import com.chuys.gshp.pdv.data.provider.PdvDataProvider
@@ -23,12 +23,17 @@ class ListPdv : AppCompatActivity(), PdvContract.PdvViewContract {
             UIThread()
         )
         presenter = Presenter(this, pdvProvider)
-        presenter.start()
     }
 
     override fun onResume() {
         super.onResume()
         presenter.getAllPdv()
+    }
+
+    override fun loadRecyclerView() {
+    }
+
+    override fun showError() {
     }
 
     override fun onDestroy() {
