@@ -1,12 +1,13 @@
 apply plugin: 'com.android.library'
+apply from: '../dependencies.gradle'
 
 android {
     compileSdkVersion 29
 
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
 
