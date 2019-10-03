@@ -26,7 +26,7 @@ class Presenter(val view: PdvContract.PdvViewContract, val pdvProvider: PdvProvi
     override fun clickItemAdapter(adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>) {
         val listPdvAdapter=adapter as ListPdvAdapter
         disposables.add(listPdvAdapter.clickEvent.subscribe {
-            Log.e("TAG","Clicked on ${it.name}")
+
         })
     }
 
