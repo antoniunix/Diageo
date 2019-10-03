@@ -37,14 +37,23 @@ ext {
     circleImageVersion = "3.0.0"
     daggerVersion = "2.17"
     javaxVersion = "1"
+    androidXVersion = "1.1.0"
+    constrainLayoutVersion = "1.1.3"
 
+    androidXSupport = [
+            appCompat       : "androidx.appcompat:appcompat:${androidXVersion}",
+            coreKtx         : "androidx.core:core-ktx:${androidXVersion}",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:${constrainLayoutVersion}"
+    ]
     androidSupport = [
             supportDesign     : "com.android.support:design:${androidSupportVersion}",
             cardview          : "com.android.support:cardview-v7:${androidSupportVersion}",
             constraintLayout  : "com.android.support.constraint:constraint-layout:${constraintVersion}",
             supportAnnotations: "com.android.support:support-annotations:${androidSupportVersion}",
             appCompat         : "com.android.support:appcompat-v7:${androidSupportVersion}",
-            supportV4         : "com.android.support:support-v4:${androidSupportVersion}"
+            supportV4         : "com.android.support:support-v4:${androidSupportVersion}",
+            recyclerView      : "com.android.support:recyclerview-v7:${androidSupportVersion}",
+            supportCompat      : "com.android.support:support-compat:${androidSupportVersion}"
     ]
 
     rx = [
@@ -53,8 +62,8 @@ ext {
     ]
 
     okhttp = [
-            okhttp                    : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
-            okhttpUrlConnection       : "com.squareup.okhttp3:okhttp-urlconnection:${okhttpVersion}"
+            okhttp             : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
+            okhttpUrlConnection: "com.squareup.okhttp3:okhttp-urlconnection:${okhttpVersion}"
     ]
 
     retrofit = [
@@ -69,25 +78,25 @@ ext {
     ]
 
     tests = [
-            jUnit        : "junit:junit:${jUnitVersion}",
-            mockitoCore  : "org.mockito:mockito-core:${mockitoVersion}"
+            jUnit      : "junit:junit:${jUnitVersion}",
+            mockitoCore: "org.mockito:mockito-core:${mockitoVersion}"
     ]
 
     appDependencies = [
-            picasso             : "com.squareup.picasso:picasso:${picassoVersion}",
-            cardio              : "io.card:android-sdk:${cardioVersion}",
-            lifecycleCompiler   : "android.arch.lifecycle:compiler:${lifecycleVersion}",
-            stetho              : "com.facebook.stetho:stetho:${stethoVersion}",
-            stethoOkHttp        : "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
-            lottie              : "com.airbnb.android:lottie:${lottieVersion}",
-            circleImage         : "de.hdodenhof:circleimageview:$circleImageVersion"
+            picasso          : "com.squareup.picasso:picasso:${picassoVersion}",
+            cardio           : "io.card:android-sdk:${cardioVersion}",
+            lifecycleCompiler: "android.arch.lifecycle:compiler:${lifecycleVersion}",
+            stetho           : "com.facebook.stetho:stetho:${stethoVersion}",
+            stethoOkHttp     : "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
+            lottie           : "com.airbnb.android:lottie:${lottieVersion}",
+            circleImage      : "de.hdodenhof:circleimageview:$circleImageVersion"
     ]
 
     daggerDependencies = [
-            daggerCompiler      : "com.google.dagger:dagger-compiler:${daggerVersion}",
-            dagger              : "com.google.dagger:dagger-android:${daggerVersion}",
-            daggerSupport       : "com.google.dagger:dagger-android-support:${daggerVersion}",
-            daggerAnnotation    : "com.google.dagger:dagger-android-processor:${daggerVersion}",
-            javax               : "javax.inject:javax.inject:${javaxVersion}"
+            daggerCompiler  : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger          : "com.google.dagger:dagger-android:${daggerVersion}",
+            daggerSupport   : "com.google.dagger:dagger-android-support:${daggerVersion}",
+            daggerAnnotation: "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            javax           : "javax.inject:javax.inject:${javaxVersion}"
     ]
 }
