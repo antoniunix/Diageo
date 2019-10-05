@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chuys.gshp.pdv.R
-import com.chuys.gshp.pdv.contract.PdvContract
+import com.chuys.gshp.pdv.presenter.contract.PdvContract
 import com.chuys.gshp.pdv.data.provider.PdvDataProvider
 import com.chuys.gshp.pdv.domain.model.PdvData
 import com.chuys.gshp.pdv.domain.providers.PdvProvider

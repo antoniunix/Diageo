@@ -4,10 +4,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.ListPdv">
+        tools:context=".view.ReportMenu">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_pdv_recycler"
+            android:id="@+id/list_modules_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
