@@ -41,7 +41,7 @@ class ListPdv : AppCompatActivity(), PdvContract.PdvViewContract {
         listPdvRecyclerView.apply {
             adapter = listAdapter
             layoutManager = LinearLayoutManager(this@ListPdv)
-            presenter.clickItemAdapter(listAdapter as RecyclerView.Adapter<RecyclerView.ViewHolder>)
+            presenter.clickItemAdapter(listAdapter as RecyclerView.Adapter<RecyclerView.ViewHolder>,this@ListPdv)
         }
     }
 
