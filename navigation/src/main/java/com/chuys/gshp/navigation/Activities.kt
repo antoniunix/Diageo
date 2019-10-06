@@ -1,4 +1,4 @@
-package com.chuys.gshp.shared.domain.constant
+package com.chuys.gshp.navigation
 
 enum class Activities{
     SPLASH,
