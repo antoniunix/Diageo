@@ -3,7 +3,6 @@ package com.chuys.gshp.reportmenu.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chuys.gshp.reportmenu.R
 import com.chuys.gshp.reportmenu.data.provider.ReportMenuDataProvider
@@ -13,7 +12,6 @@ import com.chuys.gshp.reportmenu.presenter.Presenter
 import com.chuys.gshp.reportmenu.presenter.contract.ReportMenuContract
 import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
-import com.chuys.gshp.shared.domain.constant.Activities
 
 class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
 
@@ -42,7 +40,7 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
         listAdapter = ReportMenuAdapter(modules)
         listModulesRecyclerView.apply {
             adapter = listAdapter
-            layoutManager = GridLayoutManager(this@ReportMenu,2)
+            layoutManager = GridLayoutManager(this@ReportMenu, 2)
             presenter.clickItemAdapter(listAdapter as RecyclerView.Adapter<RecyclerView.ViewHolder>)
         }
     }

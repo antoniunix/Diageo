@@ -1,9 +1,11 @@
 package com.chuys.gshp.pdv.presenter
 
-import android.util.Log
+import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView
-import com.chuys.gshp.pdv.presenter.contract.PdvContract
+import com.chuys.gshp.navigation.Activities
+import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.pdv.domain.providers.PdvProvider
+import com.chuys.gshp.pdv.presenter.contract.PdvContract
 import com.chuys.gshp.pdv.view.ListPdvAdapter
 import io.reactivex.disposables.CompositeDisposable
 
@@ -23,10 +25,10 @@ class Presenter(val view: PdvContract.PdvViewContract, val pdvProvider: PdvProvi
         })
     }
 
-    override fun clickItemAdapter(adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>) {
-        val listPdvAdapter=adapter as ListPdvAdapter
+    override fun clickItemAdapter(adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>, activity: Activity) {
+        val listPdvAdapter = adapter as ListPdvAdapter
         disposables.add(listPdvAdapter.clickEvent.subscribe {
-
+            ActivityManager.changeToActivity(Activities.MENU_REPORT, activity)
         })
     }
 
