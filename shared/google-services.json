@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "385087941330",
+    "firebase_url": "https://chatapp-6de22.firebaseio.com",
+    "project_id": "chatapp-6de22",
+    "storage_bucket": "chatapp-6de22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385087941330:android:64cf00d690fb482f",
+        "android_client_info": {
+          "package_name": "com.aldo.aget.chat_tiempo_real"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385087941330-jotsi0k31drata4gco5lk0ukop98rhks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEMEeh4wgdCXh2SwzqoNbGyV-nw4s83tc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385087941330-jotsi0k31drata4gco5lk0ukop98rhks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385087941330:android:60934eff57ff559d595b0b",
+        "android_client_info": {
+          "package_name": "com.chuys.gshp.diageo_dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385087941330-iejoreb1nkoi4fe97uh2vejdlu8fvbm5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chuys.gshp.diageo_dev",
+            "certificate_hash": "28201dd2acdd8bb55bc2e359a37c474e245d075e"
+          }
+        },
+        {
+          "client_id": "385087941330-jotsi0k31drata4gco5lk0ukop98rhks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEMEeh4wgdCXh2SwzqoNbGyV-nw4s83tc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385087941330-jotsi0k31drata4gco5lk0ukop98rhks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385087941330:android:45625da7bd7dad97595b0b",
+        "android_client_info": {
+          "package_name": "com.chuys.gshp.shared"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385087941330-3nfpk1umd3lptu18152r3bsjljc8u34p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chuys.gshp.shared",
+            "certificate_hash": "28201dd2acdd8bb55bc2e359a37c474e245d075e"
+          }
+        },
+        {
+          "client_id": "385087941330-jotsi0k31drata4gco5lk0ukop98rhks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEMEeh4wgdCXh2SwzqoNbGyV-nw4s83tc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385087941330-jotsi0k31drata4gco5lk0ukop98rhks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply from: '../dependencies.gradle'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -37,6 +38,10 @@ dependencies {
     implementation  rx.values()
     implementation  androidXSupport.values()
     implementation  androidSupport.values()
+
+
+    implementation "com.google.firebase:firebase-core:$firebaseCore"
+    implementation "com.google.firebase:firebase-database:$firebaseRealDB"
 
 }
 repositories {
