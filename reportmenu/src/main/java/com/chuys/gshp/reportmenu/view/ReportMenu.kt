@@ -14,7 +14,6 @@ import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
 import com.chuys.gshp.shared.data.realdb.MainDB
 
-
 class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
 
     private lateinit var reportMenuProvider: ReportMenuProvider
