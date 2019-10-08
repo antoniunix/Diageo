@@ -12,6 +12,8 @@ import com.chuys.gshp.reportmenu.presenter.Presenter
 import com.chuys.gshp.reportmenu.presenter.contract.ReportMenuContract
 import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
+import com.chuys.gshp.shared.data.realdb.MainDB
+
 
 class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
 
@@ -29,6 +31,8 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
         )
         listModulesRecyclerView = findViewById(R.id.list_modules_recycler)
         presenter = Presenter(this, reportMenuProvider)
+
+        MainDB.initRealDB()
     }
 
     override fun onResume() {
