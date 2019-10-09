@@ -11,7 +11,7 @@ enum class Activities(val activity: String) {
     MENU_REPORT(".reportmenu.view.ReportMenu"),
     POLL(""),
     LOAD_SELL(""),
-    PRICE_AND_AVAILABILITY(""),
+    PRICE_AND_AVAILABILITY(".sku.view.Sku"),
     EXECUTABLE(""),
     VISIT(""),
     COMMUNICATION(""),

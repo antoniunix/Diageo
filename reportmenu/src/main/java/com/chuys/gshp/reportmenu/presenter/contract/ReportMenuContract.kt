@@ -13,6 +13,6 @@ interface ReportMenuContract {
     interface ViewContract {
         fun loadRecyclerView(pdv: List<Modules>)
         fun showError()
-        fun goToReportMenu()
+        fun goToReportMenu(modules: Modules)
     }
 }

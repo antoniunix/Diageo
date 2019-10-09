@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.chuys.gshp.navigation.Activities
+import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.reportmenu.R
 import com.chuys.gshp.reportmenu.data.provider.ReportMenuDataProvider
 import com.chuys.gshp.reportmenu.domain.model.Modules
@@ -45,7 +47,12 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
         }
     }
 
-    override fun goToReportMenu() {
+    override fun goToReportMenu(modules: Modules) {
+        when(modules.codeModule){
+            Activities.PRICE_AND_AVAILABILITY -> ActivityManager.changeToActivity(Activities.PRICE_AND_AVAILABILITY, this)
+        }
+
+
     }
 
     override fun showError() {

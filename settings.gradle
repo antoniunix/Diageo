@@ -1,1 +1,1 @@
-include ':app', ':login', ':home', ':pdv', ':reportmenu', ':availabilityandprice', ':order', ':executables', ':visits', ':comunication', ':help', ':shared', ':navigation', ':geolocation'
+include ':app', ':login', ':home', ':pdv', ':reportmenu', ':order', ':executables', ':visits', ':comunication', ':help', ':shared', ':navigation', ':geolocation', ':sku'

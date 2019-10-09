@@ -2,6 +2,7 @@ package com.chuys.gshp.reportmenu.presenter
 
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
+import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.reportmenu.domain.providers.ReportMenuProvider
 import com.chuys.gshp.reportmenu.presenter.contract.ReportMenuContract
 import com.chuys.gshp.reportmenu.view.ReportMenuAdapter
@@ -25,7 +26,7 @@ class Presenter(val view: ReportMenuContract.ViewContract, val reportMenuProvide
     override fun clickItemAdapter(adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>) {
         val reportMenuAdapter = adapter as ReportMenuAdapter
         disposables.add(reportMenuAdapter.clickEvent.subscribe {
-            Log.e("module", it.name)
+            view.goToReportMenu(it)
         })
     }
 

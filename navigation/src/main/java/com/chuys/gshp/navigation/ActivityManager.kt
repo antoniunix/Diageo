@@ -9,12 +9,30 @@ class ActivityManager {
     companion object {
         fun changeToActivity(activityName: Activities, activity: Activity) {
             when (activityName) {
-                Activities.SPLASH -> activity.startActivity(Intent(activity.applicationContext,
-                    Class.forName(StringConstant.PACKAGE_NAME+   Activities.SPLASH.activity)))
-                Activities.PDV_LIST -> activity.startActivity(Intent(activity.applicationContext,
-                    Class.forName(StringConstant.PACKAGE_NAME+Activities.PDV_LIST.activity)))
-                Activities.MENU_REPORT -> activity.startActivity(Intent(activity.applicationContext,
-                    Class.forName(StringConstant.PACKAGE_NAME+Activities.MENU_REPORT.activity)))
+                Activities.SPLASH -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.SPLASH.activity)
+                    )
+                )
+                Activities.PDV_LIST -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.PDV_LIST.activity)
+                    )
+                )
+                Activities.MENU_REPORT -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.MENU_REPORT.activity)
+                    )
+                )
+                Activities.PRICE_AND_AVAILABILITY -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.PRICE_AND_AVAILABILITY.activity)
+                    )
+                )
             }
         }
     }
