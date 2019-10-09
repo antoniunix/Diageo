@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Shared</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_pdv">Tiendas</string>
+    <string name="menu_visit">Visitas</string>
+    <string name="menu_files">Comunicación</string>
+    <string name="menu_profile">Perfile</string>
 </resources>

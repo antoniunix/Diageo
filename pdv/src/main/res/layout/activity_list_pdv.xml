@@ -10,5 +10,6 @@
             android:id="@+id/list_pdv_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+    <include layout="@layout/navigation_bottom_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
