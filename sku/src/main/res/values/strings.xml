@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sku</string>
+    <string name="availability_label">Disponible</string>
+    <string name="spent_label">Agotado</string>
+</resources>

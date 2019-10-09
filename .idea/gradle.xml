@@ -9,7 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/availabilityandprice" />
             <option value="$PROJECT_DIR$/comunication" />
             <option value="$PROJECT_DIR$/executables" />
             <option value="$PROJECT_DIR$/geolocation" />
@@ -21,6 +20,7 @@
             <option value="$PROJECT_DIR$/pdv" />
             <option value="$PROJECT_DIR$/reportmenu" />
             <option value="$PROJECT_DIR$/shared" />
+            <option value="$PROJECT_DIR$/sku" />
             <option value="$PROJECT_DIR$/visits" />
           </set>
         </option>
