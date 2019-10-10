@@ -4,7 +4,7 @@ enum class Activities(val activity: String) {
     SPLASH(".splash.view.Splash"),
     LOGIN(""),
     TERMS(""),
-    HOME(""),
+    HOME(".home.view.Home"),
     PDV_LIST(".pdv.view.ListPdv"),
     PDV_ADD(""),
     PDV_HISTORIC(""),

@@ -23,6 +23,7 @@ android {
 
 dependencies {
     implementation project(':shared')
+    implementation project(':home')
     implementation project(':pdv')
     implementation project(':reportmenu')
     implementation project(':sku')

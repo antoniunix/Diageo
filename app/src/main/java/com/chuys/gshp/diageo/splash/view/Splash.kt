@@ -26,7 +26,8 @@ class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
     }
 
     override fun endTime() {
-        ActivityManager.changeToActivity(Activities.PDV_LIST, this)
+        ActivityManager.changeToActivity(Activities.HOME, this)
+        finish()
     }
 
     override fun onDestroy() {
