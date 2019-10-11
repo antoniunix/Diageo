@@ -16,7 +16,10 @@ class MenuReportDataRepository : MenuReportRepository {
         val modules2 = Modules(
             2, "Poll", 1, 2, false, "", "", Activities.POLL
         )
-        return Single.just(listOf(modules, modules2)).map { result ->
+        val modules3 = Modules(
+            3, "Ejecutables", 1, 3, false, "", "", Activities.EXECUTABLE
+        )
+        return Single.just(listOf(modules, modules2, modules3)).map { result ->
             when {
                 !result.isEmpty() -> {
                     return@map Resource.success(result, StringConstant.EMPTY_STRING)

@@ -50,6 +50,7 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
     override fun goToReportMenu(modules: Modules) {
         when(modules.codeModule){
             Activities.PRICE_AND_AVAILABILITY -> ActivityManager.changeToActivity(Activities.PRICE_AND_AVAILABILITY, this)
+            Activities.EXECUTABLE -> ActivityManager.changeToActivity(Activities.EXECUTABLE, this)
         }
 
 

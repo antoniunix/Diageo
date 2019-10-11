@@ -16,6 +16,12 @@ class ActivityManager {
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.SPLASH.activity)
                     )
                 )
+                Activities.LOGIN -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.LOGIN.activity)
+                    )
+                )
                 Activities.HOME -> activity.startActivity(
                     Intent(
                         activity.applicationContext,
@@ -38,6 +44,12 @@ class ActivityManager {
                     Intent(
                         activity.applicationContext,
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.PRICE_AND_AVAILABILITY.activity)
+                    )
+                )
+                Activities.EXECUTABLE -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.EXECUTABLE.activity)
                     )
                 )
             }
