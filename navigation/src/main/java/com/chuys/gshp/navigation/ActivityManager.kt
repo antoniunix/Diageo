@@ -22,6 +22,12 @@ class ActivityManager {
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.LOGIN.activity)
                     )
                 )
+                Activities.TERMS -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.TERMS.activity)
+                    )
+                )
                 Activities.HOME -> activity.startActivity(
                     Intent(
                         activity.applicationContext,

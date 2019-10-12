@@ -5,4 +5,9 @@
         <item name="cardCornerRadius">@dimen/card_view_corner_radius</item>
         <item name="cardElevation">@dimen/card_view_elevation</item>
     </style>
+
+    <style name="toolbarTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/tb_title_text_size</item>
+    </style>
 </resources>
