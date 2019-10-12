@@ -26,7 +26,7 @@ class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
     }
 
     override fun endTime() {
-        ActivityManager.changeToActivity(Activities.HOME, this)
+        ActivityManager.changeToActivity(Activities.LOGIN, this)
         finish()
     }
 

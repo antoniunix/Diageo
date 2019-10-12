@@ -2,7 +2,7 @@ package com.chuys.gshp.navigation
 
 enum class Activities(val activity: String) {
     SPLASH(".splash.view.Splash"),
-    LOGIN(""),
+    LOGIN(".login.view.Login"),
     TERMS(""),
     HOME(".home.view.Home"),
     PDV_LIST(".pdv.view.ListPdv"),
@@ -12,7 +12,7 @@ enum class Activities(val activity: String) {
     POLL(""),
     LOAD_SELL(""),
     PRICE_AND_AVAILABILITY(".sku.view.Sku"),
-    EXECUTABLE(""),
+    EXECUTABLE(".executables.view.Executable"),
     VISIT(""),
     COMMUNICATION(""),
     HELP("")
