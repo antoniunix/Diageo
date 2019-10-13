@@ -5,4 +5,6 @@
     <string name="user_label">Usuario</string>
     <string name="terms_label">Términos y Condiciones</string>
     <string name="version_label">Versión $</string>
+    <string name="cancel_label">CANCELAR</string>
+    <string name="agree_label">ACEPTO</string>
 </resources>
