@@ -3,7 +3,7 @@ package com.chuys.gshp.navigation
 enum class Activities(val activity: String) {
     SPLASH(".splash.view.Splash"),
     LOGIN(".login.view.Login"),
-    TERMS(""),
+    TERMS(".login.view.Terms"),
     HOME(".home.view.Home"),
     PDV_LIST(".pdv.view.ListPdv"),
     PDV_ADD(""),

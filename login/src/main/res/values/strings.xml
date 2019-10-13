@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Login</string>
+    <string name="login_name">Login</string>
     <string name="login_sync_label">Entrar</string>
     <string name="pass_label">Contraseña</string>
     <string name="user_label">Usuario</string>
+    <string name="terms_label">Términos y Condiciones</string>
+    <string name="version_label">Versión $</string>
 </resources>

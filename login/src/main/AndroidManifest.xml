@@ -3,7 +3,8 @@
         package="com.chuys.gshp.login">
 
     <application>
-        <activity android:name=".view.Login"></activity>
+        <activity android:name=".view.Terms"></activity>
+        <activity android:name=".view.Login" />
     </application>
 
 </manifest>
