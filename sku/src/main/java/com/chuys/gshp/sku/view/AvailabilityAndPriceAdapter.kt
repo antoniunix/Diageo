@@ -43,6 +43,19 @@ class AvailabilityAndPriceAdapter(val items: List<SkuAvailabilityAndPriceData>) 
 
         fun bin(sku: SkuAvailabilityAndPriceData) {
             itemView.name_textview.text = sku.name
+
+            itemView.availability_radio_button.setOnClickListener{
+                if(itemView.spent_radio_button.isChecked){
+                    itemView.spent_radio_button.isChecked=false
+                    sku.availability=true
+                }
+            }
+            itemView.spent_radio_button.setOnClickListener{
+                if(itemView.availability_radio_button.isChecked){
+                    itemView.availability_radio_button.isChecked=false
+                    sku.availability=false
+                }
+            }
         }
     }
 }

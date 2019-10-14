@@ -10,7 +10,7 @@ enum class Activities(val activity: String) {
     PDV_HISTORIC(""),
     MENU_REPORT(".reportmenu.view.ReportMenu"),
     POLL(""),
-    LOAD_SELL(""),
+    ORDER(".order.view.Orders"),
     PRICE_AND_AVAILABILITY(".sku.view.Sku"),
     EXECUTABLE(".executables.view.Executable"),
     VISIT(""),

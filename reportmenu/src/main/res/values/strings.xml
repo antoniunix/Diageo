@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ReportMenu</string>
+    <string name="app_name_menu">MENÚ REPORTE</string>
+    <string name="check_out_label">CHECK OUT</string>
 </resources>
