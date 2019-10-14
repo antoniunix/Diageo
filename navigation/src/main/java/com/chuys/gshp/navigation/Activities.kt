@@ -15,5 +15,6 @@ enum class Activities(val activity: String) {
     EXECUTABLE(".executables.view.Executable"),
     VISIT(""),
     COMMUNICATION(""),
-    HELP("")
+    HELP(""),
+    GEOLOCATION(".geolocation.view.GeolocationActivity")
 }
