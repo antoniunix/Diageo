@@ -29,6 +29,7 @@ dependencies {
     implementation project(':reportmenu')
     implementation project(':sku')
     implementation project(':executables')
+    implementation project(':geolocation')
 
     implementation project(':navigation')
 

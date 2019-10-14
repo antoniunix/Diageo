@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">geolocation</string>
+    <string name="enabled_location">Debe habilitar la ubicación para continuar</string>
 </resources>
