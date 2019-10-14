@@ -4,6 +4,44 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         tools:context=".view.Terms">
+
+    <include android:id="@+id/toolbar"
+            layout="@layout/app_toolbar" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/div_buttons_guide_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+    <WebView
+            android:id="@+id/terms_value_textview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/div_buttons_guide_line"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <Button
+            android:id="@+id/agree_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/desagree_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/div_buttons_guide_line" />
+
+    <Button
+            android:id="@+id/desagree_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agree_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/agree_button"
+            app:layout_constraintTop_toBottomOf="@+id/div_buttons_guide_line" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
