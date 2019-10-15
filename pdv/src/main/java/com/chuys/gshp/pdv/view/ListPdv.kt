@@ -14,6 +14,7 @@ import com.chuys.gshp.pdv.domain.providers.PdvProvider
 import com.chuys.gshp.pdv.presenter.Presenter
 import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
+import com.chuys.gshp.shared.util.commons.ToolbarHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ListPdv : AppCompatActivity(), PdvContract.PdvViewContract,
@@ -34,6 +35,7 @@ class ListPdv : AppCompatActivity(), PdvContract.PdvViewContract,
             JobExecutor(),
             UIThread()
         )
+        ToolbarHelper(this).configToolbarHelpGeneric(R.string.app_name_pdv,false,0)
         listPdvRecyclerView = findViewById(R.id.list_pdv_recycler)
         presenter = Presenter(this, pdvProvider)
     }

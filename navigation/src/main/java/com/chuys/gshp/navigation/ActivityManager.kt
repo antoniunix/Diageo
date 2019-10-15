@@ -64,6 +64,12 @@ class ActivityManager {
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.GEOLOCATION.activity)
                     )
                 )
+                Activities.ORDER -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.ORDER.activity)
+                    )
+                )
             }
         }
 

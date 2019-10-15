@@ -30,6 +30,7 @@ dependencies {
     implementation project(':sku')
     implementation project(':executables')
     implementation project(':geolocation')
+    implementation project(':order')
 
     implementation project(':navigation')
 

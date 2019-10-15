@@ -15,6 +15,7 @@ import com.chuys.gshp.reportmenu.presenter.contract.ReportMenuContract
 import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
 import com.chuys.gshp.shared.data.realdb.MainDB
+import com.chuys.gshp.shared.util.commons.ToolbarHelper
 
 class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
 
@@ -30,6 +31,7 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
             JobExecutor(),
             UIThread()
         )
+        ToolbarHelper(this).configToolbarHelpGeneric(R.string.app_name_menu, true, 0)
         listModulesRecyclerView = findViewById(R.id.list_modules_recycler)
         presenter = Presenter(this, reportMenuProvider)
 
@@ -51,9 +53,13 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
     }
 
     override fun goToReportMenu(modules: Modules) {
-        when(modules.codeModule){
-            Activities.PRICE_AND_AVAILABILITY -> ActivityManager.changeToActivity(Activities.PRICE_AND_AVAILABILITY, this)
+        when (modules.codeModule) {
+            Activities.PRICE_AND_AVAILABILITY -> ActivityManager.changeToActivity(
+                Activities.PRICE_AND_AVAILABILITY,
+                this
+            )
             Activities.EXECUTABLE -> ActivityManager.changeToActivity(Activities.EXECUTABLE, this)
+            Activities.ORDER -> ActivityManager.changeToActivity(Activities.ORDER, this)
         }
 
 

@@ -10,7 +10,8 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.row_executable.view.*
 
-class ExecutableAdapter(val items: List<ExecutableData>) : RecyclerView.Adapter<ExecutableAdapter.ViewHolderExecutable>() {
+class ExecutableAdapter(val items: List<ExecutableData>) :
+    RecyclerView.Adapter<ExecutableAdapter.ViewHolderExecutable>() {
 
     private val clickSubject = PublishSubject.create<ExecutableData>()
     val clickEvent: Observable<ExecutableData> = clickSubject
@@ -31,12 +32,27 @@ class ExecutableAdapter(val items: List<ExecutableData>) : RecyclerView.Adapter<
 
     inner class ViewHolderExecutable(view: View) : RecyclerView.ViewHolder(view) {
         init {
-            itemView.setOnClickListener {
+            itemView.take_photo_button.setOnClickListener {
                 clickSubject.onNext(items[layoutPosition])
             }
         }
+
         fun bin(executableData: ExecutableData) {
             itemView.name_textview.text = executableData.name
+            itemView.take_photo_button.setText("${executableData.numPhotos}   de   ${executableData.donePhotos}")
+
+            itemView.enable_radio_button.setOnClickListener {
+                if (itemView.disable_radio_button.isChecked) {
+                    itemView.disable_radio_button.isChecked = false
+                    executableData.done = true
+                }
+            }
+            itemView.disable_radio_button.setOnClickListener {
+                if (itemView.enable_radio_button.isChecked) {
+                    itemView.enable_radio_button.isChecked = false
+                    executableData.done = false
+                }
+            }
         }
     }
 

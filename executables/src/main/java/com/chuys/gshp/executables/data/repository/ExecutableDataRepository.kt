@@ -15,7 +15,8 @@ class ExecutableDataRepository() : ExecutableRepository {
             "debe quedar super limpio el exhibidor",
             1,
             false,
-            false
+            false,
+            2,0
         )
         val exe2 = ExecutableData(
             "2",
@@ -24,7 +25,7 @@ class ExecutableDataRepository() : ExecutableRepository {
             "Se debe poner un material pop a la entrada",
             2,
             false,
-            false
+            false,2,0
         )
         return Single.just(listOf(exe, exe2)).map { result ->
             when {

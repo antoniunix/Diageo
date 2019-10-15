@@ -1,17 +1,20 @@
 package com.chuys.gshp.sku.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.chuys.gshp.shared.data.job.JobExecutor
+import com.chuys.gshp.shared.data.job.UIThread
+import com.chuys.gshp.shared.util.commons.ToolbarHelper
 import com.chuys.gshp.sku.R
 import com.chuys.gshp.sku.data.provider.AvailabilityAndPriceDataProvider
 import com.chuys.gshp.sku.domain.model.SkuAvailabilityAndPriceData
 import com.chuys.gshp.sku.domain.provider.AvailabilityAndPriceProvider
 import com.chuys.gshp.sku.presenter.Presenter
 import com.chuys.gshp.sku.presenter.contract.AvailabilityAndPriceContract
-import com.chuys.gshp.shared.data.job.JobExecutor
-import com.chuys.gshp.shared.data.job.UIThread
+
 
 class Sku : AppCompatActivity(), AvailabilityAndPriceContract.ViewContract {
 
@@ -28,13 +31,23 @@ class Sku : AppCompatActivity(), AvailabilityAndPriceContract.ViewContract {
             JobExecutor(),
             UIThread()
         )
-        listSkuRecyclerView=findViewById(R.id.list_sku_recycler)
-        presenter=Presenter(this,availabilityAndPriceProvider)
+        ToolbarHelper(this).configToolbarHelpGeneric(R.string.app_name_availability, true, 0)
+
+        listSkuRecyclerView = findViewById(R.id.list_sku_recycler)
+        presenter = Presenter(this, availabilityAndPriceProvider)
     }
+
 
     override fun onResume() {
         super.onResume()
         presenter.getMeasurementSku()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_toolbar, menu)
+        val mSearch = menu?.findItem(R.id.action_search)
+        return super.onCreateOptionsMenu(menu)
+
     }
 
     override fun loadRecyclerView(sku: List<SkuAvailabilityAndPriceData>) {

@@ -6,6 +6,8 @@ data class ExecutableData(
     val name: String,
     val resume: String,
     val order: Int,
-    val done: Boolean,
-    val preload: Boolean
+    var done: Boolean,
+    val preload: Boolean,
+    val numPhotos: Int,
+    var donePhotos: Int
 )

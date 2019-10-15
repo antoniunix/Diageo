@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.chuys.gshp.home.R
 import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.navigation.ActivityManager
+import com.chuys.gshp.shared.util.commons.ToolbarHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Home : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -15,6 +16,7 @@ class Home : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedL
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        ToolbarHelper(this).configToolbarHelpGeneric(R.string.app_name_home,false,0)
         menuNavigation = findViewById(R.id.bottom_navigation)
         menuNavigation.setOnNavigationItemSelectedListener(this)
     }
