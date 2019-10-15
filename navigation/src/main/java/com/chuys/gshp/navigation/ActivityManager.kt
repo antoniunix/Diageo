@@ -70,6 +70,18 @@ class ActivityManager {
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.ORDER.activity)
                     )
                 )
+                Activities.VISIT -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.VISIT.activity)
+                    )
+                )
+                Activities.COMMUNICATION -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.COMMUNICATION.activity)
+                    )
+                )
             }
         }
 
@@ -77,6 +89,8 @@ class ActivityManager {
             when (menuItem.itemId) {
                 R.id.action_home -> changeToActivity(Activities.HOME, activity)
                 R.id.action_pdv -> changeToActivity(Activities.PDV_LIST, activity)
+                R.id.action_visit -> changeToActivity(Activities.VISIT, activity)
+                R.id.comunication -> changeToActivity(Activities.COMMUNICATION, activity)
             }
         }
     }

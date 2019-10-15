@@ -44,13 +44,10 @@ ext {
     firebaseCore = '17.2.0'
     firebaseRealDB = '19.1.0'
 
-
-
-
     androidXSupport = [
             appCompat       : "androidx.appcompat:appcompat:${androidXVersion}",
             coreKtx         : "androidx.core:core-ktx:${androidXVersion}",
-            constraintLayout: "androidx.constraintlayout:constraintlayout:${constrainLayoutVersion}"
+            constraintLayout: "androidx.constraintlayout:constraintlayout:${constrainLayoutVersion}",
     ]
     androidSupport = [
             supportDesign     : "com.android.support:design:${androidSupportVersion}",

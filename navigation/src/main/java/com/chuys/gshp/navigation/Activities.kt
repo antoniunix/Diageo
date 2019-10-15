@@ -13,8 +13,8 @@ enum class Activities(val activity: String) {
     ORDER(".order.view.Orders"),
     PRICE_AND_AVAILABILITY(".sku.view.Sku"),
     EXECUTABLE(".executables.view.Executable"),
-    VISIT(""),
-    COMMUNICATION(""),
+    VISIT(".visits.view.Visit"),
+    COMMUNICATION(".comunication.view.Comunication"),
     HELP(""),
     GEOLOCATION(".geolocation.view.GeolocationActivity")
 }
