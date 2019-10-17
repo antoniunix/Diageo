@@ -6,7 +6,7 @@ data class SkuAvailabilityAndPriceData(
     val name: String,
     val category: String,
     val order: Int,
-    var availability: Boolean,
+    var availability: Int,
     val price: Float,
     val preload: Boolean
 )

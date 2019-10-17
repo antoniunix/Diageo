@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chuys.gshp.sku.R
+import com.chuys.gshp.sku.domain.constant.Constants
 import com.chuys.gshp.sku.domain.model.SkuAvailabilityAndPriceData
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -44,17 +45,29 @@ class AvailabilityAndPriceAdapter(val items: List<SkuAvailabilityAndPriceData>) 
         fun bin(sku: SkuAvailabilityAndPriceData) {
             itemView.name_textview.text = sku.name
 
-            itemView.availability_radio_button.setOnClickListener{
-                if(itemView.spent_radio_button.isChecked){
-                    itemView.spent_radio_button.isChecked=false
-                    sku.availability=true
+            when (sku.availability) {
+                Constants.AVAILABILITY -> {
+                    itemView.availability_radio_button.isChecked = true
+                    itemView.spent_radio_button.isChecked = false
+                }
+                Constants.SPENT -> {
+                    itemView.availability_radio_button.isChecked = false
+                    itemView.spent_radio_button.isChecked = true
+                }
+                else -> {
+                    itemView.availability_radio_button.isChecked = false
+                    itemView.spent_radio_button.isChecked = false
                 }
             }
-            itemView.spent_radio_button.setOnClickListener{
-                if(itemView.availability_radio_button.isChecked){
-                    itemView.availability_radio_button.isChecked=false
-                    sku.availability=false
-                }
+
+
+            itemView.availability_radio_button.setOnClickListener {
+                itemView.spent_radio_button.isChecked = false
+                sku.availability = Constants.AVAILABILITY
+            }
+            itemView.spent_radio_button.setOnClickListener {
+                itemView.availability_radio_button.isChecked = false
+                sku.availability = Constants.SPENT
             }
         }
     }

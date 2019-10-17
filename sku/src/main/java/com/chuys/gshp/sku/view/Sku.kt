@@ -14,6 +14,7 @@ import com.chuys.gshp.sku.domain.model.SkuAvailabilityAndPriceData
 import com.chuys.gshp.sku.domain.provider.AvailabilityAndPriceProvider
 import com.chuys.gshp.sku.presenter.Presenter
 import com.chuys.gshp.sku.presenter.contract.AvailabilityAndPriceContract
+import kotlinx.android.synthetic.main.activity_sku.*
 
 
 class Sku : AppCompatActivity(), AvailabilityAndPriceContract.ViewContract {
@@ -35,6 +36,7 @@ class Sku : AppCompatActivity(), AvailabilityAndPriceContract.ViewContract {
 
         listSkuRecyclerView = findViewById(R.id.list_sku_recycler)
         presenter = Presenter(this, availabilityAndPriceProvider)
+
     }
 
 
