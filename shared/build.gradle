@@ -38,7 +38,7 @@ dependencies {
     implementation  rx.values()
     implementation  androidXSupport.values()
     implementation  androidSupport.values()
-
+    implementation androidGooglePlayService.values()
 
     implementation "com.google.firebase:firebase-core:$firebaseCore"
     implementation "com.google.firebase:firebase-database:$firebaseRealDB"
