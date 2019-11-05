@@ -18,7 +18,7 @@ class SplashPresenter(var view: SplashContract.SplashViewContract) : SplashContr
     }
 
     override fun startCountTime() {
-     /*   disposable = Completable.complete()
+        disposable = Completable.complete()
             .delay(timeOutSplash, TimeUnit.SECONDS, Schedulers.io())
             .subscribeWith(object : DisposableCompletableObserver() {
                 override fun onError(error: Throwable) {
@@ -28,7 +28,7 @@ class SplashPresenter(var view: SplashContract.SplashViewContract) : SplashContr
                 override fun onComplete() {
                     view.endTime()
                 }
-            })*/
+            })
     }
 
     override fun finish() {

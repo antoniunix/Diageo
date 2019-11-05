@@ -14,7 +14,7 @@ class BroadcastReciverGeolocation : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         System.out.println("Init broadcast")
-        val uniqueWorkName = "leo"
+        /*val uniqueWorkName = "leo"
         val periodicRefreshTokenWork = PeriodicWorkRequest.Builder(
             GeolocationTrackWorkManager::class.java,
             15,
@@ -25,7 +25,7 @@ class BroadcastReciverGeolocation : BroadcastReceiver() {
             uniqueWorkName,
             ExistingPeriodicWorkPolicy.REPLACE,
             periodicRefreshTokenWork)
-
+*/
 
 
     }

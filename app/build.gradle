@@ -47,5 +47,5 @@ dependencies {
     implementation  rx.values()
     implementation  androidXSupport.values()
     implementation 'com.facebook.stetho:stetho:1.5.1'
-    implementation androidGooglePlayService.values()
+
 }
