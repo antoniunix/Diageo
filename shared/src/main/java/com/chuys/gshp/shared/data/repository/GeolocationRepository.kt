@@ -1,18 +1,21 @@
 package com.chuys.gshp.shared.data.repository
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import android.location.LocationManager
 import android.os.Looper
 import com.google.android.gms.location.*
 
 
-class GeolocationRepository {
+class GeolocationRepository(private val application: Application) {
 
-    fun getLocation(application: Application) {
-         lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-        lateinit var locationManager: LocationManager
+    fun getLocation() {
+        System.out.println("Init georepository")
+        lateinit var fusedLocationProviderClient: FusedLocationProviderClient
         lateinit var locationRequest: LocationRequest
         lateinit var locationCallback: LocationCallback
+        var sharedPreferences : SharedPreferences
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(application)
         fusedLocationProviderClient.setMockMode(false)
@@ -32,11 +35,23 @@ class GeolocationRepository {
 
         fusedLocationProviderClient.lastLocation.addOnCompleteListener {
             val location = it.result
-            if (location == null){
-                fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
-            }else{
+            if (location == null) {
+                fusedLocationProviderClient.requestLocationUpdates(
+                    locationRequest,
+                    locationCallback,
+                    Looper.myLooper()
+                )
+            } else {
+                System.out.println("Init georepository1")
                 //locationResultListener.getLocation(location)
-               System.out.println("dale "+location.latitude+" "+location.longitude)
+               // System.out.println("dale " + location.latitude + " " + location.longitude)
+                sharedPreferences= application?.getSharedPreferences(
+                   "location", Context.MODE_PRIVATE)
+                var tmp :String
+                var locationText : String = "location " + location.latitude + " " + location.longitude
+                tmp=sharedPreferences.getString("location","")
+                sharedPreferences.edit().putString("location",tmp+" "+locationText).commit()
+
             }
         }
     }
