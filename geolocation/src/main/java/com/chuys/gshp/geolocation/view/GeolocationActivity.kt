@@ -10,15 +10,19 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.chuys.gshp.geolocation.R
 import com.chuys.gshp.shared.presenter.Presenter
 import com.chuys.gshp.shared.presenter.GeolocationContract
+import com.chuys.gshp.shared.util.workmanager.GeolocationTrackWorkManager
+import kotlinx.android.synthetic.main.geolocation_activity.*
 
 
-class GeolocationActivity : AppCompatActivity(), GeolocationContract.GeolocationViewContract, View.OnClickListener {
+class GeolocationActivity : AppCompatActivity(), GeolocationContract.GeolocationViewContract {
     private val LOCATION_PERMISSION_REQUEST_CODE = 1000
     private val LOCATION_ACTIVITY_REQUEST_CODE = 1000
-    private lateinit var btn_location : Button
     private lateinit var presenter: GeolocationContract.GeolocationPresenterContract
 
     override fun showError() {}
@@ -27,18 +31,23 @@ class GeolocationActivity : AppCompatActivity(), GeolocationContract.Geolocation
         super.onCreate(savedInstanceState)
         setContentView(R.layout.geolocation_activity)
         presenter = Presenter(this,application)
-        btn_location = findViewById(R.id.btn_location)
-        btn_location.setOnClickListener(this)
+
+        btn_location.setOnClickListener {
+
+            /**** ejemplo *******/
+            val periodicRefreshTokenWork = OneTimeWorkRequest.Builder(
+                GeolocationTrackWorkManager::class.java
+            ).addTag("unique").build()
+
+            WorkManager.getInstance(applicationContext).enqueueUniqueWork("unique",
+                ExistingWorkPolicy.REPLACE,periodicRefreshTokenWork)
+            /*********************/
+        }
+//        btn_location = findViewById(R.id.btn_location)
+//        btn_location.setOnClickListener(this)
 //        presenter.isPermissionGranted(LOCATION_PERMISSION_REQUEST_CODE)
     }
 
-    override fun onClick(v: View?) {
-      when(v?.id){
-          R.id.btn_location -> {
-              presenter.getUserLocation(LOCATION_ACTIVITY_REQUEST_CODE)
-          }
-      }
-    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
