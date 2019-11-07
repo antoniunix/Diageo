@@ -8,7 +8,9 @@ import android.os.Looper
 import com.google.android.gms.location.*
 
 
-class GeolocationRepository(private val application: Application) {
+class GeolocationRepository(
+    private val context: Context
+) {
 
     fun getLocation() {
         System.out.println("Init georepository")
@@ -17,7 +19,7 @@ class GeolocationRepository(private val application: Application) {
         lateinit var locationCallback: LocationCallback
         var sharedPreferences : SharedPreferences
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(application)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context)
         fusedLocationProviderClient.setMockMode(false)
         locationRequest = LocationRequest
             .create()
@@ -45,7 +47,7 @@ class GeolocationRepository(private val application: Application) {
                 System.out.println("Init georepository1")
                 //locationResultListener.getLocation(location)
                // System.out.println("dale " + location.latitude + " " + location.longitude)
-                sharedPreferences= application?.getSharedPreferences(
+                sharedPreferences= context.getSharedPreferences(
                    "location", Context.MODE_PRIVATE)
                 var tmp :String
                 var locationText : String = "location " + location.latitude + " " + location.longitude
