@@ -15,7 +15,7 @@ class GeolocationTrackWorkManager(context: Context, workerParams: WorkerParamete
        Log.e("leo","do work init")
        return try {
            Log.e("leo","do work init1")
-//           repository.getLocation() debes de confirmar que tienes el permiso de location
+           repository.getLocation()
            Result.success()
        }catch (e : Exception){
            System.out.println("Init do work fall")
