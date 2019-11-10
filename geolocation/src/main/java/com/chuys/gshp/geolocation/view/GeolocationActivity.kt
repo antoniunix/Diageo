@@ -10,14 +10,13 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.chuys.gshp.geolocation.R
 import com.chuys.gshp.shared.presenter.Presenter
 import com.chuys.gshp.shared.presenter.GeolocationContract
 import com.chuys.gshp.shared.util.workmanager.GeolocationTrackWorkManager
 import kotlinx.android.synthetic.main.geolocation_activity.*
+import java.util.concurrent.TimeUnit
 
 
 class GeolocationActivity : AppCompatActivity(), GeolocationContract.GeolocationViewContract {
@@ -30,24 +29,11 @@ class GeolocationActivity : AppCompatActivity(), GeolocationContract.Geolocation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.geolocation_activity)
-        presenter = Presenter(this,application)
+        presenter = Presenter(this)
 
         btn_location.setOnClickListener {
-
-            /**** ejemplo *******/
-            val periodicRefreshTokenWork = OneTimeWorkRequest.Builder(
-                GeolocationTrackWorkManager::class.java
-            ).addTag("unique").build()
-
-            WorkManager.getInstance(applicationContext).enqueueUniqueWork("unique",
-                ExistingWorkPolicy.REPLACE,periodicRefreshTokenWork)
-            /*********************/
         }
-//        btn_location = findViewById(R.id.btn_location)
-//        btn_location.setOnClickListener(this)
-//        presenter.isPermissionGranted(LOCATION_PERMISSION_REQUEST_CODE)
     }
-
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {

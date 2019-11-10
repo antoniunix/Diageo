@@ -7,7 +7,6 @@ interface GeolocationContract {
 
     interface GeolocationPresenterContract {
         fun getUserLocation( activityRequestCode: Int)
-        fun isPermissionGranted( requestCode: Int)
     }
 
     interface GeolocationViewContract {

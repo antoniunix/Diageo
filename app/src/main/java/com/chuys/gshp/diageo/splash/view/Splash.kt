@@ -28,7 +28,7 @@ class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
     }
 
     override fun endTime() {
-        ActivityManager.changeToActivity(Activities.GEOLOCATION, this)
+        ActivityManager.changeToActivity(Activities.LOGIN, this)
         finish()
     }
 
