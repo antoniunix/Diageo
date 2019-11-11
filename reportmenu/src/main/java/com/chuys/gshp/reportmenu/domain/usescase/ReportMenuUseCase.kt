@@ -12,9 +12,9 @@ class ReportMenuUseCase constructor(
     private val menuReportRepository: MenuReportRepository,
     threadExecutor: ThreadExecutor,
     postExecutionThread: PostExecutionThread
-) : SingleUseCase<Any, Resource<List<Modules>>>(threadExecutor, postExecutionThread) {
+) : SingleUseCase<Any, Resource<ArrayList<Modules>>>(threadExecutor, postExecutionThread) {
 
-    override fun buildUseCase(params: Any?): Single<Resource<List<Modules>>> {
+    override fun buildUseCase(params: Any?): Single<Resource<ArrayList<Modules>>> {
         return menuReportRepository.getModules()
     }
 }

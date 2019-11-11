@@ -5,5 +5,5 @@ import com.chuys.gshp.shared.domain.models.Resource
 import com.chuys.gshp.shared.domain.usecase.SingleUseCase
 
 interface ReportMenuProvider {
-    fun getModulerUseCase(): SingleUseCase<Any, Resource<List<Modules>>>
+    fun getModulerUseCase(): SingleUseCase<Any, Resource<ArrayList<Modules>>>
 }

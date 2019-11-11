@@ -16,5 +16,6 @@ enum class Activities(val activity: String) {
     VISIT(".visits.view.Visit"),
     COMMUNICATION(".comunication.view.Comunication"),
     HELP(""),
-    GEOLOCATION(".geolocation.view.GeolocationActivity")
+    GEOLOCATION(".geolocation.view.GeolocationActivity"),
+    DEFAULT("")
 }

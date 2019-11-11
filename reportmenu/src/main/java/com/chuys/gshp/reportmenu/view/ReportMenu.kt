@@ -35,7 +35,7 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
         listModulesRecyclerView = findViewById(R.id.list_modules_recycler)
         presenter = Presenter(this, reportMenuProvider)
 
-        MainDB.initRealDB()
+        //MainDB.initRealDB()
     }
 
     override fun onResume() {

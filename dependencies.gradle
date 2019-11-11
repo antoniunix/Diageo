@@ -107,4 +107,9 @@ ext {
             daggerAnnotation: "com.google.dagger:dagger-android-processor:${daggerVersion}",
             javax           : "javax.inject:javax.inject:${javaxVersion}"
     ]
+
+    fireBaseDependencies = [
+            fireBaseCore :"com.google.firebase:firebase-core:$firebaseCore",
+            fireBaseRealTime :"com.google.firebase:firebase-database:$firebaseRealDB"
+    ]
 }

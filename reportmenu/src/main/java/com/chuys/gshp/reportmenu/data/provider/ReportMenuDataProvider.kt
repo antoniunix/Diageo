@@ -16,7 +16,7 @@ class ReportMenuDataProvider(
 
     private val menuReporaRepository = MenuReportDataRepository()
 
-    override fun getModulerUseCase(): SingleUseCase<Any, Resource<List<Modules>>> {
+    override fun getModulerUseCase(): SingleUseCase<Any, Resource<ArrayList<Modules>>> {
         return ReportMenuUseCase(menuReporaRepository, jobExecutor, uiThread)
     }
 
