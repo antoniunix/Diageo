@@ -1,5 +1,6 @@
 package com.chuys.gshp.reportmenu.data.repository
 
+import android.util.Log
 import com.chuys.gshp.reportmenu.data.mapper.ModuleModelMapper
 import com.chuys.gshp.reportmenu.data.model.Module
 import com.chuys.gshp.reportmenu.domain.model.Modules
@@ -35,6 +36,7 @@ class MenuReportDataRepository : MenuReportRepository {
                     for (snapshot in dataSnapshot.children) {
                         val module = snapshot.getValue(Module::class.java)
                         moduleList.add(module!!)
+                        Log.e("MODEL","MODEL "+module.toString())
                     }
                     it.onSuccess(
                         Resource.success(
