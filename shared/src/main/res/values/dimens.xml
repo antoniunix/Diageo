@@ -2,7 +2,9 @@
 <resources>
     <dimen name="card_view_corner_radius">5dp</dimen>
     <dimen name="card_view_elevation">5dp</dimen>
-    <dimen name="card_view_margin">10dp</dimen>
+    <dimen name="card_view_margin">5dp</dimen>
+
+    <dimen name="padding_row">3dp</dimen>
 
     <dimen name="tb_title_text_size">32sp</dimen>
     <dimen name="tb_title_text_small_size">24sp</dimen>
@@ -18,4 +20,5 @@
     <dimen name="common_standard_text_size_21sp">21sp</dimen>
     <dimen name="common_standard_text_size_24sp">24sp</dimen>
     <dimen name="common_standard_text_size_32sp">32sp</dimen>
+
 </resources>

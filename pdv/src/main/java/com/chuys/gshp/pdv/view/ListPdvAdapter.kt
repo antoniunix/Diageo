@@ -5,15 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chuys.gshp.pdv.R
-import com.chuys.gshp.pdv.domain.model.PdvData
+import com.chuys.gshp.pdv.domain.model.PdvModel
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.row_list_pdv.view.*
 
-class ListPdvAdapter(val items: List<PdvData>) : RecyclerView.Adapter<ListPdvAdapter.ViewHolderListPdv>() {
+class ListPdvAdapter(val items: List<PdvModel>) : RecyclerView.Adapter<ListPdvAdapter.ViewHolderListPdv>() {
 
-    private val clickSubject = PublishSubject.create<PdvData>()
-    val clickEvent: Observable<PdvData> = clickSubject
+    private val clickSubject = PublishSubject.create<PdvModel>()
+    val clickEvent: Observable<PdvModel> = clickSubject
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderListPdv {
         return ViewHolderListPdv(
@@ -35,7 +35,7 @@ class ListPdvAdapter(val items: List<PdvData>) : RecyclerView.Adapter<ListPdvAda
                 clickSubject.onNext(items[layoutPosition])
             }
         }
-        fun bin(pdvData: PdvData) {
+        fun bin(pdvData: PdvModel) {
             itemView.name_textview.text = pdvData.name
             itemView.client_textview.text = pdvData.nameClient
         }

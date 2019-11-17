@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import io.reactivex.Single
+import java.lang.Exception
 
 
 class MenuReportDataRepository : MenuReportRepository {
@@ -33,10 +34,14 @@ class MenuReportDataRepository : MenuReportRepository {
         return Single.create {
             referenceDb.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    var module: Module?
                     for (snapshot in dataSnapshot.children) {
-                        val module = snapshot.getValue(Module::class.java)
+                        try {
+                            module = snapshot.getValue(Module::class.java)
+                        } catch (e: Exception) {
+                            continue
+                        }
                         moduleList.add(module!!)
-                        Log.e("MODEL","MODEL "+module.toString())
                     }
                     it.onSuccess(
                         Resource.success(
@@ -53,6 +58,4 @@ class MenuReportDataRepository : MenuReportRepository {
             })
         }
     }
-
-
 }

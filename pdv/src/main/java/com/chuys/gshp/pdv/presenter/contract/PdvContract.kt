@@ -2,7 +2,7 @@ package com.chuys.gshp.pdv.presenter.contract
 
 import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView
-import com.chuys.gshp.pdv.domain.model.PdvData
+import com.chuys.gshp.pdv.domain.model.PdvModel
 
 interface PdvContract {
     interface PdvPresenterContract {
@@ -12,7 +12,7 @@ interface PdvContract {
     }
 
     interface PdvViewContract {
-        fun loadRecyclerView(pdv: List<PdvData>)
+        fun loadRecyclerView(pdv: List<PdvModel>)
         fun showError()
     }
 }

@@ -12,6 +12,7 @@
             android:layout_height="wrap_content">
         <TextView
                 android:id="@+id/name_textview"
+                android:padding="@dimen/padding_row"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -20,6 +21,8 @@
                 android:layout_height="wrap_content"/>
         <TextView
                 android:id="@+id/client_textview"
+                android:paddingLeft="@dimen/padding_row"
+                android:paddingBottom="@dimen/padding_row"
                 app:layout_constraintTop_toBottomOf="@id/name_textview"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

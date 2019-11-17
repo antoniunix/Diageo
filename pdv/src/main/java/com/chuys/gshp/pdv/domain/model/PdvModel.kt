@@ -1,6 +1,6 @@
 package com.chuys.gshp.pdv.domain.model
 
-data class PdvData(
+data class PdvModel(
     val id: Int,
     val name: String,
     val idClient: Int,
@@ -8,12 +8,7 @@ data class PdvData(
     val postalCode: String,
     val code: String,
     val codeNumber: Int,
-    val externalNumber: String,
-    val internalNumber: String,
-    val street: String,
-    val streetLeft: String,
-    val streetRight: String,
-    val territory: String,
+    val address: String,
     val lat: Double,
     val lon: Double
 
