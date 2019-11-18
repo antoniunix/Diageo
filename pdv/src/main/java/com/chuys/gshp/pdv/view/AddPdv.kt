@@ -44,8 +44,6 @@ class AddPdv :FragmentActivity (), OnMapReadyCallback, AddPdvContract.AddPdvView
         if(this.isGPSEnabled() && this.checkLocationPermission()){
             presenter = PresenterAddPdv(this,this, geolocationProvider)
         }
-)
-
     }
 
     override fun onMapReady(map: GoogleMap?) {
