@@ -40,6 +40,14 @@ class ActivityManager {
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.PDV_LIST.activity)
                     )
                 )
+
+                Activities.PDV_ADD -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME+Activities.PDV_ADD.activity)
+                    )
+                )
+
                 Activities.MENU_REPORT -> activity.startActivity(
                     Intent(
                         activity.applicationContext,

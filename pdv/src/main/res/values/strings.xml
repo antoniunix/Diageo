@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name_pdv">LISTA DE PDV</string>
+    <string name="add_new_pdv">AGREGAR</string>
+    <string name="name">NOMBRE</string>
+    <string name="name_focus">NOMBRE DEL PDV / CDC </string>
+    <string name="address">DIRECCIÓN</string>
+    <string name="suburb">COLONIA</string>
+    <string name="delegation">DELEGACIÓN</string>
+    <string name="client">CLIENTE</string>
+    <string name="reason">RAZON SOCIAL</string>
+    <string name="type_store">TIPO DE TIENDA</string>
 </resources>

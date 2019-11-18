@@ -1,20 +1,20 @@
 package com.chuys.gshp.shared.data.repository
 
-import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.location.LocationManager
+import android.location.Location
 import android.os.Looper
+import com.chuys.gshp.shared.domain.listener.LocationResultListener
 import com.google.android.gms.location.*
+import io.reactivex.Single
 
 
-class GeolocationRepository(
-    private val context: Context
-) {
+class GeolocationDataRepository(private val context: Context) {
 
-    fun getLocation() {
+    private var fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(context)
+
+    fun getLocation(locationResultListener: LocationResultListener) {
         System.out.println("Init georepository")
-        lateinit var fusedLocationProviderClient: FusedLocationProviderClient
         lateinit var locationRequest: LocationRequest
         lateinit var locationCallback: LocationCallback
         var sharedPreferences : SharedPreferences
@@ -45,10 +45,10 @@ class GeolocationRepository(
                 )
             } else {
                 System.out.println("Init georepository1")
-                //locationResultListener.getLocation(location)
-               // System.out.println("dale " + location.latitude + " " + location.longitude)
+                locationResultListener.locationResult(location)
+                // System.out.println("dale " + location.latitude + " " + location.longitude)
                 sharedPreferences= context.getSharedPreferences(
-                   "location", Context.MODE_PRIVATE)
+                    "location", Context.MODE_PRIVATE)
                 var tmp :String
                 var locationText : String = "location " + location.latitude + " " + location.longitude
                 tmp=sharedPreferences.getString("location","")
@@ -56,5 +56,25 @@ class GeolocationRepository(
 
             }
         }
+
     }
+
+    fun exampe():Single<Location>{
+        return Single.create{single ->
+            fusedLocationProviderClient.lastLocation.addOnCompleteListener{
+                val location = it.result
+                if (location == null) {
+                   single.onError(Exception(""))
+                }else{
+                    single.onSuccess(location)
+                }
+            }.addOnCanceledListener {
+                single.onError(Exception(""))
+            }
+        }
+
+    }
+
+
+
 }

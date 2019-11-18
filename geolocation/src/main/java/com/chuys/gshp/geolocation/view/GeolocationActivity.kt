@@ -5,18 +5,13 @@ import android.app.Activity
 import android.content.Intent
 import android.location.Location
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.work.*
 import com.chuys.gshp.geolocation.R
-import com.chuys.gshp.shared.presenter.Presenter
 import com.chuys.gshp.shared.presenter.GeolocationContract
-import com.chuys.gshp.shared.util.workmanager.GeolocationTrackWorkManager
+import com.chuys.gshp.shared.presenter.Presenter
 import kotlinx.android.synthetic.main.geolocation_activity.*
-import java.util.concurrent.TimeUnit
 
 
 class GeolocationActivity : AppCompatActivity(), GeolocationContract.GeolocationViewContract {
