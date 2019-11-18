@@ -14,8 +14,6 @@ import java.util.concurrent.TimeUnit
 class BroadcastReciverGeolocation : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        System.out.println("Init broadcast")
-
         if(context.isGPSEnabled() && context.checkLocationPermission()){
             val periodicRefreshTokenWork = PeriodicWorkRequest.Builder(GeolocationTrackWorkManager::class.java,
                 PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS,
@@ -25,8 +23,6 @@ class BroadcastReciverGeolocation : BroadcastReceiver() {
         }else{
             Log.e("error","no hay permisos")
         }
-
-
     }
 
 }

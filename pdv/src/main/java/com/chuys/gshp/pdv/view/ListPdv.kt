@@ -3,7 +3,6 @@ package com.chuys.gshp.pdv.view
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +20,8 @@ import com.chuys.gshp.shared.util.commons.ToolbarHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_list_pdv.*
 
-
 class ListPdv : AppCompatActivity(), PdvContract.PdvViewContract,
-    BottomNavigationView.OnNavigationItemSelectedListener{
+    BottomNavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var pdvProvider: PdvProvider
     private lateinit var presenter: PdvContract.PdvPresenterContract
@@ -40,7 +38,7 @@ class ListPdv : AppCompatActivity(), PdvContract.PdvViewContract,
             JobExecutor(),
             UIThread()
         )
-        ToolbarHelper(this).configToolbarHelpGeneric(R.string.app_name_pdv, false, 0)
+        ToolbarHelper(this).configToolbarHelpGeneric(R.string.app_name_pdv,false,0)
         listPdvRecyclerView = findViewById(R.id.list_pdv_recycler)
         presenter =Presenter(this, pdvProvider)
         btn_new_pdv.setOnClickListener{

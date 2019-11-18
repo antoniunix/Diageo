@@ -12,10 +12,9 @@ class GeolocationTrackWorkManager(context: Context, workerParams: WorkerParamete
 
     override fun doWork(): Result {
        return try {
-          // dataRepository.getLocation()
+           dataRepository.getLocation()
            Result.success()
        }catch (e : Exception){
-           System.out.println("Init do work fall")
            Result.failure()
        }
     }

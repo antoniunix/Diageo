@@ -7,7 +7,6 @@ import com.chuys.gshp.diageo.splash.contract.SplashContract
 import com.chuys.gshp.diageo.splash.presenter.SplashPresenter
 import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.navigation.ActivityManager
-import com.facebook.stetho.Stetho
 
 class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
 
@@ -18,7 +17,6 @@ class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         presenter = SplashPresenter(this)
-        Stetho.initializeWithDefaults(this)
     }
 
     override fun onStart() {
@@ -28,7 +26,7 @@ class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
     }
 
     override fun endTime() {
-        ActivityManager.changeToActivity(Activities.PDV_LIST, this)
+        ActivityManager.changeToActivity(Activities.LOGIN, this)
         finish()
     }
 
