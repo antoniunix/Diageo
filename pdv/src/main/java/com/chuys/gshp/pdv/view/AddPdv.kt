@@ -12,6 +12,8 @@ import com.chuys.gshp.shared.data.provider.ContextDataProvider
 import com.chuys.gshp.shared.data.provider.GeolocationDataProvider
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
 import com.chuys.gshp.shared.presenter.GeolocationContract
+import com.chuys.gshp.shared.util.extension.checkLocationPermission
+import com.chuys.gshp.shared.util.extension.isGPSEnabled
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -39,7 +41,10 @@ class AddPdv :FragmentActivity (), OnMapReadyCallback, AddPdvContract.AddPdvView
     fun init(){
         val contextProvider=ContextDataProvider(this)
         geolocationProvider=GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
-        presenter = PresenterAddPdv(this,this, geolocationProvider)
+        if(this.isGPSEnabled() && this.checkLocationPermission()){
+            presenter = PresenterAddPdv(this,this, geolocationProvider)
+        }
+)
 
     }
 

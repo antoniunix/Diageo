@@ -13,6 +13,7 @@ class PresenterAddPdv (val view:AddPdvContract.AddPdvViewContract, val viewgeo:G
 
 
     override fun getUserLocation() {
+        if()
         disposables.add(geolocationDataProvider.getUserLocation().execute(null).subscribe{location->
             viewgeo.showLocation(location)
         })
