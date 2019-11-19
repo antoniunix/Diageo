@@ -5,6 +5,7 @@
     <application>
         <activity android:name=".view.ListPdv">
         </activity>
+        <activity android:name=".view.AddPdv"/>
     </application>
 
 </manifest>

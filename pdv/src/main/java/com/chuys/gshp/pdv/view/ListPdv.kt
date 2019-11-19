@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.pdv.R
 import com.chuys.gshp.pdv.data.provider.PdvDataProvider
@@ -17,7 +18,7 @@ import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
 import com.chuys.gshp.shared.util.commons.ToolbarHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import kotlinx.android.synthetic.main.activity_list_pdv.*
 
 class ListPdv : AppCompatActivity(), PdvContract.PdvViewContract,
     BottomNavigationView.OnNavigationItemSelectedListener {
@@ -37,9 +38,13 @@ class ListPdv : AppCompatActivity(), PdvContract.PdvViewContract,
             JobExecutor(),
             UIThread()
         )
-        ToolbarHelper(this).configToolbarHelpGeneric(R.string.app_name_pdv, false, 0)
+        ToolbarHelper(this).configToolbarHelpGeneric(R.string.app_name_pdv,false,0)
         listPdvRecyclerView = findViewById(R.id.list_pdv_recycler)
-        presenter = Presenter(this, pdvProvider)
+        presenter =Presenter(this, pdvProvider)
+        btn_new_pdv.setOnClickListener{
+            ActivityManager.changeToActivity(Activities.PDV_ADD,this)
+            finish()
+        }
     }
 
     override fun onResume() {
@@ -77,4 +82,5 @@ class ListPdv : AppCompatActivity(), PdvContract.PdvViewContract,
         super.onDestroy()
         presenter.destroy()
     }
+
 }

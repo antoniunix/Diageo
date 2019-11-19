@@ -40,4 +40,5 @@ dependencies {
     implementation  rx.values()
     implementation  androidSupport.values()
     implementation  fireBaseDependencies.values()
+    implementation androidGooglePlayService.values()
 }

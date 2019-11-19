@@ -39,6 +39,7 @@ dependencies {
     implementation  androidXSupport.values()
     implementation  androidSupport.values()
     implementation  fireBaseDependencies.values()
+    implementation androidGooglePlayService.values()
 
 }
 repositories {

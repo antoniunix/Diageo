@@ -6,7 +6,7 @@ enum class Activities(val activity: String) {
     TERMS(".login.view.Terms"),
     HOME(".home.view.Home"),
     PDV_LIST(".pdv.view.ListPdv"),
-    PDV_ADD(""),
+    PDV_ADD(".pdv.view.AddPdv"),
     PDV_HISTORIC(""),
     MENU_REPORT(".reportmenu.view.ReportMenu"),
     POLL(""),
