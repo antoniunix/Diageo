@@ -10,6 +10,7 @@ import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
 import com.chuys.gshp.shared.data.provider.ContextDataProvider
 import com.chuys.gshp.shared.data.provider.GeolocationDataProvider
+import com.chuys.gshp.shared.domain.constant.DoubleConstants
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
 import com.chuys.gshp.shared.presenter.GeolocationContract
 import com.chuys.gshp.shared.util.extension.checkLocationPermission
@@ -28,7 +29,9 @@ class AddPdv :FragmentActivity (), OnMapReadyCallback, AddPdvContract.AddPdvView
     private lateinit var geolocationProvider: GeolocationProvider
     private lateinit var presenter: AddPdvContract.AddPdvPresenterContract
     private lateinit var mMap: GoogleMap
-    private var latLngMex=LatLng(19.4284706,-99.1276627)
+    private val latLngMex=LatLng(DoubleConstants.latMex,DoubleConstants.lonMex)
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,5 +67,6 @@ class AddPdv :FragmentActivity (), OnMapReadyCallback, AddPdvContract.AddPdvView
     override fun showLocation(location: Location) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude,location.longitude),16f))
     }
+
 
 }

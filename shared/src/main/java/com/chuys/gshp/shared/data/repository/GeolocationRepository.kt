@@ -44,7 +44,6 @@ class GeolocationRepository(
                     Looper.myLooper()
                 )
             } else {
-                System.out.println("Init georepository1")
                 //locationResultListener.getLocation(location)
                // System.out.println("dale " + location.latitude + " " + location.longitude)
                 sharedPreferences= context.getSharedPreferences(

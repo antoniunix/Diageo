@@ -11,11 +11,13 @@ class PresenterAddPdv (val view:AddPdvContract.AddPdvViewContract, val viewgeo:G
 
     private val disposables = CompositeDisposable()
 
-
     override fun getUserLocation() {
-
         disposables.add(geolocationDataProvider.getUserLocation().execute(null).subscribe{location->
-            viewgeo.showLocation(location)
+           if(location!=null){
+               viewgeo.showLocation(location)
+           }else{
+               disposables.dispose()
+           }
         })
     }
 
