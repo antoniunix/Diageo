@@ -7,4 +7,6 @@
         <activity android:name=".view.Login" />
     </application>
 
+
+
 </manifest>

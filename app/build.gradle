@@ -13,7 +13,17 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        android.defaultConfig.manifestPlaceholders = [
+                "appAuthRedirectScheme": "com.chuys.gshp"
+        ]
+
+        manifestPlaceholders = [
+                "appAuthRedirectScheme": "com.okta.dev-454940"
+        ]
+
     }
+
     buildTypes {
         release {
             minifyEnabled false

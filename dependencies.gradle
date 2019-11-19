@@ -40,6 +40,7 @@ ext {
     androidXVersion = "1.1.0"
     constrainLayoutVersion = "1.1.3"
     playServiceLocation="17.0.0"
+    oktaVersionAndroid="0.2.3"
 
     firebaseCore = '17.2.0'
     firebaseRealDB = '19.1.0'
@@ -63,6 +64,11 @@ ext {
     androidGooglePlayService=[
             location          :"com.google.android.gms:play-services-location:${playServiceLocation}"
     ]
+    oktaService=[
+            okta :"com.okta.android:appauth-android:${oktaVersionAndroid}"
+    ]
+
+
 
     rx = [
             rxAndroid: "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",

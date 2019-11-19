@@ -1,0 +1,10 @@
+{
+  "client_id": "0oa1tye9v3JbohsJJ357",
+  "redirect_uri": "com.okta.dev-454940:/callback",
+  "scopes": [
+    "openid",
+    "profile",
+    "offline_access"
+  ],
+  "issuer_uri": "https://dev-454940.okta.com/oauth2/default"
+}

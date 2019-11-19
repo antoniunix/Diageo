@@ -17,6 +17,7 @@ android {
 
     }
 
+
     buildTypes {
         release {
             minifyEnabled false
@@ -41,4 +42,6 @@ dependencies {
     implementation androidXSupport.values()
     implementation rx.values()
     implementation androidSupport.values()
+    implementation oktaService.values()
+
 }
