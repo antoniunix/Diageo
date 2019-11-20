@@ -46,4 +46,5 @@ dependencies {
 
     implementation  rx.values()
     implementation  androidXSupport.values()
+    implementation  appToolsDependencies.values()
 }

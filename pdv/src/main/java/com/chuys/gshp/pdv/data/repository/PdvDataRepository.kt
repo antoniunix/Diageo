@@ -1,11 +1,10 @@
 package com.chuys.gshp.pdv.data.repository
 
-import android.util.Log
 import com.chuys.gshp.pdv.data.mapper.PdvMapper
 import com.chuys.gshp.pdv.data.model.PdvData
 import com.chuys.gshp.pdv.domain.model.PdvModel
 import com.chuys.gshp.pdv.domain.repository.PdvRepository
-import com.chuys.gshp.shared.data.database.RealmTimeDbConfig
+import com.chuys.gshp.shared.data.database.realtime.RealmTimeDbConfig
 import com.chuys.gshp.shared.domain.constant.StringConstant
 import com.chuys.gshp.shared.domain.models.Resource
 import com.google.firebase.database.DataSnapshot

@@ -1,11 +1,10 @@
 package com.chuys.gshp.reportmenu.data.repository
 
-import android.util.Log
 import com.chuys.gshp.reportmenu.data.mapper.ModuleModelMapper
 import com.chuys.gshp.reportmenu.data.model.Module
 import com.chuys.gshp.reportmenu.domain.model.Modules
 import com.chuys.gshp.reportmenu.domain.repository.MenuReportRepository
-import com.chuys.gshp.shared.data.database.RealmTimeDbConfig
+import com.chuys.gshp.shared.data.database.realtime.RealmTimeDbConfig
 import com.chuys.gshp.shared.domain.constant.StringConstant
 import com.chuys.gshp.shared.domain.models.Resource
 import com.google.firebase.database.DataSnapshot

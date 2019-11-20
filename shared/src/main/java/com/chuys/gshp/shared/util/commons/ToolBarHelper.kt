@@ -36,17 +36,7 @@ class ToolbarHelper(private var activity: AppCompatActivity) {
             is String -> titleView.text = titleResource
             else -> titleView.text = ""
         }
-        if (navigationButton) {
-            toolbar.setNavigationIcon(
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    activity.resources.getDrawable(R.drawable.ic_chevron_left_black_24dp, null)
-                } else {
-                    activity.resources.getDrawable(R.drawable.ic_chevron_left_black_24dp)
-                }
-            )
-        } else {
-            titleView.setPadding(26, 0, 0, 0)
-        }
+
         toolbar.setNavigationOnClickListener { activity.finish() }
     }
 

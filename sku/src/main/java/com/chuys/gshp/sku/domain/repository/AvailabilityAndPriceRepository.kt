@@ -5,6 +5,8 @@ import com.chuys.gshp.shared.domain.models.Resource
 import io.reactivex.Single
 
 interface AvailabilityAndPriceRepository {
+    fun getReferenceToDb()
+    fun updateItemSqlite()
     fun getSkuToMesureAvailabilityAndPrice(): Single<Resource<List<SkuAvailabilityAndPriceData>>>
     fun saveAvailabilityAndPrice()
 }

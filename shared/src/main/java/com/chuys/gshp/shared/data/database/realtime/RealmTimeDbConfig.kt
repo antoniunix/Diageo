@@ -1,4 +1,4 @@
-package com.chuys.gshp.shared.data.database
+package com.chuys.gshp.shared.data.database.realtime
 
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -12,7 +12,8 @@ class RealmTimeDbConfig {
         }
 
         override fun getReference(nameNodo: String): DatabaseReference {
-            return initDb().getReference(nameNodo)
+            return initDb()
+                .getReference(nameNodo)
         }
     }
 

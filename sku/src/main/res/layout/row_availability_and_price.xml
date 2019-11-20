@@ -12,17 +12,17 @@
 
         <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/haf_gide_line"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.6" />
 
         <TextView
                 android:id="@+id/name_textview"
-                android:layout_margin="@dimen/tb_margin_start"
-                android:textSize="@dimen/common_standard_text_size_18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/tb_margin_start"
+                android:textSize="@dimen/common_standard_text_size_18sp"
                 app:layout_constraintBottom_toTopOf="@id/availability_radio_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/availability_radio_button" />
 
-        <EditText
+        <me.abhinay.input.CurrencyEditText
                 android:id="@+id/price_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -52,7 +52,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/haf_gide_line"
                 app:layout_constraintTop_toBottomOf="@+id/name_textview" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
