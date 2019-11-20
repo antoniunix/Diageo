@@ -6,5 +6,5 @@ object IntConstants {
     const val SELL = 3
     const val STORE = 1
     const val EJECUTABLE = 5
-    const val LOCATION_ACTIVITY_REQUEST_CODE=1000
+   const val LOCATION_ACTIVITY_REQUEST_CODE=1000
 }
