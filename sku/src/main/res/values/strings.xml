@@ -2,4 +2,5 @@
     <string name="app_name_availability">DISPONIBILIDAD Y PRECIO</string>
     <string name="availability_label">Disponible</string>
     <string name="spent_label">Agotado</string>
+    <string name="save">GUARDAR</string>
 </resources>
