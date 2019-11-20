@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chuys.gshp.reportmenu.R
 import com.chuys.gshp.reportmenu.domain.model.Modules
+import com.chuys.gshp.shared.domain.constant.IntConstants
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.row_report_menu.view.*
 
-class ReportMenuAdapter(val items: List<Modules>) : RecyclerView.Adapter<ReportMenuAdapter.ViewHolderListPdv>() {
+class ReportMenuAdapter(val items: List<Modules>) :
+    RecyclerView.Adapter<ReportMenuAdapter.ViewHolderListPdv>() {
 
     private val clickSubject = PublishSubject.create<Modules>()
     val clickEvent: Observable<Modules> = clickSubject
@@ -38,6 +40,7 @@ class ReportMenuAdapter(val items: List<Modules>) : RecyclerView.Adapter<ReportM
 
         fun bin(modules: Modules) {
             itemView.name_textview.text = modules.name
+            itemView.clientImageView.setImageResource(R.drawable.ic_dispon)
         }
     }
 

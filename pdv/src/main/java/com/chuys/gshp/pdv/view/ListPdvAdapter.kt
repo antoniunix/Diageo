@@ -37,7 +37,7 @@ class ListPdvAdapter(val items: List<PdvModel>) : RecyclerView.Adapter<ListPdvAd
         }
         fun bin(pdvData: PdvModel) {
             itemView.name_textview.text = pdvData.name
-            itemView.client_textview.text = pdvData.nameClient
+            itemView.addressTextView.text = pdvData.address
         }
     }
 
