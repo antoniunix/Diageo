@@ -38,7 +38,9 @@ ext {
     javaxVersion = "1"
     androidXVersion = "1.1.0"
     constrainLayoutVersion = "1.1.3"
-    playServiceLocation = "17.0.0"
+    playServiceLocation="17.0.0"
+    workManager="2.1.0"
+    playServiceMap="17.0.0"
 
     firebaseCore = '17.2.0'
     firebaseRealDB = '19.1.0'
@@ -61,8 +63,10 @@ ext {
             supportCompat     : "com.android.support:support-compat:${androidSupportVersion}"
     ]
 
-    androidGooglePlayService = [
-            location: "com.google.android.gms:play-services-location:${playServiceLocation}"
+    androidGooglePlayService=[
+            location          :"com.google.android.gms:play-services-location:${playServiceLocation}",
+            workManager       :"androidx.work:work-runtime:${workManager}",
+            playServiceMap    :"com.google.android.gms:play-services-maps:${playServiceLocation}"
     ]
 
     rx = [

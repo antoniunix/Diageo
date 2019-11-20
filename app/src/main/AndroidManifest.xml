@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.chuys.gshp.diageo">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
             android:name=".DiageoApplication"
             android:allowBackup="true"
@@ -14,11 +16,26 @@
         </activity>
         <activity android:name=".splash.view.Splash">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <receiver android:name="com.chuys.gshp.shared.util.workmanager.BroadcastReciverGeolocation"
+                android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.PACKAGE_INSTALL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+                android:value="@string/google_maps_key" />
+
+
     </application>
 
 </manifest>
