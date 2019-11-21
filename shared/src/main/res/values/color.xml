@@ -4,4 +4,10 @@
     <color name="black">#000000</color>
     <color name="selected_navigation">#aa0136</color>
     <color name="unselected_navigation">#c7c7c7</color>
+    <color name="gradient_toolbar_end">#AA0136</color>
+    <color name="gradient_toolbar_start">#8D032E</color>
+    <color name="background_edittext">#F7F7F7</color>
+    <color name="colorPrimary">@color/gradient_toolbar_end</color>
+    <color name="colorPrimaryDark">@color/gradient_toolbar_end</color>
+    <color name="colornavigation">#F6f6f6</color>
 </resources>

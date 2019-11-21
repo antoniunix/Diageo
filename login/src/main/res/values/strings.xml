@@ -7,4 +7,6 @@
     <string name="version_label">Versión $</string>
     <string name="cancel_label">CANCELAR</string>
     <string name="agree_label">ACEPTO</string>
+    <string name="welcome_label">BIENVENIDO</string>
+    <string name="input_data_label">INGRESE SUS DATOS</string>
 </resources>

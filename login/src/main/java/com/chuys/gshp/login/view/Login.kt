@@ -22,7 +22,6 @@ class Login : AppCompatActivity(), LoginContract.LoginViewContract,View.OnClickL
         termsbutton=findViewById(R.id.terms_button)
         syncButton.setOnClickListener(this)
         termsbutton.setOnClickListener(this)
-        ToolbarHelper(this).configToolbarHelpGeneric(R.string.login_name,false,0)
     }
 
     override fun loginSuccess() {
