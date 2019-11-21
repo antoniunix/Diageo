@@ -10,27 +10,54 @@
     <include
             android:id="@+id/toolbar"
             layout="@layout/app_toolbar" />
-    <Button
-            android:text="@string/add_new_pdv"
-            android:textColor="@color/white"
-            android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/list_pdv_recycler"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            android:id="@+id/btn_new_pdv"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/findConstraint"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/gradient_toolbar_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <EditText
+                android:id="@+id/findEdittext"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_margin="@dimen/tb_margin_start"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:hint="@string/find_label"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_new_pdv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+                android:id="@+id/btn_new_pdv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="@dimen/tb_margin_start"
+                android:background="@drawable/ic_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/findEdittext"
+                app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_pdv_recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_new_pdv"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintTop_toBottomOf="@+id/findConstraint" />
 
     <include
             android:id="@+id/bottom_navigation"
             layout="@layout/navigation_bottom_view" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

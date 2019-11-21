@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.reportmenu.R
 import com.chuys.gshp.reportmenu.domain.model.Modules
 import io.reactivex.Observable
@@ -38,6 +39,13 @@ class ReportMenuAdapter(val items: List<Modules>) : RecyclerView.Adapter<ReportM
 
         fun bin(modules: Modules) {
             itemView.name_textview.text = modules.name
+            when(modules.codeModule){
+                Activities.PRICE_AND_AVAILABILITY->itemView.clientImageView.setImageResource(R.drawable.ic_dispon)
+                Activities.POLL->itemView.clientImageView.setImageResource(R.drawable.ic_encuesta)
+                Activities.EXECUTABLE->itemView.clientImageView.setImageResource(R.drawable.ic_ejecutable)
+                Activities.ORDER->itemView.clientImageView.setImageResource(R.drawable.ic_levantamiento)
+                else -> itemView.clientImageView.setImageResource(R.drawable.ic_levantamiento)
+            }
         }
     }
 
