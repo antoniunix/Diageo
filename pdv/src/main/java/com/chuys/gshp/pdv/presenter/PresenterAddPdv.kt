@@ -26,7 +26,6 @@ class PresenterAddPdv (val view:AddPdvContract.AddPdvViewContract, val viewgeo:G
       disposables.add(geolocationDataProvider.getAddres(lat,lon).execute(null).subscribe{
           address->
           if(address!=null){
-              Log.e("leo"," "+address.getAddressLine(0))
               viewgeo.setAddres(address)
           }else{
               disposables.dispose()
