@@ -3,6 +3,7 @@ package com.chuys.gshp.geolocation.view
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.location.Address
 import android.location.Location
 import android.os.Bundle
 import android.widget.Toast
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.geolocation_activity.*
 
 
 class GeolocationActivity : AppCompatActivity(), GeolocationContract.GeolocationViewContract {
+
     private val LOCATION_PERMISSION_REQUEST_CODE = 1000
     private val LOCATION_ACTIVITY_REQUEST_CODE = 1000
     private lateinit var presenter: GeolocationContract.GeolocationPresenterContract
@@ -65,5 +67,10 @@ class GeolocationActivity : AppCompatActivity(), GeolocationContract.Geolocation
     override fun showLocation(location: Location) {
        Toast.makeText(this,"Location "+location.longitude+" "+location.latitude,Toast.LENGTH_LONG).show()
     }
+
+    override fun setAddres(address: Address) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
 }
