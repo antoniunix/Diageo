@@ -26,7 +26,9 @@ class ModuleModelMapper : Transform<ArrayList<Module>, ArrayList<Modules>>() {
             false,
             module.iconActive,
             module.iconInactive,
-            if (module.form.contains(IntConstants.Avaylability)) Activities.PRICE_AND_AVAILABILITY else Activities.DEFAULT
+            if (module.form.size > 1)
+                if (module.form.contains(IntConstants.Avaylability)) Activities.PRICE_AND_AVAILABILITY else Activities.DEFAULT
+            else Activities.ENCUESTA
         )
     }
 }

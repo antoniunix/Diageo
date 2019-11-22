@@ -14,7 +14,6 @@ import com.chuys.gshp.reportmenu.presenter.Presenter
 import com.chuys.gshp.reportmenu.presenter.contract.ReportMenuContract
 import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
-import com.chuys.gshp.shared.data.realdb.MainDB
 import com.chuys.gshp.shared.util.commons.ToolbarHelper
 
 class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
@@ -34,8 +33,6 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
         ToolbarHelper(this).configToolbarHelpGeneric(R.string.app_name_menu, true, 0)
         listModulesRecyclerView = findViewById(R.id.list_modules_recycler)
         presenter = Presenter(this, reportMenuProvider)
-
-        //MainDB.initRealDB()
     }
 
     override fun onResume() {
@@ -60,9 +57,9 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
             )
             Activities.EXECUTABLE -> ActivityManager.changeToActivity(Activities.EXECUTABLE, this)
             Activities.ORDER -> ActivityManager.changeToActivity(Activities.ORDER, this)
+            Activities.ENCUESTA -> ActivityManager.changeToActivity(Activities.ENCUESTA, this)
+
         }
-
-
     }
 
     override fun showError() {

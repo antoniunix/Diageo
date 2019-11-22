@@ -44,7 +44,7 @@ class ActivityManager {
                 Activities.PDV_ADD -> activity.startActivity(
                     Intent(
                         activity.applicationContext,
-                        Class.forName(StringConstant.PACKAGE_NAME+Activities.PDV_ADD.activity)
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.PDV_ADD.activity)
                     )
                 )
 
@@ -88,6 +88,12 @@ class ActivityManager {
                     Intent(
                         activity.applicationContext,
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.COMMUNICATION.activity)
+                    )
+                )
+                Activities.ENCUESTA -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.ENCUESTA.activity)
                     )
                 )
             }

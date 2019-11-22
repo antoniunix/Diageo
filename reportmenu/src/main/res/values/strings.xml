@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name_menu">MENÚ REPORTE</string>
     <string name="check_out_label">CHECK OUT</string>
+    <string name="generaci_n_de_formularios_en_proceso">Generación de formularios en proceso...</string>
 </resources>
