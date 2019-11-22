@@ -1,9 +1,10 @@
 package com.chuys.gshp.sku.data.repository
 
-import android.util.Log
 import com.chuys.gshp.shared.data.database.realtime.RealmTimeDbConfig
 import com.chuys.gshp.shared.domain.constant.StringConstant
 import com.chuys.gshp.shared.domain.models.Resource
+import com.chuys.gshp.sku.data.mapper.ReportAvailabilityMapper
+import com.chuys.gshp.sku.data.mapper.ReportPriceMapper
 import com.chuys.gshp.sku.data.model.ItemModel
 import com.chuys.gshp.sku.data.model.ItemPropsModel
 import com.chuys.gshp.sku.domain.model.SkuAvailabilityAndPriceData
@@ -52,8 +53,8 @@ class AvailabilityAndPriceDataRepository : AvailabilityAndPriceRepository {
                     }
                     ItemEntity().deleteAll()
                     ItemEntity().writeItem(moduleList)
-                    isItemComplete=true
-                    if(isItemPropsComplete){
+                    isItemComplete = true
+                    if (isItemPropsComplete) {
                         it.onSuccess(
                             Resource.success(
                                 ItemEntity().getItem(),
@@ -73,7 +74,7 @@ class AvailabilityAndPriceDataRepository : AvailabilityAndPriceRepository {
                     for (snapshot in dataSnapshot.children) {
                         try {
                             itemModel = snapshot.getValue(ItemPropsModel::class.java)
-                            itemModel?.id=snapshot.key?.toLong()
+                            itemModel?.id = snapshot.key?.toLong()
                         } catch (e: Exception) {
                             continue
                         }
@@ -81,8 +82,8 @@ class AvailabilityAndPriceDataRepository : AvailabilityAndPriceRepository {
                     }
                     ItemPropsEntity().deleteAll()
                     ItemPropsEntity().writeItem(moduleItemPropsList)
-                    isItemPropsComplete=true
-                    if(isItemComplete){
+                    isItemPropsComplete = true
+                    if (isItemComplete) {
                         it.onSuccess(
                             Resource.success(
                                 ItemEntity().getItem(),
@@ -99,9 +100,24 @@ class AvailabilityAndPriceDataRepository : AvailabilityAndPriceRepository {
         }
     }
 
+    override fun saveAvailabilityAndPrice(reports: List<SkuAvailabilityAndPriceData>?): Single<Resource<Boolean>> {
+        val priceMapper = ReportPriceMapper()
+        val availabilityMapper = ReportAvailabilityMapper()
+        return Single.create {
+            if (!reports.isNullOrEmpty()) {
+                ReportAvailabilityEntity().deleteByIdReport(reports[0].idReport)
+                ReportPriceEntity().deleteByIdReport(reports[0].idReport)
+                ReportAvailabilityEntity().writeItem(availabilityMapper.transform(reports))
+                ReportPriceEntity().writeItem(priceMapper.transform(reports))
+                it.onSuccess(
+                    Resource.success(
+                        true,
+                        StringConstant.EMPTY_STRING
+                    )
+                )
+            }
 
-    override fun saveAvailabilityAndPrice() {
-
+        }
     }
 
 }
