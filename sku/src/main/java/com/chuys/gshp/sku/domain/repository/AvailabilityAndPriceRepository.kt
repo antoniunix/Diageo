@@ -8,5 +8,5 @@ interface AvailabilityAndPriceRepository {
     fun getReferenceToDb()
     fun updateItemSqlite()
     fun getSkuToMesureAvailabilityAndPrice(): Single<Resource<List<SkuAvailabilityAndPriceData>>>
-    fun saveAvailabilityAndPrice()
+    fun saveAvailabilityAndPrice(report: List<SkuAvailabilityAndPriceData>?): Single<Resource<Boolean>>
 }
