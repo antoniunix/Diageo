@@ -1,5 +1,6 @@
 package com.chuys.gshp.pdv.presenter
 
+import android.util.Log
 import com.chuys.gshp.pdv.presenter.contract.AddPdvContract
 import com.chuys.gshp.shared.domain.provider.ContextProvider
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
@@ -20,5 +21,18 @@ class PresenterAddPdv (val view:AddPdvContract.AddPdvViewContract, val viewgeo:G
            }
         })
     }
+
+    override fun getAddress(lat: Double, lon: Double) {
+      disposables.add(geolocationDataProvider.getAddres(lat,lon).execute(null).subscribe{
+          address->
+          if(address!=null){
+              Log.e("leo"," "+address.getAddressLine(0))
+              viewgeo.setAddres(address)
+          }else{
+              disposables.dispose()
+          }
+      })
+    }
+
 
 }
