@@ -45,7 +45,7 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
 
     override fun getAvailabilityReport(): String {
         return "CREATE TABLE availability_report(" +
-                "id INTEGER," +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idReport INTEGER," +
                 "uuid TEXT," +
                 "idSku TEXT," +
@@ -55,7 +55,7 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
 
     override fun getPriceReport(): String {
         return "CREATE TABLE price_report(" +
-                "id INTEGER," +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idReport INTEGER," +
                 "uuid TEXT," +
                 "idSku TEXT," +

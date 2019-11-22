@@ -1,6 +1,5 @@
 package com.chuys.gshp.sku.data.repository
 
-import android.util.Log
 import com.chuys.gshp.shared.data.database.sqlite.provider.SqliteDBProvider
 import com.chuys.gshp.sku.data.model.ItemModel
 import com.chuys.gshp.sku.domain.model.SkuAvailabilityAndPriceData
@@ -54,6 +53,7 @@ class ItemEntity {
     fun getItem(): List<SkuAvailabilityAndPriceData> {
         var db = sqliteHelper.getReadableDatabase()
         val qry = "SELECT DISTINCT\n" +
+                "item.id,\n" +
                 "item.name,\n" +
                 "itemProps.Categoria,\n" +
                 "itemProps.Marca,\n" +
@@ -74,6 +74,7 @@ class ItemEntity {
         val obj = ArrayList<SkuAvailabilityAndPriceData>()
         var catalogo: SkuAvailabilityAndPriceData
         if (cursor.moveToFirst()) {
+            val id = cursor.getColumnIndexOrThrow("id")
             val name = cursor.getColumnIndexOrThrow("name")
             val Categoria = cursor.getColumnIndexOrThrow("Categoria")
             val Marca = cursor.getColumnIndexOrThrow("Marca")
@@ -84,7 +85,7 @@ class ItemEntity {
             val priceAnswer = cursor.getColumnIndexOrThrow("priceAnswer")
             do {
                 catalogo = SkuAvailabilityAndPriceData(
-                    "0", 0,
+                    "0",1, cursor.getString(id).toLong(),
                     cursor.getString(name),
                     cursor.getString(Categoria),
                     cursor.getString(Marca),

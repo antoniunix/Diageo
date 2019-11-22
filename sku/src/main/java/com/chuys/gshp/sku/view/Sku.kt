@@ -43,6 +43,7 @@ class Sku : AppCompatActivity(), AvailabilityAndPriceContract.ViewContract {
     override fun onResume() {
         super.onResume()
         presenter.getMeasurementSku()
+        saveButton.setOnClickListener { presenter.saveReport() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -59,6 +60,10 @@ class Sku : AppCompatActivity(), AvailabilityAndPriceContract.ViewContract {
             layoutManager = LinearLayoutManager(this@Sku)
             //presenter.clickItemAdapter(listAdapter as RecyclerView.Adapter<RecyclerView.ViewHolder>,this@ListPdv)
         }
+    }
+
+    override fun finishReport() {
+        finish()
     }
 
     override fun showError() {

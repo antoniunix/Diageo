@@ -11,6 +11,8 @@ interface AvailabilityAndPriceContract {
 
     interface ViewContract {
         fun loadRecyclerView(sku: List<SkuAvailabilityAndPriceData>)
+        fun finishReport()
         fun showError()
+
     }
 }

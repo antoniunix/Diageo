@@ -8,17 +8,20 @@ import com.chuys.gshp.shared.domain.executor.PostExecutionThread
 import com.chuys.gshp.shared.domain.executor.ThreadExecutor
 import com.chuys.gshp.shared.domain.models.Resource
 import com.chuys.gshp.shared.domain.usecase.SingleUseCase
+import com.chuys.gshp.sku.domain.usescases.SaveReportSkuUseCase
 
 class AvailabilityAndPriceDataProvider(
     private val jobExecutor: ThreadExecutor,
     private val uiThread: PostExecutionThread
 ) : AvailabilityAndPriceProvider {
-
     private val repository = AvailabilityAndPriceDataRepository()
+
     override fun getSkuToMeasurementAvailabilityAndPriceUseCase(): SingleUseCase<Any, Resource<List<SkuAvailabilityAndPriceData>>> {
         return GetSkuToMeasurementAvailabilityAndPriceUseCase(repository, jobExecutor, uiThread)
     }
-
+    override fun saveReportSku(): SingleUseCase<List<SkuAvailabilityAndPriceData>, Resource<Boolean>> {
+        return SaveReportSkuUseCase(repository, jobExecutor, uiThread)
+    }
 
 
 }
