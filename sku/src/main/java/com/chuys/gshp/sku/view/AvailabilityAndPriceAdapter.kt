@@ -71,12 +71,17 @@ class AvailabilityAndPriceAdapter(val items: List<SkuAvailabilityAndPriceData>) 
                 }
             }
 
+            if (sku.price != null) {
+                itemView.price_edittext.text = Editable.Factory.getInstance().newEditable(sku.price)
+            } else {
+                itemView.price_edittext.text = Editable.Factory.getInstance().newEditable("0")
+            }
 
-            itemView.price_edittext.text = Editable.Factory.getInstance().newEditable(sku.price)
             itemView.price_edittext.setDelimiter(false)
             itemView.price_edittext.setSpacing(false)
             itemView.price_edittext.setDecimals(true)
             itemView.price_edittext.setSeparator(".")
+            itemView.price_edittext.setCurrency("$")
             itemView.price_edittext.addTextChangedListener { charSequence ->
                 try {
                     sku.price = charSequence.toString()

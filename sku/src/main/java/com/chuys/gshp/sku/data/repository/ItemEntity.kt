@@ -53,28 +53,48 @@ class ItemEntity {
 
     fun getItem(): List<SkuAvailabilityAndPriceData> {
         var db = sqliteHelper.getReadableDatabase()
-        val qry = "SELECT\n" +
-                "item.id,\n" +
-                "item.itemTypeId,\n" +
-                "item.description,\n" +
-                "item.name\n" +
+        val qry = "SELECT DISTINCT\n" +
+                "item.name,\n" +
+                "itemProps.Categoria,\n" +
+                "itemProps.Marca,\n" +
+                "itemProps.maxPrice,\n" +
+                "itemProps.minPrice,\n" +
+                "itemProps.Subcategoria,\n" +
+                "availability_report.answer AS availabilityAnswer,\n" +
+                "price_report.answer AS priceAnswer\n" +
                 "FROM\n" +
-                "item"
+                "item\n" +
+                "JOIN itemProps\n" +
+                "ON item.id = itemProps.id \n" +
+                "LEFT JOIN availability_report\n" +
+                "ON item.id = availability_report.idSku AND availability_report.idReport=1\n" +
+                "LEFT JOIN price_report\n" +
+                "ON item.id = price_report.idSku AND price_report.idReport=1"
         var cursor = db.rawQuery(qry, null)
         val obj = ArrayList<SkuAvailabilityAndPriceData>()
-        Log.e("Cursor", "cursor " + cursor.count)
         var catalogo: SkuAvailabilityAndPriceData
         if (cursor.moveToFirst()) {
-            val id = cursor.getColumnIndexOrThrow("id")
-            val itemTypeId = cursor.getColumnIndexOrThrow("itemTypeId")
-            val description = cursor.getColumnIndexOrThrow("description")
             val name = cursor.getColumnIndexOrThrow("name")
+            val Categoria = cursor.getColumnIndexOrThrow("Categoria")
+            val Marca = cursor.getColumnIndexOrThrow("Marca")
+            val maxPrice = cursor.getColumnIndexOrThrow("maxPrice")
+            val minPrice = cursor.getColumnIndexOrThrow("minPrice")
+            val Subcategoria = cursor.getColumnIndexOrThrow("Subcategoria")
+            val availabilityAnswer = cursor.getColumnIndexOrThrow("availabilityAnswer")
+            val priceAnswer = cursor.getColumnIndexOrThrow("priceAnswer")
             do {
                 catalogo = SkuAvailabilityAndPriceData(
-                    cursor.getString(id),
-                    cursor.getInt(itemTypeId),
+                    "0", 0,
                     cursor.getString(name),
-                    "", 1, 1, "1", false
+                    cursor.getString(Categoria),
+                    cursor.getString(Marca),
+                    cursor.getString(maxPrice),
+                    cursor.getString(minPrice),
+                    cursor.getString(Subcategoria),
+                    0,
+                    cursor.getInt(availabilityAnswer),
+                    cursor.getString(priceAnswer),
+                    false
                 )
                 obj.add(catalogo)
             } while (cursor.moveToNext())
@@ -84,9 +104,9 @@ class ItemEntity {
         return obj
     }
 
-    fun deleteAll(){
+    fun deleteAll() {
         var db = sqliteHelper.getReadableDatabase()
-        db.execSQL("delete from "+ tableName)
+        db.execSQL("delete from " + tableName)
     }
 
 }

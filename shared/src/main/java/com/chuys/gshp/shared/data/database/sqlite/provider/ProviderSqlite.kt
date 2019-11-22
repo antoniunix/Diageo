@@ -31,6 +31,18 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
                 "lastSync INTEGER)"
     }
 
+    override fun getItemPropsRealmTable(): String {
+        return "CREATE TABLE itemProps(" +
+                "id INTEGER," +
+                "availabilityPrice TEXT," +
+                "Categoria TEXT," +
+                "Marca TEXT," +
+                "maxPrice TEXT," +
+                "minPrice TEXT," +
+                "Subcategoria TEXT," +
+                "lastSync INTEGER)"
+    }
+
     override fun getAvailabilityReport(): String {
         return "CREATE TABLE availability_report(" +
                 "id INTEGER," +
