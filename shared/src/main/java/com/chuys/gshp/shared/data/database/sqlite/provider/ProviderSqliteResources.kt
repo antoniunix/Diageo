@@ -7,6 +7,7 @@ interface ProviderSqliteResources {
     fun getDatabaseName(): String
     fun getVersionDataBase(): Int
     fun getItemRealmTable():String
+    fun getItemPropsRealmTable():String
     fun getAvailabilityReport():String
     fun getPriceReport():String
 }

@@ -7,6 +7,8 @@ import com.chuys.gshp.diageo.splash.contract.SplashContract
 import com.chuys.gshp.diageo.splash.presenter.SplashPresenter
 import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.navigation.ActivityManager
+import kotlinx.android.synthetic.main.activity_splash.*
+
 
 class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
 
@@ -17,6 +19,7 @@ class Splash : AppCompatActivity(), SplashContract.SplashViewContract {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         presenter = SplashPresenter(this)
+        splashAnimImageView.setImageResource(R.drawable.ic_launcher)
     }
 
     override fun onStart() {

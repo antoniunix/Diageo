@@ -19,6 +19,7 @@ class SqliteInstance(providerSqliteResources: ProviderSqliteResources) : SQLiteO
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(providerSqliteResources.getItemRealmTable())
+        db?.execSQL(providerSqliteResources.getItemPropsRealmTable())
         db?.execSQL(providerSqliteResources.getAvailabilityReport())
         db?.execSQL(providerSqliteResources.getPriceReport())
     }
