@@ -1,6 +1,6 @@
-package com.chuys.gshp.shared.domain.repository
+package com.chuys.gshp.poll.domain.repository
 
-import com.chuys.gshp.shared.data.model.Form
+import com.chuys.gshp.poll.domain.model.Form
 import io.reactivex.Single
 
 interface RealDBRepository {

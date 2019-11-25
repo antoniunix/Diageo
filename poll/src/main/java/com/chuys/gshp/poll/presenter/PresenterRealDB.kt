@@ -1,12 +1,12 @@
-package com.chuys.gshp.shared.presenter
+package com.chuys.gshp.poll.presenter
 
-import com.chuys.gshp.shared.domain.provider.RealDBProvider
+import com.chuys.gshp.poll.domain.provider.RealDBProvider
 import io.reactivex.disposables.CompositeDisposable
 
 class PresenterRealDB(
-    val view: RealDBContract.RealDBViewContract,
+    val view: com.chuys.gshp.poll.presenter.contract.RealDBContract.RealDBViewContract,
     val realDBDataProvider: RealDBProvider
-) : RealDBContract.RealDBPresenterContract {
+) : com.chuys.gshp.poll.presenter.contract.RealDBContract.RealDBPresenterContract {
 
     private val disposable = CompositeDisposable()
 

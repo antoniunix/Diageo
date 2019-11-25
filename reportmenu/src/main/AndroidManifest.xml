@@ -3,7 +3,6 @@
         package="com.chuys.gshp.reportmenu">
 
     <application>
-        <activity android:name=".view.EncuestaActivity"></activity>
         <activity android:name=".view.ReportMenu"></activity>
     </application>
 

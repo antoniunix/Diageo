@@ -1,9 +1,11 @@
-package com.chuys.gshp.shared.domain.usecase
+package com.chuys.gshp.poll.domain.usecase
 
-import com.chuys.gshp.shared.data.model.Form
+import com.chuys.gshp.poll.domain.model.Form
+import com.chuys.gshp.poll.domain.repository.RealDBRepository
 import com.chuys.gshp.shared.domain.executor.PostExecutionThread
 import com.chuys.gshp.shared.domain.executor.ThreadExecutor
-import com.chuys.gshp.shared.domain.repository.RealDBRepository
+import com.chuys.gshp.shared.domain.usecase.SingleUseCase
+
 import io.reactivex.Single
 
 class RealDBUseCase(

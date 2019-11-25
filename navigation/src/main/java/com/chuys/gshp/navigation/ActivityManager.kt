@@ -90,10 +90,10 @@ class ActivityManager {
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.COMMUNICATION.activity)
                     )
                 )
-                Activities.ENCUESTA -> activity.startActivity(
+                Activities.POLL -> activity.startActivity(
                     Intent(
                         activity.applicationContext,
-                        Class.forName(StringConstant.PACKAGE_NAME + Activities.ENCUESTA.activity)
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.POLL.activity)
                     )
                 )
             }

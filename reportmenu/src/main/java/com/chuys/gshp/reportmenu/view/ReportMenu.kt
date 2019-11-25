@@ -57,7 +57,7 @@ class ReportMenu : AppCompatActivity(), ReportMenuContract.ViewContract {
             )
             Activities.EXECUTABLE -> ActivityManager.changeToActivity(Activities.EXECUTABLE, this)
             Activities.ORDER -> ActivityManager.changeToActivity(Activities.ORDER, this)
-            Activities.ENCUESTA -> ActivityManager.changeToActivity(Activities.ENCUESTA, this)
+            Activities.POLL -> ActivityManager.changeToActivity(Activities.POLL, this)
 
         }
     }

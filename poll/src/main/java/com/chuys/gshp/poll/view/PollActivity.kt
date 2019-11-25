@@ -1,19 +1,19 @@
-package com.chuys.gshp.reportmenu.view
+package com.chuys.gshp.poll.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.chuys.gshp.reportmenu.R
+import com.chuys.gshp.poll.R
+import com.chuys.gshp.poll.data.provider.RealDBDataProvider
+import com.chuys.gshp.poll.domain.model.Form
+import com.chuys.gshp.poll.domain.provider.RealDBProvider
+import com.chuys.gshp.poll.presenter.PresenterRealDB
+import com.chuys.gshp.poll.presenter.contract.RealDBContract
 import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
-import com.chuys.gshp.shared.data.model.Form
 import com.chuys.gshp.shared.data.provider.ContextDataProvider
-import com.chuys.gshp.shared.data.provider.RealDBDataProvider
-import com.chuys.gshp.shared.domain.provider.RealDBProvider
-import com.chuys.gshp.shared.presenter.PresenterRealDB
-import com.chuys.gshp.shared.presenter.RealDBContract
 import kotlinx.android.synthetic.main.activity_encuesta.*
 
-class EncuestaActivity : AppCompatActivity(), RealDBContract.RealDBViewContract {
+class PollActivity : AppCompatActivity(), RealDBContract.RealDBViewContract {
 
     private lateinit var realDBProvider: RealDBProvider
 
@@ -32,12 +32,12 @@ class EncuestaActivity : AppCompatActivity(), RealDBContract.RealDBViewContract 
     }
 
     override fun show(data: List<Form>) {
-        val sb = StringBuilder()
+        val textDummy = StringBuilder()
         data.forEach {
-            sb.append(it.name)
-            sb.append(" - ")
+            textDummy.append(it.name)
+            textDummy.append(" - ")
         }
-        txt.setText(sb)
+        txt.setText(textDummy)
     }
 
     override fun showError(error: String) {

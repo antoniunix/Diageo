@@ -1,4 +1,4 @@
-package com.chuys.gshp.shared.data.model
+package com.chuys.gshp.poll.domain.model
 
 data class Form(
     val id: Long,

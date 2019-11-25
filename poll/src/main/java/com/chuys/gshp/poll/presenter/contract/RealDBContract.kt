@@ -1,6 +1,4 @@
-package com.chuys.gshp.shared.presenter
-
-import com.chuys.gshp.shared.data.model.Form
+package com.chuys.gshp.poll.presenter.contract
 
 interface RealDBContract {
     interface RealDBPresenterContract {
@@ -8,7 +6,7 @@ interface RealDBContract {
     }
 
     interface RealDBViewContract {
-        fun show(data: List<Form>)
+        fun show(data: List<com.chuys.gshp.poll.domain.model.Form>)
         fun showError(error: String)
     }
 }
