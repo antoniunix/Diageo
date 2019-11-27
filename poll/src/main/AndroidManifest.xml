@@ -1,6 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.chuys.gshp.poll" >
+        package="com.chuys.gshp.poll">
+
     <application>
-        <activity android:name=".view.PollActivity"></activity>
+        <activity android:name=".view.PollActivity" />
     </application>
 </manifest>

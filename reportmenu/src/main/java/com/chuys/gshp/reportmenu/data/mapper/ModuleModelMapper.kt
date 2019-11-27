@@ -11,13 +11,13 @@ class ModuleModelMapper : Transform<ArrayList<Module>, ArrayList<Modules>>() {
 
     override fun transform(value: ArrayList<Module>): ArrayList<Modules> {
         var modules = ArrayList<Modules>()
-        for (module in value) {
+        for (module in value)
             modules.add(getModules(module))
-        }
         return modules
     }
 
     private fun getModules(module: Module): Modules {
+        val codeModule = getCodeModule(module.form)
         return Modules(
             module.id,
             module.name,
@@ -26,9 +26,16 @@ class ModuleModelMapper : Transform<ArrayList<Module>, ArrayList<Modules>>() {
             false,
             module.iconActive,
             module.iconInactive,
-            if (module.form.size > 1)
-                if (module.form.contains(IntConstants.Avaylability)) Activities.PRICE_AND_AVAILABILITY else Activities.DEFAULT
-            else Activities.ENCUESTA
+            codeModule
         )
+    }
+
+    private fun getCodeModule(form: List<Int>): Activities {
+        return when {
+            IntConstants.Avaylability in form -> Activities.PRICE_AND_AVAILABILITY
+            IntConstants.POLL in form -> Activities.POLL
+            IntConstants.EJECUTABLE in form -> Activities.EXECUTABLE
+            else -> Activities.DEFAULT
+        }
     }
 }
