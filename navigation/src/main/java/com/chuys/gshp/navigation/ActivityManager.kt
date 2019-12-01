@@ -118,7 +118,7 @@ class ActivityManager {
                     Intent(
                         activity.applicationContext,
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.CHECK.activity)
-                    ).putExtras(bundle)
+                    ).putExtras(bundle )
                 )
             }
         }

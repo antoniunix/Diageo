@@ -1,5 +1,10 @@
 package com.chuys.gshp.pdv.domain.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+
+@Parcelize
 data class PdvModel(
     val id: Int,
     val name: String,
@@ -12,4 +17,4 @@ data class PdvModel(
     val lat: Double,
     val lon: Double
 
-)
+):Parcelable

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
 import com.chuys.gshp.pdv.R
+import com.chuys.gshp.pdv.domain.model.PdvModel
 import com.chuys.gshp.pdv.presenter.PresenterCheck
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.shared.data.job.JobExecutor
@@ -19,6 +20,7 @@ import com.chuys.gshp.shared.data.job.UIThread
 import com.chuys.gshp.shared.data.provider.ContextDataProvider
 import com.chuys.gshp.shared.data.provider.GeolocationDataProvider
 import com.chuys.gshp.shared.domain.constant.IntConstants
+import com.chuys.gshp.shared.domain.constant.StringConstant
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
 import com.chuys.gshp.shared.presenter.GeolocationContract
 import com.chuys.gshp.shared.util.extension.checkLocationPermission
@@ -28,6 +30,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import kotlinx.android.synthetic.main.activity_check.*
 
 class CheckInOut :FragmentActivity(), OnMapReadyCallback,
         CheckContract.CheckViewContract, GeolocationContract.GeolocationViewContract{
@@ -39,15 +42,24 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
     private lateinit var mMap: GoogleMap
     private val TAG = "CheckInOut"
     private lateinit var presenter:CheckContract.CheckPresenterContract
+    private lateinit var pdvbundle:PdvModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check)
         mapFragment= supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        init()
+        pdvbundle=intent.extras.getParcelable<PdvModel>(StringConstant.KEYBUNDLE)
+        initPermission()
+        initView()
     }
 
-    private fun init(){
+    private fun initView(){
+        txt_pdv_name.setText(pdvbundle.name)
+        txt_address.setText(pdvbundle.address)
+
+    }
+
+    private fun initPermission(){
         if(this.checkLocationPermission()){
             val contextProvider= ContextDataProvider(this)
             geolocationProvider= GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
