@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
 import com.chuys.gshp.pdv.R
+import com.chuys.gshp.pdv.presenter.PresenterCheck
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
@@ -21,9 +22,11 @@ import com.chuys.gshp.shared.domain.constant.IntConstants
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
 import com.chuys.gshp.shared.presenter.GeolocationContract
 import com.chuys.gshp.shared.util.extension.checkLocationPermission
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 
 class CheckInOut :FragmentActivity(), OnMapReadyCallback,
@@ -48,7 +51,7 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
         if(this.checkLocationPermission()){
             val contextProvider= ContextDataProvider(this)
             geolocationProvider= GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
-           // presenter = PresenterAddPdv(this,this, geolocationProvider)
+            presenter = PresenterCheck(this,this, geolocationProvider)
             mapFragment.getMapAsync(this)
         }else{
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), IntConstants.LOCATION_ACTIVITY_REQUEST_CODE)
@@ -94,7 +97,7 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
     }
 
     override fun showLocation(location: Location) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude,location.longitude),16f))
     }
 
     override fun setAddres(address: Address) {
