@@ -10,4 +10,5 @@ interface ProviderSqliteResources {
     fun getItemPropsRealmTable():String
     fun getAvailabilityReport():String
     fun getPriceReport():String
+    fun getReportCheck():String
 }

@@ -22,6 +22,7 @@ class SqliteInstance(providerSqliteResources: ProviderSqliteResources) : SQLiteO
         db?.execSQL(providerSqliteResources.getItemPropsRealmTable())
         db?.execSQL(providerSqliteResources.getAvailabilityReport())
         db?.execSQL(providerSqliteResources.getPriceReport())
+        db?.execSQL(providerSqliteResources.getReportCheck())
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
