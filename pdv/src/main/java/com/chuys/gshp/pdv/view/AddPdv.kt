@@ -3,7 +3,6 @@ package com.chuys.gshp.pdv.view
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.location.Address
 import android.location.Location
@@ -24,7 +23,6 @@ import com.chuys.gshp.shared.domain.constant.IntConstants
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
 import com.chuys.gshp.shared.presenter.GeolocationContract
 import com.chuys.gshp.shared.util.extension.checkLocationPermission
-import com.chuys.gshp.shared.util.extension.isGPSEnabled
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -34,7 +32,8 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_new_pdv.*
 
-class AddPdv :FragmentActivity (), OnMapReadyCallback, AddPdvContract.AddPdvViewContract,GeolocationContract.GeolocationViewContract, GoogleMap.OnMarkerDragListener{
+class AddPdv :FragmentActivity (), OnMapReadyCallback,
+    AddPdvContract.AddPdvViewContract,GeolocationContract.GeolocationViewContract, GoogleMap.OnMarkerDragListener{
 
 
 
