@@ -29,6 +29,8 @@ class Presenter(val view: PdvContract.PdvViewContract, val pdvProvider: PdvProvi
         val listPdvAdapter = adapter as ListPdvAdapter
         disposables.add(listPdvAdapter.clickEvent.subscribe {
             ActivityManager.changeToActivity(Activities.CHECK, activity)
+
+
         })
     }
 
