@@ -1,8 +1,6 @@
 package com.chuys.gshp.pdv.presenter
 
-import android.util.Log
 import com.chuys.gshp.pdv.presenter.contract.AddPdvContract
-import com.chuys.gshp.shared.domain.provider.ContextProvider
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
 import com.chuys.gshp.shared.presenter.GeolocationContract
 import io.reactivex.disposables.CompositeDisposable

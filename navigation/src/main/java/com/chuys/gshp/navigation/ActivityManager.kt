@@ -48,6 +48,13 @@ class ActivityManager {
                     )
                 )
 
+                Activities.CHECK -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.CHECK.activity)
+                    )
+                )
+
                 Activities.MENU_REPORT -> activity.startActivity(
                     Intent(
                         activity.applicationContext,
@@ -90,6 +97,7 @@ class ActivityManager {
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.COMMUNICATION.activity)
                     )
                 )
+
             }
         }
 
