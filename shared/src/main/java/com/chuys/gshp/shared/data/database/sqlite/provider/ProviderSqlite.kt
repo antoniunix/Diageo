@@ -63,4 +63,13 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
                 "lastSync INTEGER)"
     }
 
+    override fun getReportCheck(): String {
+       return "CREATE TABLE report_check("+
+               "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+               "idReport INTEGER," +
+               "lat REAL,"+
+               "lon REAL"+
+               "date INTEGER)"
+    }
+
 }
