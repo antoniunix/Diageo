@@ -47,9 +47,9 @@ class PresenterCheck(
         disposable.add(checkProvider.saveReportCheck().execute(checkModel).subscribe{
             it ->
             if(it.isSuccess){
-                Log.e("Save","AHUEO")
+                Log.e("Save","save")
             }else{
-                Log.e("Save","MAMO")
+                Log.e("Save","error")
             }
         })
         ActivityManager.changeToActivitywithBundle(Activities.CHECK, activity, bundle)
@@ -61,9 +61,9 @@ class PresenterCheck(
         disposable.add(reportProvider.saveReportReport().execute(reportModel).subscribe{
             it->
             if(it.isSuccess){
-                Log.e("Save","AHUEO")
+                Log.e("Save","save")
             }else{
-                Log.e("Save","MAMO")
+                Log.e("Save","error")
             }
         })
     }
