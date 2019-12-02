@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/green_gradient"
+            android:drawable="@drawable/efectividad" />
+    <item
+            android:id="@+id/half_overlay"
+            android:drawable="@drawable/efectividad_overlay"
+            android:top="50dp" />
+</layer-list>

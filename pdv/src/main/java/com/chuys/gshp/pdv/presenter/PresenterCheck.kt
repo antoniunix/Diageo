@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.util.Log
 import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.navigation.ActivityManager
+import com.chuys.gshp.pdv.data.model.KpiData
 import com.chuys.gshp.pdv.domain.model.CheckModel
 import com.chuys.gshp.pdv.domain.model.ReportReportModel
 import com.chuys.gshp.pdv.domain.providers.CheckProvider
+import com.chuys.gshp.pdv.domain.providers.KpiProvider
 import com.chuys.gshp.pdv.domain.providers.ReportProvider
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
@@ -18,10 +20,11 @@ import com.google.android.gms.maps.model.LatLng
 import io.reactivex.disposables.CompositeDisposable
 
 class PresenterCheck(
-    val checkContract: CheckContract.CheckViewContract,
+    val checkView: CheckContract.CheckViewContract,
     val viewgeo: GeolocationContract.GeolocationViewContract,
     val geolocationDataProvider: GeolocationProvider,
-    val checkProvider: CheckProvider,val reportProvider: ReportProvider
+    val checkProvider: CheckProvider,
+    val kpiProvider: KpiProvider
 ) : CheckContract.CheckPresenterContract {
 
 
@@ -55,16 +58,15 @@ class PresenterCheck(
         ActivityManager.changeToActivitywithBundle(Activities.CHECK, activity, bundle)
     }
 
-    override fun saveReportReport(idPdv: Long) {
-        date=System.currentTimeMillis()
-        val reportModel=ReportReportModel(0,idPdv,date,0)
-        disposable.add(reportProvider.saveReportReport().execute(reportModel).subscribe{
-            it->
-            if(it.isSuccess){
-                Log.e("Save","save")
-            }else{
-                Log.e("Save","error")
-            }
+
+    }
+
+    override fun getKpi(idSite: String) {
+        disposable.add(kpiProvider.getData().execute(idSite).subscribe { data ->
+            if (data.data!= null && data.isSuccess)
+                checkView.getData(data.data!!)
+            else
+                checkView.showError()
         })
     }
 

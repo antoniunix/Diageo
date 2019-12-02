@@ -12,4 +12,5 @@
     <string name="enabled_location">Acepte permisos</string>
     <string name="checkin_btn">CHECK IN</string>
     <string name="checkout_btn">CHECK OUT</string>
+    <string name="EFECTIVIDAD">EFECTIVIDAD DEL PVD</string>
 </resources>

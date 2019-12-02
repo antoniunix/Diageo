@@ -2,6 +2,7 @@ package com.chuys.gshp.pdv.presenter.contract
 
 import android.app.Activity
 import android.os.Bundle
+import com.chuys.gshp.pdv.data.model.KpiData
 
 interface CheckContract {
 
@@ -14,6 +15,8 @@ interface CheckContract {
 
 
     interface CheckViewContract {
+        fun getData(kpiData: KpiData)
+        fun showError()
 
     }
 
