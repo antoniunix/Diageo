@@ -199,7 +199,47 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
                 bundle.putParcelable(StringConstant.KEYBUNDLE,pdvbundle)
                 presenter.saveReportReport(pdvbundle.id.toLong())
                 presenter.saveCheckReport(this,bundle,type)
+        val bundle: Bundle = Bundle()
+        when (v?.id) {
+            R.id.btn_init_check -> {
+                var type: Int = 0
+                if (typeCheckInOut == IntConstants.CHECKIN) {
+                    type = IntConstants.CHECKOUT
+                    bundle.putInt(StringConstant.CHECKBUNDLE, type)
+                    bundle.putParcelable(StringConstant.KEYBUNDLE, pdvbundle)
+                    presenter.saveReportReport(pdvbundle.id.toLong())
+                    presenter.saveCheckReport(this, bundle, IntConstants.CHECKIN)
+                } else {
+                    type = IntConstants.CHECKIN
+                    val dialogFinishReport = DialogFinishReport(this)
+                    val dialogBundle=Bundle()
+                    dialogBundle.putString(StringConstant.KEYBUNDLE,DateConvert().getHourAndMinutes(reportData.date_checkin))
+                    dialogFinishReport.arguments=dialogBundle
+                    dialogFinishReport.show(supportFragmentManager, "Dialog")
+                }
+
+
             }
+        }
+
+    }
+
+    override fun saveCheckout() {
+        val bundle = Bundle()
+        presenter.saveCheckReport(this, bundle, IntConstants.CHECKOUT)
+        presenter.updateReport(this,reportData.idReport)
+        ActivityManager.changeToActivity(Activities.PDV_LIST,this)
+
+    }
+
+    override fun setReportData(reportReportModel: ReportReportModel) {
+        reportData=reportReportModel
+        if(reportData.idReport>0){
+            typeCheckInOut=IntConstants.CHECKOUT
+        }
+        when (typeCheckInOut) {
+            IntConstants.CHECKIN -> btn_init_check.setText(getString(R.string.checkin_btn))
+            IntConstants.CHECKOUT -> btn_init_check.setText(getString(R.string.checkout_btn))
         }
 
     }

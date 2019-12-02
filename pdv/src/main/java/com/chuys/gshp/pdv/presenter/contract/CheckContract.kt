@@ -22,7 +22,7 @@ interface CheckContract {
         fun setReportData(reportReportModel: ReportReportModel)
         fun getData(kpiData: KpiData)
         fun showError()
-
+    }
     interface CheckOutContract{
         fun saveCheckout()
     }
