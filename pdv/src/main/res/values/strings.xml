@@ -10,4 +10,6 @@
     <string name="reason">RAZON SOCIAL</string>
     <string name="type_store">TIPO DE TIENDA</string>
     <string name="enabled_location">Acepte permisos</string>
+    <string name="checkin_btn">CHECK IN</string>
+    <string name="checkout_btn">CHECK OUT</string>
 </resources>
