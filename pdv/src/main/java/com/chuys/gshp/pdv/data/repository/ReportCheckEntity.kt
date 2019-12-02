@@ -8,34 +8,35 @@ class ReportCheckEntity {
     private val sqliteHelper = SqliteDBProvider.SqliteDBHelper.getDbHelper()
     private val tableName = "report_check"
 
-    fun writeItem(value: CheckModel) {
-        var db = sqliteHelper.writableDatabase
+    fun writeCheck(value: CheckModel) {
+        val db = sqliteHelper.writableDatabase
 
         try {
             var insStmnt = db.compileStatement(
                 "" + "INSERT INTO "
-                        + tableName + " (idReport,lat,lon,date) "
+                        + tableName + " (lat,lon,date, type) "
                         + "VALUES (?,?,?,?);"
             )
             db.beginTransaction()
+
             try {
-                insStmnt.bindLong(1, value.idReport)
-            } catch (e: Exception) {
+                insStmnt.bindDouble(1, value.lat)
+            } catch (e: java.lang.Exception) {
                 insStmnt.bindNull(1)
             }
             try {
-                insStmnt.bindDouble(2, value.lat)
+                insStmnt.bindDouble(2, value.lon)
             } catch (e: java.lang.Exception) {
                 insStmnt.bindNull(2)
             }
             try {
-                insStmnt.bindDouble(3, value.lon)
+                insStmnt.bindLong(3, value.date)
             } catch (e: java.lang.Exception) {
                 insStmnt.bindNull(3)
             }
             try {
-                insStmnt.bindLong(4, value.date)
-            } catch (e: java.lang.Exception) {
+                insStmnt.bindLong(4, value.type.toLong())
+            }catch (e:java.lang.Exception){
                 insStmnt.bindNull(4)
             }
             insStmnt.execute()

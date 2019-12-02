@@ -10,7 +10,7 @@ class CheckDataRepository : CheckRepository {
     override fun saveCheck(report: CheckModel?): Single<Resource<Boolean>> {
         return Single.create {
             if (report != null) {
-                ReportCheckEntity().writeItem(report)
+                ReportCheckEntity().writeCheck(report)
                 it.onSuccess(
                     Resource.success(true, "")
                 )

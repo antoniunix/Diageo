@@ -15,7 +15,7 @@ import io.reactivex.Single
 import java.lang.Exception
 
 
-class PdvDataRepository : PdvRepository {
+class   PdvDataRepository : PdvRepository {
 
     lateinit var referenceDb: DatabaseReference
     val mapper = PdvMapper()

@@ -8,7 +8,11 @@ import android.location.Address
 import android.location.Location
 import android.os.Bundle
 import android.view.View
+<<<<<<< HEAD
 import android.widget.Toast
+=======
+import androidx.annotation.UiThread
+>>>>>>> Changes in save report report
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
@@ -17,10 +21,17 @@ import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.pdv.R
 import com.chuys.gshp.pdv.data.model.KpiData
 import com.chuys.gshp.pdv.data.provider.CheckDataProvider
+<<<<<<< HEAD
 import com.chuys.gshp.pdv.data.provider.KpiDataProvider
 import com.chuys.gshp.pdv.domain.model.PdvModel
 import com.chuys.gshp.pdv.domain.providers.CheckProvider
 import com.chuys.gshp.pdv.domain.providers.KpiProvider
+=======
+import com.chuys.gshp.pdv.data.provider.ReportDataProvider
+import com.chuys.gshp.pdv.domain.model.PdvModel
+import com.chuys.gshp.pdv.domain.providers.CheckProvider
+import com.chuys.gshp.pdv.domain.providers.ReportProvider
+>>>>>>> Changes in save report report
 import com.chuys.gshp.pdv.presenter.PresenterCheck
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.shared.data.job.JobExecutor
@@ -47,7 +58,11 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var geolocationProvider: GeolocationProvider
     private lateinit var checkProvider: CheckProvider
+<<<<<<< HEAD
     private lateinit var kpiProvider: KpiProvider
+=======
+    private lateinit var reportProvider: ReportProvider
+>>>>>>> Changes in save report report
     private lateinit var pdvMarker : Marker
     private lateinit var mMap: GoogleMap
     private val TAG = "CheckInOut"
@@ -83,9 +98,14 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
             val contextProvider= ContextDataProvider(this)
             geolocationProvider= GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
             checkProvider= CheckDataProvider(JobExecutor(),UIThread())
+<<<<<<< HEAD
             kpiProvider = KpiDataProvider(JobExecutor(),UIThread())
             presenter = PresenterCheck(this,this, geolocationProvider,checkProvider, kpiProvider)
             presenter.getKpi(/*pdvbundle.id.toString()*/"195");
+=======
+            reportProvider=ReportDataProvider(JobExecutor(),UIThread())
+            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider,reportProvider)
+>>>>>>> Changes in save report report
             mapFragment.getMapAsync(this)
         }else{
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), IntConstants.LOCATION_ACTIVITY_REQUEST_CODE)
@@ -160,7 +180,8 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
                 val type=if(typeCheckInOut==IntConstants.CHECKIN) IntConstants.CHECKOUT else IntConstants.CHECKIN
                 bundle.putInt(StringConstant.CHECKBUNDLE,type)
                 bundle.putParcelable(StringConstant.KEYBUNDLE,pdvbundle)
-                presenter.saveCheckReport(this,bundle)
+                presenter.saveReportReport(pdvbundle.id.toLong())
+                presenter.saveCheckReport(this,bundle,type)
             }
         }
 
