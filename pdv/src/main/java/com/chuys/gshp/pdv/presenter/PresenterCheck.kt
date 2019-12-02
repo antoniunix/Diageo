@@ -93,6 +93,7 @@ class PresenterCheck(
 
     }
 
+<<<<<<< HEAD
     override fun getKpi(idSite: String) {
         disposable.add(kpiProvider.getData().execute(idSite).subscribe { data ->
             if (data.data!= null && data.isSuccess)
@@ -101,5 +102,7 @@ class PresenterCheck(
                 viewCheck.showError()
         })
     }
+=======
+>>>>>>> Save report, uopdate report, save checkin and checkout
 
 }

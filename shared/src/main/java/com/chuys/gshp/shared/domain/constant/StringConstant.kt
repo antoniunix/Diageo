@@ -6,4 +6,5 @@ object StringConstant {
     const val EMPTY_STRING = ""
     const val KEYBUNDLE = "bundle"
     const val CHECKBUNDLE = "checkbundle"
+    const val HOURMINUTEFORMAT = "HH:mm"
 }
