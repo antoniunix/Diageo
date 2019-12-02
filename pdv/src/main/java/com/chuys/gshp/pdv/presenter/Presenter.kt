@@ -35,8 +35,6 @@ class Presenter(val view: PdvContract.PdvViewContract, val pdvProvider: PdvProvi
             bundle.putParcelable(StringConstant.KEYBUNDLE,it)
             bundle.putInt(StringConstant.CHECKBUNDLE,IntConstants.CHECKIN)
             ActivityManager.changeToActivitywithBundle(Activities.CHECK, activity,bundle)
-
-
         })
     }
 

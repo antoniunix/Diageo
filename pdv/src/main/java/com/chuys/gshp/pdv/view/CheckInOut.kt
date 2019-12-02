@@ -8,6 +8,7 @@ import android.location.Address
 import android.location.Location
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
@@ -34,8 +35,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_check.*
 
 class CheckInOut :FragmentActivity(), OnMapReadyCallback,
-        CheckContract.CheckViewContract, GeolocationContract.GeolocationViewContract{
-
+        CheckContract.CheckViewContract, GeolocationContract.GeolocationViewContract, View.OnClickListener{
 
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var geolocationProvider: GeolocationProvider
@@ -65,6 +65,7 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
             IntConstants.CHECKIN-> btn_init_check.setText(getString(R.string.checkin_btn))
             IntConstants.CHECKOUT-> btn_init_check.setText(getString(R.string.checkout_btn))
         }
+        btn_init_check.setOnClickListener(this)
 
     }
 
@@ -128,6 +129,20 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
 
     override fun showError() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
+    override fun onClick(v: View?) {
+        val bundle:Bundle= Bundle()
+        when (v?.id){
+            R.id.btn_init_check->{
+                val type=if(typeCheckInOut==IntConstants.CHECKIN) IntConstants.CHECKOUT else IntConstants.CHECKIN
+                bundle.putInt(StringConstant.CHECKBUNDLE,type)
+                bundle.putParcelable(StringConstant.KEYBUNDLE,pdvbundle)
+                presenter.saveCheckReport(this,bundle)
+            }
+        }
+
     }
 
 }
