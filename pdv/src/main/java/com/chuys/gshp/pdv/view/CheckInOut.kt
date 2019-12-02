@@ -30,6 +30,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_check.*
 
 class CheckInOut :FragmentActivity(), OnMapReadyCallback,
@@ -43,12 +44,15 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
     private val TAG = "CheckInOut"
     private lateinit var presenter:CheckContract.CheckPresenterContract
     private lateinit var pdvbundle:PdvModel
+    var typeCheckInOut:Int = 0
+    private lateinit var latLngPdv: LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check)
         mapFragment= supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         pdvbundle=intent.extras.getParcelable<PdvModel>(StringConstant.KEYBUNDLE)
+        typeCheckInOut=intent.extras.getInt(StringConstant.CHECKBUNDLE)
         initPermission()
         initView()
     }
@@ -56,6 +60,11 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
     private fun initView(){
         txt_pdv_name.setText(pdvbundle.name)
         txt_address.setText(pdvbundle.address)
+
+        when(typeCheckInOut){
+            IntConstants.CHECKIN-> btn_init_check.setText(getString(R.string.checkin_btn))
+            IntConstants.CHECKOUT-> btn_init_check.setText(getString(R.string.checkout_btn))
+        }
 
     }
 
@@ -102,7 +111,8 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
             mMap.setMinZoomPreference(6.0f)
             mMap.setMaxZoomPreference(14.0f)
             mMap.isMyLocationEnabled=true
-            //pdvMarker=mMap.addMarker(MarkerOptions().position(latLngMex).draggable(true))
+            latLngPdv=LatLng(pdvbundle.lat,pdvbundle.lon)
+            pdvMarker=mMap.addMarker(MarkerOptions().position(latLngPdv))
             presenter.getUserLocation()
 
         }
