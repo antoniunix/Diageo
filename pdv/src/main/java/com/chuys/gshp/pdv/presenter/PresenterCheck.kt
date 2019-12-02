@@ -20,7 +20,7 @@ import com.google.android.gms.maps.model.LatLng
 import io.reactivex.disposables.CompositeDisposable
 
 class PresenterCheck(
-    val checkView: CheckContract.CheckViewContract,
+    val viewCheck: CheckContract.CheckViewContract,
     val viewgeo: GeolocationContract.GeolocationViewContract,
     val geolocationDataProvider: GeolocationProvider,
     val checkProvider: CheckProvider,
@@ -69,5 +69,30 @@ class PresenterCheck(
                 checkView.showError()
         })
     }
+
+    override fun getReportReport() {
+        disposable.add(reportProvider.getReport().execute(null).subscribe{
+                it->
+            if(it.isSuccess){
+                viewCheck.setReportData(it.data!!)
+            }else{
+                Log.e("Save","error")
+            }
+        })
+    }
+    override fun updateReport(activity: Activity, idReeport: Long) {
+       date=System.currentTimeMillis()
+        val reportModel=ReportReportModel(idReeport,0,0,date)
+        disposable.add(reportProvider.updateReport().execute(reportModel).subscribe{
+                it->
+            if(it.isSuccess){
+                Log.e("Save","save")
+            }else{
+                Log.e("Save","error")
+            }
+        })
+
+    }
+
 
 }
