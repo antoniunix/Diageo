@@ -12,6 +12,8 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
+import com.chuys.gshp.navigation.Activities
+import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.pdv.R
 import com.chuys.gshp.pdv.data.provider.CheckDataProvider
 import com.chuys.gshp.pdv.domain.model.PdvModel
@@ -87,8 +89,11 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == IntConstants.LOCATION_ACTIVITY_REQUEST_CODE) {
             finish()
-            intent = Intent(this, CheckInOut::class.java)
-            startActivity(intent)
+            val bundle = Bundle()
+            bundle.putInt(StringConstant.CHECKBUNDLE,typeCheckInOut)
+            bundle.putParcelable(StringConstant.KEYBUNDLE,pdvbundle)
+            ActivityManager.changeToActivitywithBundle(Activities.CHECK, this, bundle)
+
         }
     }
 
