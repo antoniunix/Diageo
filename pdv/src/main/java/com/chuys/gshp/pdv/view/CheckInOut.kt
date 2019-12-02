@@ -8,6 +8,7 @@ import android.location.Address
 import android.location.Location
 import android.os.Bundle
 import android.view.View
+
 import android.widget.Toast
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
@@ -190,6 +191,14 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
                 }
 
 
+        val bundle:Bundle= Bundle()
+        when (v?.id){
+            R.id.btn_init_check->{
+                val type=if(typeCheckInOut==IntConstants.CHECKIN) IntConstants.CHECKOUT else IntConstants.CHECKIN
+                bundle.putInt(StringConstant.CHECKBUNDLE,type)
+                bundle.putParcelable(StringConstant.KEYBUNDLE,pdvbundle)
+                presenter.saveReportReport(pdvbundle.id.toLong())
+                presenter.saveCheckReport(this,bundle,type)
             }
         }
 
