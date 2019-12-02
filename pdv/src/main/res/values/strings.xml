@@ -12,4 +12,10 @@
     <string name="enabled_location">Acepte permisos</string>
     <string name="checkin_btn">CHECK IN</string>
     <string name="checkout_btn">CHECK OUT</string>
+    <string name="message_dialog_exit">¿ESTA SEGURO QUE DESEA FINALIZAR VISITA?</string>
+    <string name="time_checkin">HORA CHECK IN</string>
+    <string name="time_checkOUT">HORA CHECK OUT</string>
+    <string name="yes">SI</string>
+    <string name="no">NO</string>
+
 </resources>

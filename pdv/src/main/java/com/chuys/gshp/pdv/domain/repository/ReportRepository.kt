@@ -6,4 +6,6 @@ import io.reactivex.Single
 
 interface ReportRepository {
     fun saveReport(report: ReportReportModel?):Single<Resource<Boolean>>
+    fun updateReport(report: ReportReportModel?):Single<Resource<Boolean>>
+    fun getReport():Single<Resource<ReportReportModel>>
 }
