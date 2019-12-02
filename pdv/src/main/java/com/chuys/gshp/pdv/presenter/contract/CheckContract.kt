@@ -7,7 +7,8 @@ interface CheckContract {
 
     interface CheckPresenterContract{
         fun getUserLocation()
-        fun saveCheckReport(activity: Activity,bundle: Bundle)
+        fun saveCheckReport(activity: Activity,bundle: Bundle,typeCheck:Int)
+        fun saveReportReport(idPdv:Long)
 
     }
 

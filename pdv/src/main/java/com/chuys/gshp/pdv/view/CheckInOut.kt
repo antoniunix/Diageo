@@ -9,6 +9,7 @@ import android.location.Location
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
@@ -16,8 +17,10 @@ import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.pdv.R
 import com.chuys.gshp.pdv.data.provider.CheckDataProvider
+import com.chuys.gshp.pdv.data.provider.ReportDataProvider
 import com.chuys.gshp.pdv.domain.model.PdvModel
 import com.chuys.gshp.pdv.domain.providers.CheckProvider
+import com.chuys.gshp.pdv.domain.providers.ReportProvider
 import com.chuys.gshp.pdv.presenter.PresenterCheck
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.shared.data.job.JobExecutor
@@ -44,6 +47,7 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var geolocationProvider: GeolocationProvider
     private lateinit var checkProvider: CheckProvider
+    private lateinit var reportProvider: ReportProvider
     private lateinit var pdvMarker : Marker
     private lateinit var mMap: GoogleMap
     private val TAG = "CheckInOut"
@@ -79,7 +83,8 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
             val contextProvider= ContextDataProvider(this)
             geolocationProvider= GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
             checkProvider= CheckDataProvider(JobExecutor(),UIThread())
-            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider)
+            reportProvider=ReportDataProvider(JobExecutor(),UIThread())
+            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider,reportProvider)
             mapFragment.getMapAsync(this)
         }else{
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), IntConstants.LOCATION_ACTIVITY_REQUEST_CODE)
@@ -148,7 +153,8 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
                 val type=if(typeCheckInOut==IntConstants.CHECKIN) IntConstants.CHECKOUT else IntConstants.CHECKIN
                 bundle.putInt(StringConstant.CHECKBUNDLE,type)
                 bundle.putParcelable(StringConstant.KEYBUNDLE,pdvbundle)
-                presenter.saveCheckReport(this,bundle)
+                presenter.saveReportReport(pdvbundle.id.toLong())
+                presenter.saveCheckReport(this,bundle,type)
             }
         }
 

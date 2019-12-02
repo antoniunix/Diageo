@@ -13,7 +13,7 @@ class CheckDataProvider(
     private val jobExecutor: ThreadExecutor,
     private val uiThread: PostExecutionThread
 ) : CheckProvider {
-    private val repository=CheckDataRepository()
+    private val repository= CheckDataRepository()
 
     override fun saveReportCheck(): SingleUseCase<CheckModel, Resource<Boolean>> {
         return SaveReportCheckUseCase(repository,jobExecutor,uiThread)
