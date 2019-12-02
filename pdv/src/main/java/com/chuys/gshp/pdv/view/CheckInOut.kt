@@ -13,7 +13,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
 import com.chuys.gshp.pdv.R
+import com.chuys.gshp.pdv.data.provider.CheckDataProvider
 import com.chuys.gshp.pdv.domain.model.PdvModel
+import com.chuys.gshp.pdv.domain.providers.CheckProvider
 import com.chuys.gshp.pdv.presenter.PresenterCheck
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.shared.data.job.JobExecutor
@@ -39,6 +41,7 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
 
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var geolocationProvider: GeolocationProvider
+    private lateinit var checkProvider: CheckProvider
     private lateinit var pdvMarker : Marker
     private lateinit var mMap: GoogleMap
     private val TAG = "CheckInOut"
@@ -73,7 +76,8 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
         if(this.checkLocationPermission()){
             val contextProvider= ContextDataProvider(this)
             geolocationProvider= GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
-            presenter = PresenterCheck(this,this, geolocationProvider)
+            checkProvider= CheckDataProvider(JobExecutor(),UIThread())
+            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider)
             mapFragment.getMapAsync(this)
         }else{
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), IntConstants.LOCATION_ACTIVITY_REQUEST_CODE)

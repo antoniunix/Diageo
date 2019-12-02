@@ -68,7 +68,7 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                "idReport INTEGER," +
                "lat REAL,"+
-               "lon REAL"+
+               "lon REAL,"+
                "date INTEGER)"
     }
 

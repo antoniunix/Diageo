@@ -12,7 +12,8 @@ class DiageoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         val sqliteInstance: ProviderSqliteResources = ProviderSqlite(this)
-        Stetho.initializeWithDefaults(this);
         SqliteDBProvider.setDbHelper(SqliteInstance(sqliteInstance))
+        Stetho.initializeWithDefaults(this)
+
     }
 }
