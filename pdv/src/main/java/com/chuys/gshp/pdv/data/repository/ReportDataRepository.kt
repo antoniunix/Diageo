@@ -1,22 +1,21 @@
 package com.chuys.gshp.pdv.data.repository
 
-import com.chuys.gshp.pdv.domain.model.CheckModel
-import com.chuys.gshp.pdv.domain.repository.CheckRepository
+import com.chuys.gshp.pdv.domain.model.ReportReportModel
+import com.chuys.gshp.pdv.domain.repository.ReportRepository
 import com.chuys.gshp.shared.domain.models.Resource
 import io.reactivex.Single
 
-class CheckDataRepository : CheckRepository {
+class ReportDataRepository : ReportRepository {
 
-    override fun saveCheck(report: CheckModel?): Single<Resource<Boolean>> {
+
+    override fun saveReport(report: ReportReportModel?): Single<Resource<Boolean>> {
         return Single.create {
             if (report != null) {
-                ReportCheckEntity().writeCheck(report)
+                ReportReportEntity().writeReportReport(report)
                 it.onSuccess(
                     Resource.success(true, "")
                 )
             }
-
         }
     }
-
 }

@@ -3,7 +3,6 @@ package com.chuys.gshp.shared.data.database.sqlite.provider
 import android.content.Context
 
 class ProviderSqlite(context: Context) : ProviderSqliteResources {
-
     private var context: Context
 
     init {
@@ -63,13 +62,22 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
                 "lastSync INTEGER)"
     }
 
+    override fun getReport():String{
+        return "CREATE TABLE report_report("+
+                "idReport INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "idPdv INTEGER,"+
+                "date_checkin INTEGER,"+
+                "date_checkout INTEGER)"
+    }
+
     override fun getReportCheck(): String {
        return "CREATE TABLE report_check("+
                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                "idReport INTEGER," +
                "lat REAL,"+
                "lon REAL,"+
-               "date INTEGER)"
+               "date INTEGER,"+
+               "type INTEGER)"
     }
 
 }

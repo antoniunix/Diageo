@@ -11,4 +11,6 @@ interface ProviderSqliteResources {
     fun getAvailabilityReport():String
     fun getPriceReport():String
     fun getReportCheck():String
+    fun getReport():String
+
 }
