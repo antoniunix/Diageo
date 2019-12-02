@@ -5,17 +5,20 @@ import android.app.Activity
 import android.os.Bundle
 import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.navigation.ActivityManager
+import com.chuys.gshp.pdv.data.model.KpiData
 import com.chuys.gshp.pdv.domain.providers.CheckProvider
+import com.chuys.gshp.pdv.domain.providers.KpiProvider
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
 import com.chuys.gshp.shared.presenter.GeolocationContract
 import io.reactivex.disposables.CompositeDisposable
 
 class PresenterCheck(
-    val checkContract: CheckContract.CheckViewContract,
+    val checkView: CheckContract.CheckViewContract,
     val viewgeo: GeolocationContract.GeolocationViewContract,
     val geolocationDataProvider: GeolocationProvider,
-    val checkProvider: CheckProvider
+    val checkProvider: CheckProvider,
+    val kpiProvider: KpiProvider
 ) : CheckContract.CheckPresenterContract {
 
     private val disposable = CompositeDisposable()
@@ -30,10 +33,19 @@ class PresenterCheck(
         })
     }
 
-    override fun saveCheckReport(activity: Activity,bundle: Bundle) {
+    override fun saveCheckReport(activity: Activity, bundle: Bundle) {
         ActivityManager.changeToActivitywithBundle(Activities.CHECK, activity, bundle)
 
 
+    }
+
+    override fun getKpi(idSite: String) {
+        disposable.add(kpiProvider.getData().execute(idSite).subscribe { data ->
+            if (data.data!= null && data.isSuccess)
+                checkView.getData(data.data!!)
+            else
+                checkView.showError()
+        })
     }
 
 }

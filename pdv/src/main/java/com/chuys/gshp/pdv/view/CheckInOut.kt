@@ -7,17 +7,20 @@ import android.content.Intent
 import android.location.Address
 import android.location.Location
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
 import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.pdv.R
+import com.chuys.gshp.pdv.data.model.KpiData
 import com.chuys.gshp.pdv.data.provider.CheckDataProvider
+import com.chuys.gshp.pdv.data.provider.KpiDataProvider
 import com.chuys.gshp.pdv.domain.model.PdvModel
 import com.chuys.gshp.pdv.domain.providers.CheckProvider
+import com.chuys.gshp.pdv.domain.providers.KpiProvider
 import com.chuys.gshp.pdv.presenter.PresenterCheck
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.shared.data.job.JobExecutor
@@ -44,6 +47,7 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var geolocationProvider: GeolocationProvider
     private lateinit var checkProvider: CheckProvider
+    private lateinit var kpiProvider: KpiProvider
     private lateinit var pdvMarker : Marker
     private lateinit var mMap: GoogleMap
     private val TAG = "CheckInOut"
@@ -79,7 +83,9 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
             val contextProvider= ContextDataProvider(this)
             geolocationProvider= GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
             checkProvider= CheckDataProvider(JobExecutor(),UIThread())
-            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider)
+            kpiProvider = KpiDataProvider(JobExecutor(),UIThread())
+            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider, kpiProvider)
+            presenter.getKpi(/*pdvbundle.id.toString()*/"195");
             mapFragment.getMapAsync(this)
         }else{
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), IntConstants.LOCATION_ACTIVITY_REQUEST_CODE)
@@ -136,8 +142,14 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+
+    override fun getData(kpiData: KpiData) {
+        Toast.makeText(this,kpiData.incidences,Toast.LENGTH_LONG).show()
+    }
+
     override fun showError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(this,"Dev", Toast.LENGTH_LONG).show()
+
     }
 
 
