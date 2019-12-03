@@ -8,14 +8,7 @@ import android.location.Address
 import android.location.Location
 import android.os.Bundle
 import android.view.View
-<<<<<<< HEAD
-<<<<<<< HEAD
 import android.widget.Toast
-=======
-import androidx.annotation.UiThread
->>>>>>> Changes in save report report
-=======
->>>>>>> Save report, uopdate report, save checkin and checkout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
@@ -24,18 +17,13 @@ import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.pdv.R
 import com.chuys.gshp.pdv.data.model.KpiData
 import com.chuys.gshp.pdv.data.provider.CheckDataProvider
-<<<<<<< HEAD
 import com.chuys.gshp.pdv.data.provider.KpiDataProvider
-import com.chuys.gshp.pdv.domain.model.PdvModel
-import com.chuys.gshp.pdv.domain.providers.CheckProvider
-import com.chuys.gshp.pdv.domain.providers.KpiProvider
-=======
 import com.chuys.gshp.pdv.data.provider.ReportDataProvider
 import com.chuys.gshp.pdv.domain.model.PdvModel
 import com.chuys.gshp.pdv.domain.model.ReportReportModel
 import com.chuys.gshp.pdv.domain.providers.CheckProvider
+import com.chuys.gshp.pdv.domain.providers.KpiProvider
 import com.chuys.gshp.pdv.domain.providers.ReportProvider
->>>>>>> Changes in save report report
 import com.chuys.gshp.pdv.presenter.PresenterCheck
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.pdv.util.DateConvert
@@ -65,16 +53,9 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var geolocationProvider: GeolocationProvider
     private lateinit var checkProvider: CheckProvider
-<<<<<<< HEAD
     private lateinit var kpiProvider: KpiProvider
-=======
     private lateinit var reportProvider: ReportProvider
-<<<<<<< HEAD
->>>>>>> Changes in save report report
     private lateinit var pdvMarker : Marker
-=======
-    private lateinit var pdvMarker: Marker
->>>>>>> Save report, uopdate report, save checkin and checkout
     private lateinit var mMap: GoogleMap
     private val TAG = "CheckInOut"
     private lateinit var presenter: CheckContract.CheckPresenterContract
@@ -95,21 +76,6 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
 
     }
 
-<<<<<<< HEAD
-    private fun initPermission(){
-        if(this.checkLocationPermission()){
-            val contextProvider= ContextDataProvider(this)
-            geolocationProvider= GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
-            checkProvider= CheckDataProvider(JobExecutor(),UIThread())
-<<<<<<< HEAD
-            kpiProvider = KpiDataProvider(JobExecutor(),UIThread())
-            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider, kpiProvider)
-            presenter.getKpi(/*pdvbundle.id.toString()*/"195");
-=======
-            reportProvider=ReportDataProvider(JobExecutor(),UIThread())
-            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider,reportProvider)
->>>>>>> Changes in save report report
-=======
     private fun initPermission() {
         if (this.checkLocationPermission()) {
             val contextProvider = ContextDataProvider(this)
@@ -117,9 +83,9 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
                 GeolocationDataProvider(JobExecutor(), UIThread(), contextProvider)
             checkProvider = CheckDataProvider(JobExecutor(), UIThread())
             reportProvider = ReportDataProvider(JobExecutor(), UIThread())
+            kpiProvider = KpiDataProvider(JobExecutor(),UIThread())
             presenter =
-                PresenterCheck(this, this, geolocationProvider, checkProvider, reportProvider)
->>>>>>> Save report, uopdate report, save checkin and checkout
+                PresenterCheck(this, this, geolocationProvider, kpiProvider,checkProvider, reportProvider)
             mapFragment.getMapAsync(this)
             initView()
         } else {
@@ -177,14 +143,7 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
     }
 
     override fun showLocation(location: Location) {
-        mMap.moveCamera(
-            CameraUpdateFactory.newLatLngZoom(
-                LatLng(
-                    location.latitude,
-                    location.longitude
-                ), 16f
-            )
-        )
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude,location.longitude),16f))
     }
 
     override fun setAddres(address: Address) {
