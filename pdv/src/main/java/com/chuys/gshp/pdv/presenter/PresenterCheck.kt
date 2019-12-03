@@ -15,6 +15,7 @@ import com.chuys.gshp.pdv.domain.providers.ReportProvider
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
 import com.chuys.gshp.shared.presenter.GeolocationContract
+import com.google.android.gms.maps.model.LatLng
 import io.reactivex.disposables.CompositeDisposable
 
 class PresenterCheck(
@@ -69,38 +70,38 @@ class PresenterCheck(
         })
     }
 
-    override fun getReportReport() {
-        disposable.add(reportProvider.getReport().execute(null).subscribe{
-                it->
-            if(it.isSuccess){
-                viewCheck.setReportData(it.data!!)
-            }else{
-                Log.e("Save","error")
+            override fun getReportReport() {
+                disposable.add(reportProvider.getReport().execute(null).subscribe { it ->
+                    if (it.isSuccess) {
+                        viewCheck.setReportData(it.data!!)
+                    } else {
+                        Log.e("Save", "error")
+                    }
+                })
             }
-        })
-    }
-    override fun updateReport(activity: Activity, idReeport: Long) {
-       date=System.currentTimeMillis()
-        val reportModel=ReportReportModel(idReeport,0,0,date)
-        disposable.add(reportProvider.updateReport().execute(reportModel).subscribe{
-                it->
-            if(it.isSuccess){
-                Log.e("Save","save")
-            }else{
-                Log.e("Save","error")
+
+            override fun updateReport(activity: Activity, idReeport: Long) {
+                date = System.currentTimeMillis()
+                val reportModel = ReportReportModel(idReeport, 0, 0, date)
+                disposable.add(reportProvider.updateReport().execute(reportModel).subscribe { it ->
+                    if (it.isSuccess) {
+                        Log.e("Save", "save")
+                    } else {
+                        Log.e("Save", "error")
+                    }
+                })
+
             }
-        })
-
-    }
 
 
-    override fun getKpi(idSite: String) {
-        disposable.add(kpiProvider.getData().execute(idSite).subscribe { data ->
-            if (data.data!= null && data.isSuccess)
-                viewCheck.getData(data.data!!)
-            else
-                viewCheck.showError()
-        })
-    }
+            override fun getKpi(idSite: String) {
+                disposable.add(kpiProvider.getData().execute(idSite).subscribe { data ->
+                    if (data.data != null && data.isSuccess)
+                        viewCheck.getData(data.data!!)
+                    else
+                        viewCheck.showError()
+                })
+            }
+
 
 }

@@ -4,7 +4,6 @@ import android.content.Context
 
 class ProviderSqlite(context: Context) : ProviderSqliteResources {
 
-
     private var context: Context
 
     init {

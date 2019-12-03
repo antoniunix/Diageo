@@ -17,7 +17,10 @@ import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.pdv.R
 import com.chuys.gshp.pdv.data.model.KpiData
 import com.chuys.gshp.pdv.data.provider.CheckDataProvider
+
 import com.chuys.gshp.pdv.data.provider.KpiDataProvider
+
+
 import com.chuys.gshp.pdv.data.provider.ReportDataProvider
 import com.chuys.gshp.pdv.domain.model.PdvModel
 import com.chuys.gshp.pdv.domain.model.ReportReportModel
@@ -84,8 +87,8 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
             checkProvider = CheckDataProvider(JobExecutor(), UIThread())
             reportProvider = ReportDataProvider(JobExecutor(), UIThread())
             kpiProvider = KpiDataProvider(JobExecutor(),UIThread())
-            presenter =
-                PresenterCheck(this, this, geolocationProvider, kpiProvider,checkProvider, reportProvider)
+            presenter = PresenterCheck(this, this, geolocationProvider, kpiProvider,checkProvider, reportProvider)
+
             mapFragment.getMapAsync(this)
             initView()
         } else {
@@ -143,7 +146,14 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
     }
 
     override fun showLocation(location: Location) {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude,location.longitude),16f))
+        mMap.moveCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                LatLng(
+                    location.latitude,
+                    location.longitude
+                ), 16f
+            )
+        )
     }
 
     override fun setAddres(address: Address) {
