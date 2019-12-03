@@ -41,63 +41,73 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_check.*
 
-class CheckInOut :FragmentActivity(), OnMapReadyCallback,
-        CheckContract.CheckViewContract, GeolocationContract.GeolocationViewContract, View.OnClickListener{
+class CheckInOut : FragmentActivity(), OnMapReadyCallback,
+    CheckContract.CheckViewContract, GeolocationContract.GeolocationViewContract,
+    View.OnClickListener {
 
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var geolocationProvider: GeolocationProvider
     private lateinit var checkProvider: CheckProvider
     private lateinit var kpiProvider: KpiProvider
-    private lateinit var pdvMarker : Marker
+    private lateinit var pdvMarker: Marker
     private lateinit var mMap: GoogleMap
     private val TAG = "CheckInOut"
-    private lateinit var presenter:CheckContract.CheckPresenterContract
-    private lateinit var pdvbundle:PdvModel
-    var typeCheckInOut:Int = 0
+    private lateinit var presenter: CheckContract.CheckPresenterContract
+    private lateinit var pdvbundle: PdvModel
+    var typeCheckInOut: Int = 0
     private lateinit var latLngPdv: LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check)
-        mapFragment= supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        pdvbundle=intent.extras.getParcelable<PdvModel>(StringConstant.KEYBUNDLE)
-        typeCheckInOut=intent.extras.getInt(StringConstant.CHECKBUNDLE)
+        mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        pdvbundle = intent.extras.getParcelable<PdvModel>(StringConstant.KEYBUNDLE)
+        typeCheckInOut = intent.extras.getInt(StringConstant.CHECKBUNDLE)
         initPermission()
         initView()
     }
 
-    private fun initView(){
+    private fun initView() {
         txt_pdv_name.setText(pdvbundle.name)
         txt_address.setText(pdvbundle.address)
 
-        when(typeCheckInOut){
-            IntConstants.CHECKIN-> btn_init_check.setText(getString(R.string.checkin_btn))
-            IntConstants.CHECKOUT-> btn_init_check.setText(getString(R.string.checkout_btn))
+        when (typeCheckInOut) {
+            IntConstants.CHECKIN -> btn_init_check.setText(getString(R.string.checkin_btn))
+            IntConstants.CHECKOUT -> btn_init_check.setText(getString(R.string.checkout_btn))
         }
         btn_init_check.setOnClickListener(this)
 
     }
 
-    private fun initPermission(){
-        if(this.checkLocationPermission()){
-            val contextProvider= ContextDataProvider(this)
-            geolocationProvider= GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
-            checkProvider= CheckDataProvider(JobExecutor(),UIThread())
-            kpiProvider = KpiDataProvider(JobExecutor(),UIThread())
-            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider, kpiProvider)
+    private fun initPermission() {
+        if (this.checkLocationPermission()) {
+            val contextProvider = ContextDataProvider(this)
+            geolocationProvider =
+                GeolocationDataProvider(JobExecutor(), UIThread(), contextProvider)
+            checkProvider = CheckDataProvider(JobExecutor(), UIThread())
+            kpiProvider = KpiDataProvider(JobExecutor(), UIThread())
+            presenter = PresenterCheck(this, this, geolocationProvider, checkProvider, kpiProvider)
             presenter.getKpi(/*pdvbundle.id.toString()*/"195");
             mapFragment.getMapAsync(this)
-        }else{
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), IntConstants.LOCATION_ACTIVITY_REQUEST_CODE)
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                IntConstants.LOCATION_ACTIVITY_REQUEST_CODE
+            )
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         if (requestCode == IntConstants.LOCATION_ACTIVITY_REQUEST_CODE) {
             finish()
             val bundle = Bundle()
-            bundle.putInt(StringConstant.CHECKBUNDLE,typeCheckInOut)
-            bundle.putParcelable(StringConstant.KEYBUNDLE,pdvbundle)
+            bundle.putInt(StringConstant.CHECKBUNDLE, typeCheckInOut)
+            bundle.putParcelable(StringConstant.KEYBUNDLE, pdvbundle)
             ActivityManager.changeToActivitywithBundle(Activities.CHECK, this, bundle)
 
         }
@@ -123,19 +133,26 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
 
     override fun onMapReady(map: GoogleMap?) {
         if (map != null) {
-            mMap= map
+            mMap = map
             mMap.setMinZoomPreference(6.0f)
             mMap.setMaxZoomPreference(14.0f)
-            mMap.isMyLocationEnabled=true
-            latLngPdv=LatLng(pdvbundle.lat,pdvbundle.lon)
-            pdvMarker=mMap.addMarker(MarkerOptions().position(latLngPdv))
+            mMap.isMyLocationEnabled = true
+            latLngPdv = LatLng(pdvbundle.lat, pdvbundle.lon)
+            pdvMarker = mMap.addMarker(MarkerOptions().position(latLngPdv))
             presenter.getUserLocation()
 
         }
     }
 
     override fun showLocation(location: Location) {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude,location.longitude),16f))
+        mMap.moveCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                LatLng(
+                    location.latitude,
+                    location.longitude
+                ), 16f
+            )
+        )
     }
 
     override fun setAddres(address: Address) {
@@ -144,23 +161,27 @@ class CheckInOut :FragmentActivity(), OnMapReadyCallback,
 
 
     override fun getData(kpiData: KpiData) {
-        Toast.makeText(this,kpiData.incidences,Toast.LENGTH_LONG).show()
+        txt_nefectividad.text = "${kpiData.effectiveness}%"
+        txt_nhoras.text = "${kpiData.workedHours} HRS"
+        txt_nvisitas.text = "${kpiData.visits}"
+        txt_nincidencias.text = "${kpiData.incidences}"
     }
 
     override fun showError() {
-        Toast.makeText(this,"Dev", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Dev", Toast.LENGTH_LONG).show()
 
     }
 
 
     override fun onClick(v: View?) {
-        val bundle:Bundle= Bundle()
-        when (v?.id){
-            R.id.btn_init_check->{
-                val type=if(typeCheckInOut==IntConstants.CHECKIN) IntConstants.CHECKOUT else IntConstants.CHECKIN
-                bundle.putInt(StringConstant.CHECKBUNDLE,type)
-                bundle.putParcelable(StringConstant.KEYBUNDLE,pdvbundle)
-                presenter.saveCheckReport(this,bundle)
+        val bundle: Bundle = Bundle()
+        when (v?.id) {
+            R.id.btn_init_check -> {
+                val type =
+                    if (typeCheckInOut == IntConstants.CHECKIN) IntConstants.CHECKOUT else IntConstants.CHECKIN
+                bundle.putInt(StringConstant.CHECKBUNDLE, type)
+                bundle.putParcelable(StringConstant.KEYBUNDLE, pdvbundle)
+                presenter.saveCheckReport(this, bundle)
             }
         }
 

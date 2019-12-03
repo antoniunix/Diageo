@@ -11,8 +11,8 @@ data class KpiData(
     val incidences: Int,
     val rentedExhibitions: Int,
     val visits: Int,
-    val workedHours: Float
+    val workedHours: String
 
 ) : Parcelable {
-    constructor() : this(0, 0, 0, 0, 0, 0.0F)
+    constructor() : this(0, 0, 0, 0, 0, "0.0")
 }

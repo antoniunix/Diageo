@@ -5,7 +5,6 @@ import android.app.Activity
 import android.os.Bundle
 import com.chuys.gshp.navigation.Activities
 import com.chuys.gshp.navigation.ActivityManager
-import com.chuys.gshp.pdv.data.model.KpiData
 import com.chuys.gshp.pdv.domain.providers.CheckProvider
 import com.chuys.gshp.pdv.domain.providers.KpiProvider
 import com.chuys.gshp.pdv.presenter.contract.CheckContract
@@ -40,9 +39,9 @@ class PresenterCheck(
     }
 
     override fun getKpi(idSite: String) {
-        disposable.add(kpiProvider.getData().execute(idSite).subscribe { data ->
-            if (data.data!= null && data.isSuccess)
-                checkView.getData(data.data!!)
+        disposable.add(kpiProvider.getData().execute(idSite).subscribe { it ->
+            if (it.isSuccess)
+                checkView.getData(it.data!!)
             else
                 checkView.showError()
         })

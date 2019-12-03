@@ -16,9 +16,9 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:alignmentMode="alignBounds"
-            android:useDefaultMargins="true"
             android:columnCount="2"
             android:rowCount="2"
+            android:useDefaultMargins="true"
             app:layout_constraintBottom_toTopOf="@+id/map"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,39 +30,40 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:background="@drawable/efectividad_layer_list"
-                android:weightSum="2"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="2">
+
             <TextView
-                    android:id="@+id/efectividad"
-                    android:text="81%"
+                    android:id="@+id/txt_nefectividad"
+                    style="@style/numberStyle"
                     android:layout_weight="1"
+                    android:text="81%" />
+
+            <TextView
                     style="@style/textStyle"
-                    />
-                <TextView
-                        android:text="@string/EFECTIVIDAD"
-                        android:layout_weight="1"
-                        style="@style/textStyle"
-                />
+                    android:layout_weight="1"
+                    android:text="@string/EFECTIVIDAD" />
         </LinearLayout>
+
         <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:background="@drawable/horas_layer_list"
-                android:weightSum="2"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="2">
+
             <TextView
-                    android:id="@+id/efectividad"
-                    android:text="81%"
+                    android:id="@+id/txt_nhoras"
+                    style="@style/numberStyle"
                     android:layout_weight="1"
-                    style="@style/textStyle"
-                    />
+                    android:text="81%" />
+
             <TextView
-                    android:text="@string/EFECTIVIDAD"
-                    android:layout_weight="1"
                     style="@style/textStyle"
-                    />
+                    android:layout_weight="1"
+                    android:text="HORAS TRABAJADAS" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,44 +71,44 @@
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
                 android:background="@drawable/visitas_layer_list"
+                android:orientation="vertical"
                 android:weightSum="2">
+
             <TextView
-                    android:id="@+id/efectividad"
-                    android:text="81%"
+                    android:id="@+id/txt_nvisitas"
+                    style="@style/numberStyle"
                     android:layout_weight="1"
-                    style="@style/textStyle"
-                    />
+                    android:text="81%" />
+
             <TextView
-                    android:text="@string/EFECTIVIDAD"
-                    android:layout_weight="1"
                     style="@style/textStyle"
-                    />
+                    android:layout_weight="1"
+                    android:text="@string/visitas" />
         </LinearLayout>
+
         <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
                 android:background="@drawable/incidencias_layer_list"
+                android:orientation="vertical"
                 android:weightSum="2">
+
             <TextView
-                    android:id="@+id/efectividad"
-                    android:text="81%"
+                    android:id="@+id/txt_nincidencias"
+                    style="@style/numberStyle"
                     android:layout_weight="1"
-                    style="@style/textStyle"
-                    />
+                    android:text="81%" />
+
             <TextView
-                    android:text="@string/EFECTIVIDAD"
-                    android:layout_weight="1"
                     style="@style/textStyle"
-                    />
+                    android:layout_weight="1"
+                    android:text="@string/incidencias" />
 
         </LinearLayout>
     </GridLayout>
-
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -138,9 +139,9 @@
 
     <TextView
             android:id="@+id/txt_address"
-            app:layout_constraintTop_toBottomOf="@id/txt_pdv_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txt_pdv_name" />
 
     <Button
             android:id="@+id/btn_init_check"
@@ -148,6 +149,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_address" />
+
     <fragment
             android:id="@+id/map"
             class="com.google.android.gms.maps.SupportMapFragment"
