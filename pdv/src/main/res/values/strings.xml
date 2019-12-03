@@ -13,4 +13,6 @@
     <string name="checkin_btn">CHECK IN</string>
     <string name="checkout_btn">CHECK OUT</string>
     <string name="EFECTIVIDAD">EFECTIVIDAD DEL PVD</string>
+    <string name="visitas">VISITAS REALIZADAS</string>
+    <string name="incidencias">INCIDENCIAS</string>
 </resources>
