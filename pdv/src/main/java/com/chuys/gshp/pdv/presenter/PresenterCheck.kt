@@ -97,6 +97,7 @@ class PresenterCheck(
 
     }
 
+
     override fun getKpi(idSite: String) {
         disposable.add(kpiProvider.getData().execute(idSite).subscribe { data ->
             if (data.data!= null && data.isSuccess)

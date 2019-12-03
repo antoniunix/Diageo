@@ -57,7 +57,7 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
     private lateinit var checkProvider: CheckProvider
     private lateinit var kpiProvider: KpiProvider
     private lateinit var reportProvider: ReportProvider
-    private lateinit var pdvMarker: Marker
+    private lateinit var pdvMarker : Marker
     private lateinit var mMap: GoogleMap
     private val TAG = "CheckInOut"
     private lateinit var presenter: CheckContract.CheckPresenterContract
@@ -190,37 +190,6 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
                     dialogFinishReport.show(supportFragmentManager, "Dialog")
                 }
 
-
-        val bundle:Bundle= Bundle()
-        when (v?.id){
-            R.id.btn_init_check->{
-                val type=if(typeCheckInOut==IntConstants.CHECKIN) IntConstants.CHECKOUT else IntConstants.CHECKIN
-                bundle.putInt(StringConstant.CHECKBUNDLE,type)
-                bundle.putParcelable(StringConstant.KEYBUNDLE,pdvbundle)
-                presenter.saveReportReport(pdvbundle.id.toLong())
-                presenter.saveCheckReport(this,bundle,type)
-        val bundle: Bundle = Bundle()
-        when (v?.id) {
-            R.id.btn_init_check -> {
-                var type: Int = 0
-                if (typeCheckInOut == IntConstants.CHECKIN) {
-                    type = IntConstants.CHECKOUT
-                    bundle.putInt(StringConstant.CHECKBUNDLE, type)
-                    bundle.putParcelable(StringConstant.KEYBUNDLE, pdvbundle)
-                    presenter.saveReportReport(pdvbundle.id.toLong())
-                    presenter.saveCheckReport(this, bundle, IntConstants.CHECKIN)
-                } else {
-                    type = IntConstants.CHECKIN
-                    val dialogFinishReport = DialogFinishReport(this)
-                    val dialogBundle=Bundle()
-                    dialogBundle.putString(StringConstant.KEYBUNDLE,DateConvert().getHourAndMinutes(reportData.date_checkin))
-                    dialogFinishReport.arguments=dialogBundle
-                    dialogFinishReport.show(supportFragmentManager, "Dialog")
-                }
-
-
-            }
-        }
 
     }
 

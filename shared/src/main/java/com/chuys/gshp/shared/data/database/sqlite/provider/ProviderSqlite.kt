@@ -3,6 +3,8 @@ package com.chuys.gshp.shared.data.database.sqlite.provider
 import android.content.Context
 
 class ProviderSqlite(context: Context) : ProviderSqliteResources {
+
+
     private var context: Context
 
     init {
@@ -79,5 +81,18 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
                "date INTEGER,"+
                "type INTEGER)"
     }
+
+    override fun getSiteInterest(): String {
+       return "CREATE TABLE siteInterest("+
+               "idPdv INTEGER, "+
+               "code TEXT,"+
+               "lat REAL,"+
+               "lon REAL,"+
+               "name TEXT,"+
+               "address TEXT,"+
+               "lastSync INTEGER)"
+    }
+
+
 
 }

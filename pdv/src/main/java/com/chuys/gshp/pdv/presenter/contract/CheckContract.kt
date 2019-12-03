@@ -13,6 +13,7 @@ interface CheckContract {
         fun getKpi(idSite: String)
         fun saveCheckReport(activity: Activity,bundle: Bundle,typeCheck:Int)
         fun updateReport(activity: Activity, idReeport:Long)
+        fun saveReportReport(idPdv:Long)
         fun getReportReport()
 
     }

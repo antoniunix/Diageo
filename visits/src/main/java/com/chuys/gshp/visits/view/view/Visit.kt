@@ -1,4 +1,4 @@
-package com.chuys.gshp.visits.view
+package com.chuys.gshp.visits.view.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

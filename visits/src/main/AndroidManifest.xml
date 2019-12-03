@@ -3,7 +3,7 @@
         package="com.chuys.gshp.visits">
 
     <application>
-        <activity android:name=".view.Visit"></activity>
+        <activity android:name=".view.view.Visit"></activity>
     </application>
 
 </manifest>
