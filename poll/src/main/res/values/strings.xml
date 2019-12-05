@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Poll</string>
+    <string name="generaci_n_de_formularios_en_proceso">Generación de formularios en proceso…</string>
+</resources>
