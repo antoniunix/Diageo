@@ -12,5 +12,4 @@ interface ProviderSqliteResources {
     fun getPriceReport():String
     fun getReportCheck():String
     fun getReport():String
-    fun getSiteInterest():String
 }

@@ -81,17 +81,4 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
                "type INTEGER)"
     }
 
-    override fun getSiteInterest(): String {
-       return "CREATE TABLE siteInterest("+
-               "idPdv INTEGER, "+
-               "code TEXT,"+
-               "lat REAL,"+
-               "lon REAL,"+
-               "name TEXT,"+
-               "address TEXT,"+
-               "lastSync INTEGER)"
-    }
-
-
-
 }

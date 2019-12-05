@@ -24,7 +24,7 @@ class SqliteInstance(providerSqliteResources: ProviderSqliteResources) : SQLiteO
         db?.execSQL(providerSqliteResources.getPriceReport())
         db?.execSQL(providerSqliteResources.getReportCheck())
         db?.execSQL(providerSqliteResources.getReport())
-        db?.execSQL(providerSqliteResources.getSiteInterest())
+
 
     }
 
