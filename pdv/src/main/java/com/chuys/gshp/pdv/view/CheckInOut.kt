@@ -8,9 +8,7 @@ import android.location.Address
 import android.location.Location
 import android.os.Bundle
 import android.view.View
-
 import android.widget.Toast
-import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
@@ -19,8 +17,11 @@ import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.pdv.R
 import com.chuys.gshp.pdv.data.model.KpiData
 import com.chuys.gshp.pdv.data.provider.CheckDataProvider
-import com.chuys.gshp.pdv.data.provider.ReportDataProvider
+
 import com.chuys.gshp.pdv.data.provider.KpiDataProvider
+
+
+import com.chuys.gshp.pdv.data.provider.ReportDataProvider
 import com.chuys.gshp.pdv.domain.model.PdvModel
 import com.chuys.gshp.pdv.domain.model.ReportReportModel
 import com.chuys.gshp.pdv.domain.providers.CheckProvider
@@ -78,16 +79,16 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
 
     }
 
-    private fun initPermission(){
-        if(this.checkLocationPermission()){
-            val contextProvider= ContextDataProvider(this)
-            geolocationProvider= GeolocationDataProvider(JobExecutor(), UIThread(),contextProvider)
-            checkProvider= CheckDataProvider(JobExecutor(),UIThread())
+    private fun initPermission() {
+        if (this.checkLocationPermission()) {
+            val contextProvider = ContextDataProvider(this)
+            geolocationProvider =
+                GeolocationDataProvider(JobExecutor(), UIThread(), contextProvider)
+            checkProvider = CheckDataProvider(JobExecutor(), UIThread())
+            reportProvider = ReportDataProvider(JobExecutor(), UIThread())
             kpiProvider = KpiDataProvider(JobExecutor(),UIThread())
-            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider, kpiProvider)
-            presenter.getKpi(/*pdvbundle.id.toString()*/"195");
-            reportProvider=ReportDataProvider(JobExecutor(),UIThread())
-            presenter = PresenterCheck(this,this, geolocationProvider,checkProvider,reportProvider)
+            presenter = PresenterCheck(this, this, geolocationProvider, kpiProvider,checkProvider, reportProvider)
+
             mapFragment.getMapAsync(this)
             initView()
         } else {
@@ -191,24 +192,7 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
                 }
 
 
-    }
-
-    override fun saveCheckout() {
-        val bundle = Bundle()
-        presenter.saveCheckReport(this, bundle, IntConstants.CHECKOUT)
-        presenter.updateReport(this,reportData.idReport)
-        ActivityManager.changeToActivity(Activities.PDV_LIST,this)
-
-    }
-
-    override fun setReportData(reportReportModel: ReportReportModel) {
-        reportData=reportReportModel
-        if(reportData.idReport>0){
-            typeCheckInOut=IntConstants.CHECKOUT
-        }
-        when (typeCheckInOut) {
-            IntConstants.CHECKIN -> btn_init_check.setText(getString(R.string.checkin_btn))
-            IntConstants.CHECKOUT -> btn_init_check.setText(getString(R.string.checkout_btn))
+            }
         }
 
     }
