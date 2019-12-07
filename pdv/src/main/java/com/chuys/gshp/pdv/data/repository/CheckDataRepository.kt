@@ -15,8 +15,6 @@ class CheckDataRepository : CheckRepository {
                     Resource.success(true, "")
                 )
             }
-
         }
     }
-
 }

@@ -116,14 +116,17 @@ class ActivityManager {
             }
         }
 
-
-        fun changeToActivitywithBundle (activityName: Activities, activity: Activity,bundle: Bundle){
-            when(activityName){
+        fun changeToActivitywithBundle(
+            activityName: Activities,
+            activity: Activity,
+            bundle: Bundle
+        ) {
+            when (activityName) {
                 Activities.CHECK -> activity.startActivity(
                     Intent(
                         activity.applicationContext,
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.CHECK.activity)
-                    ).putExtras(bundle )
+                    ).putExtras(bundle)
                 )
             }
         }

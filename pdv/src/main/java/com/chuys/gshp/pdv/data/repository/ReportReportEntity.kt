@@ -9,8 +9,6 @@ class ReportReportEntity {
     private val sqliteHelper = SqliteDBProvider.SqliteDBHelper.getDbHelper()
     private val tableName = "report_report"
 
-
-
     fun writeReportReport(value: ReportReportModel) {
         val db = sqliteHelper.writableDatabase
 
@@ -71,19 +69,16 @@ class ReportReportEntity {
     }
 
     fun updateReportReport(values: ReportReportModel) {
-            val db = sqliteHelper.getReadableDatabase()
-            val qry = "UPDATE  \n" +
-                    tableName + "\n set date_checkout="+values.date_checkout+
-                    "\n WHERE idReport="+values.idReport
+        val db = sqliteHelper.getReadableDatabase()
+        val qry = "UPDATE  \n" +
+                tableName + "\n set date_checkout=" + values.date_checkout +
+                "\n WHERE idReport=" + values.idReport
 
-            val cursor = db.rawQuery(qry, null)
-            if(cursor.moveToFirst()){
-                Log.e("save","save check")
-            }
-            cursor.close()
-            db.close()
-
+        val cursor = db.rawQuery(qry, null)
+        if (cursor.moveToFirst()) {
+            Log.e("save", "save check")
+        }
+        cursor.close()
+        db.close()
     }
-
-
 }

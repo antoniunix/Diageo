@@ -1,5 +1,6 @@
 package com.chuys.gshp.pdv.data.repository
 
+import android.util.Log
 import com.chuys.gshp.pdv.data.model.KpiData
 import com.chuys.gshp.pdv.domain.repository.KpiRepository
 import com.chuys.gshp.shared.data.database.realtime.RealmTimeDbConfig
@@ -20,13 +21,11 @@ class KpiDataRepository : KpiRepository {
             RealmTimeDbConfig.getReference("kpi").child("services").child("siteInterest").child(
                 idSite ?: ""
             )
-
     }
 
     override fun getData(idSite: String?): Single<Resource<KpiData>> {
         getReferenceToDb(idSite)
         return getSite()
-
     }
 
     private fun getSite(): Single<Resource<KpiData>> {
@@ -37,7 +36,7 @@ class KpiDataRepository : KpiRepository {
                     try {
                         kpiData = dataSnapshot.getValue(KpiData::class.java)
                     } catch (e: Exception) {
-
+                        Log.e("KPi", e.printStackTrace().toString())
                     }
                     it.onSuccess(
                         Resource.success(
@@ -52,8 +51,5 @@ class KpiDataRepository : KpiRepository {
                 }
             })
         }
-
     }
-
-
 }
