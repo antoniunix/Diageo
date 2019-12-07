@@ -1,4 +1,4 @@
-package com.chuys.gshp.comunication.view
+package com.chuys.gshp.comunication.view.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
