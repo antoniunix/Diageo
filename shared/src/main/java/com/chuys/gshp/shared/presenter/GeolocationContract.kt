@@ -1,6 +1,6 @@
 package com.chuys.gshp.shared.presenter
 
-import android.app.Activity
+import android.location.Address
 import android.location.Location
 
 interface GeolocationContract {
@@ -12,6 +12,8 @@ interface GeolocationContract {
     interface GeolocationViewContract {
         fun showError()
         fun showLocation(location: Location)
+        fun setAddres(address: Address)
+
     }
 
 }

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.CheckInOut">
+
+    <include
+            android:id="@+id/toolbar"
+            layout="@layout/app_toolbar" />
+
+    <GridLayout
+
+            android:id="@+id/porcentajes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alignmentMode="alignBounds"
+            android:useDefaultMargins="true"
+            android:columnCount="2"
+            android:rowCount="2"
+            app:layout_constraintBottom_toTopOf="@+id/map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:background="@drawable/efectividad_layer_list"
+                android:weightSum="2"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/efectividad"
+                    android:text="81%"
+                    android:layout_weight="1"
+                    style="@style/textStyle"
+                    />
+                <TextView
+                        android:text="@string/EFECTIVIDAD"
+                        android:layout_weight="1"
+                        style="@style/textStyle"
+                />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:background="@drawable/horas_layer_list"
+                android:weightSum="2"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/efectividad"
+                    android:text="81%"
+                    android:layout_weight="1"
+                    style="@style/textStyle"
+                    />
+            <TextView
+                    android:text="@string/EFECTIVIDAD"
+                    android:layout_weight="1"
+                    style="@style/textStyle"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="@drawable/visitas_layer_list"
+                android:weightSum="2">
+            <TextView
+                    android:id="@+id/efectividad"
+                    android:text="81%"
+                    android:layout_weight="1"
+                    style="@style/textStyle"
+                    />
+            <TextView
+                    android:text="@string/EFECTIVIDAD"
+                    android:layout_weight="1"
+                    style="@style/textStyle"
+                    />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="@drawable/incidencias_layer_list"
+                android:weightSum="2">
+            <TextView
+                    android:id="@+id/efectividad"
+                    android:text="81%"
+                    android:layout_weight="1"
+                    style="@style/textStyle"
+                    />
+            <TextView
+                    android:text="@string/EFECTIVIDAD"
+                    android:layout_weight="1"
+                    style="@style/textStyle"
+                    />
+
+        </LinearLayout>
+    </GridLayout>
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middle_guide_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.61"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+            android:id="@+id/txt_distancia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/middle_guide_line" />
+
+
+    <TextView
+            android:id="@+id/txt_pdv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txt_distancia" />
+
+    <TextView
+            android:id="@+id/txt_address"
+            app:layout_constraintTop_toBottomOf="@id/txt_pdv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/btn_init_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_address" />
+    <fragment
+            android:id="@+id/map"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/middle_guide_line"
+            app:layout_constraintTop_toBottomOf="@+id/porcentajes" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

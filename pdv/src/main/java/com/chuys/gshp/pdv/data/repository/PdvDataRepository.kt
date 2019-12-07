@@ -15,7 +15,7 @@ import io.reactivex.Single
 import java.lang.Exception
 
 
-class PdvDataRepository : PdvRepository {
+class   PdvDataRepository : PdvRepository {
 
     lateinit var referenceDb: DatabaseReference
     val mapper = PdvMapper()
@@ -43,6 +43,8 @@ class PdvDataRepository : PdvRepository {
                         }
                         moduleList.add(pdv!!)
                     }
+
+
                     it.onSuccess(
                         Resource.success(
                             mapper.transform(moduleList),

@@ -2,6 +2,7 @@ package com.chuys.gshp.navigation
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import android.view.MenuItem
 import com.chuys.gshp.shared.domain.constant.StringConstant
 
@@ -45,6 +46,13 @@ class ActivityManager {
                     Intent(
                         activity.applicationContext,
                         Class.forName(StringConstant.PACKAGE_NAME + Activities.PDV_ADD.activity)
+                    )
+                )
+
+                Activities.CHECK -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.CHECK.activity)
                     )
                 )
 
@@ -105,6 +113,21 @@ class ActivityManager {
                 R.id.action_pdv -> changeToActivity(Activities.PDV_LIST, activity)
                 R.id.action_visit -> changeToActivity(Activities.VISIT, activity)
                 R.id.comunication -> changeToActivity(Activities.COMMUNICATION, activity)
+            }
+        }
+
+        fun changeToActivitywithBundle(
+            activityName: Activities,
+            activity: Activity,
+            bundle: Bundle
+        ) {
+            when (activityName) {
+                Activities.CHECK -> activity.startActivity(
+                    Intent(
+                        activity.applicationContext,
+                        Class.forName(StringConstant.PACKAGE_NAME + Activities.CHECK.activity)
+                    ).putExtras(bundle)
+                )
             }
         }
     }

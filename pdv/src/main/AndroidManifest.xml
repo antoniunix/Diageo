@@ -6,6 +6,7 @@
         <activity android:name=".view.ListPdv">
         </activity>
         <activity android:name=".view.AddPdv"/>
+        <activity android:name=".view.CheckInOut"/>
     </application>
 
 </manifest>

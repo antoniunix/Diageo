@@ -1,13 +1,13 @@
 package com.chuys.gshp.sku.data.provider
 
-import com.chuys.gshp.sku.data.repository.AvailabilityAndPriceDataRepository
-import com.chuys.gshp.sku.domain.model.SkuAvailabilityAndPriceData
-import com.chuys.gshp.sku.domain.provider.AvailabilityAndPriceProvider
-import com.chuys.gshp.sku.domain.usescases.GetSkuToMeasurementAvailabilityAndPriceUseCase
 import com.chuys.gshp.shared.domain.executor.PostExecutionThread
 import com.chuys.gshp.shared.domain.executor.ThreadExecutor
 import com.chuys.gshp.shared.domain.models.Resource
 import com.chuys.gshp.shared.domain.usecase.SingleUseCase
+import com.chuys.gshp.sku.data.repository.AvailabilityAndPriceDataRepository
+import com.chuys.gshp.sku.domain.model.SkuAvailabilityAndPriceData
+import com.chuys.gshp.sku.domain.provider.AvailabilityAndPriceProvider
+import com.chuys.gshp.sku.domain.usescases.GetSkuToMeasurementAvailabilityAndPriceUseCase
 import com.chuys.gshp.sku.domain.usescases.SaveReportSkuUseCase
 
 class AvailabilityAndPriceDataProvider(

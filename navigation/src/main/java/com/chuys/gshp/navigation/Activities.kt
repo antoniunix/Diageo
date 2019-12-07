@@ -17,5 +17,6 @@ enum class Activities(val activity: String) {
     COMMUNICATION(".comunication.view.Comunication"),
     HELP(""),
     GEOLOCATION(".geolocation.view.GeolocationActivity"),
-    DEFAULT("")
+    DEFAULT(""),
+    CHECK(".pdv.view.CheckInOut")
 }

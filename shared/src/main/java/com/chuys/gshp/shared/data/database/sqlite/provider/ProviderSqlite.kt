@@ -4,6 +4,7 @@ import android.content.Context
 
 class ProviderSqlite(context: Context) : ProviderSqliteResources {
 
+
     private var context: Context
 
     init {
@@ -61,6 +62,24 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
                 "idSku TEXT," +
                 "answer TEXT," +
                 "lastSync INTEGER)"
+    }
+
+    override fun getReport():String{
+        return "CREATE TABLE report_report("+
+                "idReport INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "idPdv INTEGER,"+
+                "date_checkin INTEGER,"+
+                "date_checkout INTEGER)"
+    }
+
+    override fun getReportCheck(): String {
+       return "CREATE TABLE report_check("+
+               "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+               "idReport INTEGER," +
+               "lat REAL,"+
+               "lon REAL,"+
+               "date INTEGER,"+
+               "type INTEGER)"
     }
 
 }

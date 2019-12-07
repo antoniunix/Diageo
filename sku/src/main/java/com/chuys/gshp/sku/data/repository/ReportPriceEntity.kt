@@ -12,7 +12,7 @@ class ReportPriceEntity {
     fun writeItem(valueList: List<ReportPriceModel>) {
         var db = sqliteHelper.writableDatabase
         try {
-            var insStmnt = db.compileStatement(
+            val insStmnt = db.compileStatement(
                 "" + "INSERT INTO "
                         + tableName + " (idReport,uuid,idSku,answer,lastSync) "
                         + "VALUES(?,?,?,?,?);"

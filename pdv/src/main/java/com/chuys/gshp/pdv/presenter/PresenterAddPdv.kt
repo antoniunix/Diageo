@@ -1,7 +1,6 @@
 package com.chuys.gshp.pdv.presenter
 
 import com.chuys.gshp.pdv.presenter.contract.AddPdvContract
-import com.chuys.gshp.shared.domain.provider.ContextProvider
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
 import com.chuys.gshp.shared.presenter.GeolocationContract
 import io.reactivex.disposables.CompositeDisposable
@@ -20,5 +19,17 @@ class PresenterAddPdv (val view:AddPdvContract.AddPdvViewContract, val viewgeo:G
            }
         })
     }
+
+    override fun getAddress(lat: Double, lon: Double) {
+      disposables.add(geolocationDataProvider.getAddres(lat,lon).execute(null).subscribe{
+          address->
+          if(address!=null){
+              viewgeo.setAddres(address)
+          }else{
+              disposables.dispose()
+          }
+      })
+    }
+
 
 }
