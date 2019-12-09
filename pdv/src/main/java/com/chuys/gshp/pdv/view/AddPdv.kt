@@ -65,7 +65,7 @@ class AddPdv :FragmentActivity (), OnMapReadyCallback,
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        if (requestCode == IntConstants.LOCATION_ACTIVITY_REQUEST_CODE) {
+        if (requestCode == IntConstants.LOCATION_PERMISSION_REQUEST_CODE) {
             finish()
            intent = Intent(this, AddPdv::class.java)
             startActivity(intent)
