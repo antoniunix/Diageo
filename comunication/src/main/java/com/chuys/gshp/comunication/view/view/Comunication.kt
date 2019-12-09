@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.chuys.gshp.comunication.R
+import com.chuys.gshp.comunication.view.domain.model.MediaModel
+import com.chuys.gshp.comunication.view.presenter.contract.MediaContract
 import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.shared.util.commons.ToolbarHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class Comunication : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class Comunication : AppCompatActivity(),MediaContract.MediaViewContract, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var menuNavigation: BottomNavigationView
 
@@ -24,4 +26,10 @@ class Comunication : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         ActivityManager.changeToActivityFromMenuItem(p0, this)
         return true
     }
+
+    override fun loadRecyclerView(media: List<MediaModel>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
 }
