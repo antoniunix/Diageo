@@ -1,6 +1,5 @@
 package com.chuys.gshp.sku.presenter
 
-import android.util.Log
 import com.chuys.gshp.sku.domain.model.SkuAvailabilityAndPriceData
 import com.chuys.gshp.sku.domain.provider.AvailabilityAndPriceProvider
 import com.chuys.gshp.sku.presenter.contract.AvailabilityAndPriceContract
