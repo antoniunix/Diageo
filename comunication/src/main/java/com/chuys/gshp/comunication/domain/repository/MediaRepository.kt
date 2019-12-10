@@ -1,6 +1,6 @@
-package com.chuys.gshp.comunication.view.domain.repository
+package com.chuys.gshp.comunication.domain.repository
 
-import com.chuys.gshp.comunication.view.domain.model.MediaModel
+import com.chuys.gshp.comunication.domain.model.MediaModel
 import com.chuys.gshp.shared.domain.models.Resource
 import io.reactivex.Single
 

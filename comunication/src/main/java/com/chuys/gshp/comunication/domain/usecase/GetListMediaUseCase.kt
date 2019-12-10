@@ -1,7 +1,7 @@
-package com.chuys.gshp.comunication.view.domain.usecase
+package com.chuys.gshp.comunication.domain.usecase
 
-import com.chuys.gshp.comunication.view.domain.model.MediaModel
-import com.chuys.gshp.comunication.view.domain.repository.MediaRepository
+import com.chuys.gshp.comunication.domain.model.MediaModel
+import com.chuys.gshp.comunication.domain.repository.MediaRepository
 import com.chuys.gshp.shared.domain.executor.PostExecutionThread
 import com.chuys.gshp.shared.domain.executor.ThreadExecutor
 import com.chuys.gshp.shared.domain.models.Resource

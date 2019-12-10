@@ -1,4 +1,4 @@
-package com.chuys.gshp.comunication.view.domain.model
+package com.chuys.gshp.comunication.domain.model
 
 data class MediaTypeModel(
     val id: Int,

@@ -1,10 +1,10 @@
-package com.chuys.gshp.comunication.view.presenter
+package com.chuys.gshp.comunication.presenter
 
-import com.chuys.gshp.comunication.view.domain.provider.MediaProvider
-import com.chuys.gshp.comunication.view.presenter.contract.MediaContract
+import com.chuys.gshp.comunication.domain.provider.MediaProvider
+import com.chuys.gshp.comunication.presenter.contract.MediaContract
 import io.reactivex.disposables.CompositeDisposable
 
-class Presenter (val view :MediaContract.MediaViewContract, val mediaProvider: MediaProvider):
+class Presenter (val view : MediaContract.MediaViewContract, val mediaProvider: MediaProvider):
     MediaContract.MediaPresenterContract{
 
     private val disposables = CompositeDisposable()

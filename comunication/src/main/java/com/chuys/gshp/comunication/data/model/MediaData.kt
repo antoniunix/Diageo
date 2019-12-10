@@ -1,4 +1,4 @@
-package com.chuys.gshp.comunication.view.data.model
+package com.chuys.gshp.comunication.data.model
 
 data class MediaData(
     val description: String,

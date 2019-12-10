@@ -13,6 +13,6 @@ interface ProviderSqliteResources {
     fun getReportCheck():String
     fun getReport():String
     fun getMediaType():String
-    fun media():String
+    fun getMedia():String
 
 }

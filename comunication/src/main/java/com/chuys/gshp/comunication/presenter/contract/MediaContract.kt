@@ -1,6 +1,6 @@
-package com.chuys.gshp.comunication.view.presenter.contract
+package com.chuys.gshp.comunication.presenter.contract
 
-import com.chuys.gshp.comunication.view.domain.model.MediaModel
+import com.chuys.gshp.comunication.domain.model.MediaModel
 
 interface MediaContract {
         interface  MediaPresenterContract{

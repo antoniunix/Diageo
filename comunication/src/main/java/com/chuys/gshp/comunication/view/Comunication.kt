@@ -1,18 +1,25 @@
-package com.chuys.gshp.comunication.view.view
+package com.chuys.gshp.comunication.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.recyclerview.widget.RecyclerView
 import com.chuys.gshp.comunication.R
-import com.chuys.gshp.comunication.view.domain.model.MediaModel
-import com.chuys.gshp.comunication.view.presenter.contract.MediaContract
+import com.chuys.gshp.comunication.domain.model.MediaModel
+import com.chuys.gshp.comunication.presenter.Presenter
+import com.chuys.gshp.comunication.presenter.contract.MediaContract
 import com.chuys.gshp.navigation.ActivityManager
 import com.chuys.gshp.shared.util.commons.ToolbarHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class Comunication : AppCompatActivity(),MediaContract.MediaViewContract, BottomNavigationView.OnNavigationItemSelectedListener {
+class Comunication : AppCompatActivity(), MediaContract.MediaViewContract,
+    BottomNavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var menuNavigation: BottomNavigationView
+    lateinit var presenter: MediaContract.MediaPresenterContract
+    lateinit var listMediaRecyclerView: RecyclerView
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -89,7 +89,7 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
                 "name TEXT)"
     }
 
-    override fun media():String {
+    override fun getMedia():String {
       return "CREATE TABLE media("+
               "id INTEGER PRIMARY KEY AUTOINCREMENT," +
               "description TEXT,"+
@@ -97,5 +97,7 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
               "title TEXT,"+
               "url TEXT)"
     }
+
+
 
 }

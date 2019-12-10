@@ -1,9 +1,8 @@
-package com.chuys.gshp.comunication.view.data.repository
+package com.chuys.gshp.comunication.data.repository
 
-import com.chuys.gshp.comunication.view.domain.model.MediaModel
-import com.chuys.gshp.comunication.view.domain.model.MediaTypeModel
-import com.chuys.gshp.comunication.view.domain.repository.MediaRepository
-import com.chuys.gshp.shared.data.database.realtime.RealmTimeConfig
+import com.chuys.gshp.comunication.domain.model.MediaModel
+import com.chuys.gshp.comunication.domain.model.MediaTypeModel
+import com.chuys.gshp.comunication.domain.repository.MediaRepository
 import com.chuys.gshp.shared.data.database.realtime.RealmTimeDbConfig
 import com.chuys.gshp.shared.domain.models.Resource
 import com.google.firebase.database.DataSnapshot
@@ -36,7 +35,7 @@ class MediaDataRepository: MediaRepository {
         return Single.create{
             referenceMedia.addValueEventListener(object :ValueEventListener{
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                   var mediaModel:MediaModel?
+                   var mediaModel: MediaModel?
                     for(snapshot in dataSnapshot.children){
                         try {
                             mediaModel=snapshot.getValue(MediaModel::class.java)
