@@ -47,6 +47,6 @@ class VisitAdapter(val items: List<VisitModel>) :
 
     private fun formatHour(epoch: Long, format: String = "hh:mm a"): String {
         return java.text.SimpleDateFormat(format)
-            .format(java.util.Date(epoch * 1000))
+            .format(java.util.Date(epoch ))
     }
 }
