@@ -3,7 +3,10 @@ package com.chuys.gshp.visits.view.domain.model
 data class VisitModel(
 val idReport:Long,
 val idPdv: Long,
-val date_checkin: Long,
-val date_checkout: Long,
-val type: Int
+val dateCheckin: Long,
+val dateCheckout: Long,
+val type: Int,
+val uuid: String,
+val send: Int,
+val pdvName: String
 )
