@@ -64,40 +64,37 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
                 "lastSync INTEGER)"
     }
 
-    override fun getReport():String{
-        return "CREATE TABLE report_report("+
+    override fun getReport(): String {
+        return "CREATE TABLE report_report(" +
                 "idReport INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "idPdv INTEGER,"+
-                "date_checkin INTEGER,"+
+                "idPdv INTEGER," +
+                "date_checkin INTEGER," +
                 "date_checkout INTEGER)"
     }
 
     override fun getReportCheck(): String {
-       return "CREATE TABLE report_check("+
-               "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-               "idReport INTEGER," +
-               "lat REAL,"+
-               "lon REAL,"+
-               "date INTEGER,"+
-               "type INTEGER)"
+        return "CREATE TABLE report_check(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "idReport INTEGER," +
+                "lat REAL," +
+                "lon REAL," +
+                "date INTEGER," +
+                "type INTEGER)"
     }
 
-    override fun getMediaType():String {
-        return "CREATE TABLE media_type("+
-                "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                "ext TEXT,"+
+    override fun getMediaType(): String {
+        return "CREATE TABLE media_type(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "ext TEXT," +
                 "name TEXT)"
     }
 
-    override fun getMedia():String {
-      return "CREATE TABLE media("+
-              "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-              "description TEXT,"+
-              "mediaType INTEGER,"+
-              "title TEXT,"+
-              "url TEXT)"
+    override fun getMedia(): String {
+        return "CREATE TABLE media(" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "description TEXT," +
+                "mediaType INTEGER," +
+                "title TEXT," +
+                "url TEXT)"
     }
-
-
-
 }
