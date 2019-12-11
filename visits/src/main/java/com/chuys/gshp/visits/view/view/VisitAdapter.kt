@@ -39,7 +39,14 @@ class VisitAdapter(val items: List<VisitModel>) :
 
         fun bin(visit: VisitModel) {
             itemView.pdvvisitedTextView.text = visit.pdvName
-            itemView.createdTextView.text=visit.dateCheckin.toString()
+            itemView.checkHourTextView.text =
+                "Check in:${formatHour(visit.dateCheckin)} / Check out: ${formatHour(visit.dateCheckout)}"
+            itemView.makeDateTextView.text = "Realizado ${formatHour(visit.dateCheckin,"dd MMMM yyyy")}"
         }
+    }
+
+    private fun formatHour(epoch: Long, format: String = "hh:mm a"): String {
+        return java.text.SimpleDateFormat(format)
+            .format(java.util.Date(epoch * 1000))
     }
 }
