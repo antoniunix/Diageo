@@ -14,7 +14,7 @@ enum class Activities(val activity: String) {
     PRICE_AND_AVAILABILITY(".sku.view.Sku"),
     EXECUTABLE(".executables.view.Executable"),
     VISIT(".visits.view.Visit"),
-    COMMUNICATION(".comunication.Comunication"),
+    COMMUNICATION(".comunication.view.Comunication"),
     HELP(""),
     GEOLOCATION(".geolocation.view.GeolocationActivity"),
     DEFAULT(""),

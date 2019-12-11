@@ -20,7 +20,6 @@ class AvailabilityAndPriceAdapter(val items: List<SkuAvailabilityAndPriceData>) 
     private val clickSubject = PublishSubject.create<SkuAvailabilityAndPriceData>()
     val clickEvent: Observable<SkuAvailabilityAndPriceData> = clickSubject
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderListPdv {
         return ViewHolderListPdv(
             LayoutInflater.from(parent.context).inflate(

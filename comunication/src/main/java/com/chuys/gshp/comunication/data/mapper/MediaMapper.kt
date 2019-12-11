@@ -4,17 +4,17 @@ import com.chuys.gshp.comunication.data.model.MediaData
 import com.chuys.gshp.comunication.domain.model.MediaModel
 import com.chuys.gshp.shared.domain.mapper.Transform
 
-class MediaMapper :Transform<ArrayList<MediaData>, ArrayList<MediaModel>>(){
+class MediaMapper : Transform<ArrayList<MediaData>, ArrayList<MediaModel>>() {
 
     override fun transform(value: ArrayList<MediaData>): ArrayList<MediaModel> {
-        val media =ArrayList<MediaModel>()
-        for(item in value){
+        val media = ArrayList<MediaModel>()
+        for (item in value) {
             media.add(getMedia(item))
         }
         return media
     }
 
-    private fun getMedia(value: MediaData):MediaModel {
+    private fun getMedia(value: MediaData): MediaModel {
         return MediaModel(
             value.title,
             value.url,

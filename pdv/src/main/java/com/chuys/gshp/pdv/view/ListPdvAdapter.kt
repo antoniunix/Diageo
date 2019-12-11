@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.row_list_pdv.view.*
 class ListPdvAdapter(val items: List<PdvModel>) : RecyclerView.Adapter<ListPdvAdapter.ViewHolderListPdv>() {
 
     private val clickSubject = PublishSubject.create<PdvModel>()
-    val clickEvent: Observable<PdvModel> = clickSubject
+        val clickEvent: Observable<PdvModel> = clickSubject
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderListPdv {
         return ViewHolderListPdv(
@@ -38,7 +38,10 @@ class ListPdvAdapter(val items: List<PdvModel>) : RecyclerView.Adapter<ListPdvAd
         fun bin(pdvData: PdvModel) {
             itemView.name_textview.text = pdvData.name
             itemView.client_textview.text = pdvData.nameClient
+
+
         }
+
     }
 
 }
