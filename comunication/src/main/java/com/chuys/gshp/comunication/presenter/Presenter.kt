@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView
 import com.chuys.gshp.comunication.domain.downloadmanager.createFile
 import com.chuys.gshp.comunication.domain.downloadmanager.initDownLoadRequest
+import com.chuys.gshp.comunication.domain.model.MediaModel
 import com.chuys.gshp.comunication.domain.provider.MediaProvider
 import com.chuys.gshp.comunication.presenter.contract.MediaContract
 import com.chuys.gshp.comunication.view.MediaAdapter
@@ -18,8 +19,8 @@ class Presenter(val view: MediaContract.MediaViewContract, val mediaProvider: Me
     override fun getAllMedia() {
         disposables.add(mediaProvider.getLisMediaUseCase().execute(null).subscribe { it ->
             if (it.isSuccess) {
-
-                view.loadRecyclerView(it.data!!)
+                val sortedList=it.data!!.sortedBy { it.mediaType }
+                view.loadRecyclerView(sortedList)
             } else {
                 view.showError()
             }

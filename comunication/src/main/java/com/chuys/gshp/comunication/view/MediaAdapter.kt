@@ -18,10 +18,12 @@ class MediaAdapter(val items: List<MediaModel>) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderListMedia {
+        items.groupBy { it.mediaType }
         return ViewHolderListMedia(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.row_media, parent, false)
         )
+
     }
 
     override fun getItemCount(): Int {
@@ -34,6 +36,7 @@ class MediaAdapter(val items: List<MediaModel>) :
 
     inner class ViewHolderListMedia(view: View) : RecyclerView.ViewHolder(view) {
         init {
+
             itemView.setOnClickListener {
                 clickSubject.onNext(items[layoutPosition])
             }
