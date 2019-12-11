@@ -7,4 +7,5 @@ object StringConstant {
     const val KEYBUNDLE = "bundle"
     const val CHECKBUNDLE = "checkbundle"
     const val HOURMINUTEFORMAT = "HH:mm"
+    const val DIRECTORY="diageo"
 }

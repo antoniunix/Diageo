@@ -10,10 +10,9 @@ class ItemEntity {
     private val tableName = "item"
 
     fun writeItem(valueList: List<ItemModel>) {
-        var db = sqliteHelper.writableDatabase
+        val db = sqliteHelper.writableDatabase
         try {
-
-            var insStmnt = db.compileStatement(
+            val insStmnt = db.compileStatement(
                 "" + "INSERT INTO "
                         + tableName + " (id,itemTypeId,description,name) "
                         + "VALUES(?,?,?,?);"

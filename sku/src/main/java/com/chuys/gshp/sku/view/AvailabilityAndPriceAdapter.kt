@@ -1,10 +1,10 @@
 package com.chuys.gshp.sku.view
 
 import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.chuys.gshp.sku.R
 import com.chuys.gshp.sku.domain.constant.Constants
@@ -12,14 +12,6 @@ import com.chuys.gshp.sku.domain.model.SkuAvailabilityAndPriceData
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.row_availability_and_price.view.*
-import android.text.Selection.getSelectionStart
-import android.text.TextWatcher
-import android.util.Log
-import android.widget.EditText
-import me.abhinay.input.CurrencyEditText
-import java.text.DecimalFormat
-import java.text.ParseException
-import java.util.*
 
 
 class AvailabilityAndPriceAdapter(val items: List<SkuAvailabilityAndPriceData>) :

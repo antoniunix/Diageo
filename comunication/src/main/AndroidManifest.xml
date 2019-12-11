@@ -3,7 +3,7 @@
         package="com.chuys.gshp.comunication">
 
     <application>
-        <activity android:name=".view.view.Comunication"></activity>
+        <activity android:name=".view.Comunication"></activity>
     </application>
 
 </manifest>

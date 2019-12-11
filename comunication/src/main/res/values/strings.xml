@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name_comunication">Comunicación</string>
+    <string name="download_completed">Descarga Completada</string>
 </resources>
