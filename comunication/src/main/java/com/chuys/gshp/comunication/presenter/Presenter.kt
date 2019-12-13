@@ -10,7 +10,6 @@ import com.chuys.gshp.comunication.presenter.contract.MediaContract
 import com.chuys.gshp.comunication.view.MediaAdapter
 import com.chuys.gshp.shared.domain.provider.ContextProvider
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.row_media.view.*
 
 class Presenter(val view: MediaContract.MediaViewContract, val mediaProvider: MediaProvider,val contextProvider: ContextProvider) :
     MediaContract.MediaPresenterContract {

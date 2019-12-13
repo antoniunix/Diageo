@@ -16,6 +16,7 @@ class MediaMapper : Transform<ArrayList<MediaData>, ArrayList<MediaModel>>() {
 
     private fun getMedia(value: MediaData): MediaModel {
         return MediaModel(
+            value.id,
             value.title,
             value.url,
             value.description,

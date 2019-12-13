@@ -50,7 +50,7 @@ class ItemEntity {
     }
 
     fun getItem(): List<SkuAvailabilityAndPriceData> {
-        var db = sqliteHelper.getReadableDatabase()
+        val db = sqliteHelper.readableDatabase
         val qry = "SELECT DISTINCT\n" +
                 "item.id,\n" +
                 "item.name,\n" +
