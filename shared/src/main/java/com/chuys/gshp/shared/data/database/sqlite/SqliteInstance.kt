@@ -25,7 +25,7 @@ class SqliteInstance(providerSqliteResources: ProviderSqliteResources) : SQLiteO
         db?.execSQL(providerSqliteResources.getReportCheck())
         db?.execSQL(providerSqliteResources.getReport())
         db?.execSQL(providerSqliteResources.getMediaType())
-        db?.execSQL(providerSqliteResources.getMediaType())
+        db?.execSQL(providerSqliteResources.getMedia())
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

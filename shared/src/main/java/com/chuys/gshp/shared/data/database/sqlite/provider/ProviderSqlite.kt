@@ -84,14 +84,14 @@ class ProviderSqlite(context: Context) : ProviderSqliteResources {
 
     override fun getMediaType(): String {
         return "CREATE TABLE media_type(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "id INTEGER PRIMARY KEY ," +
                 "ext TEXT," +
                 "name TEXT)"
     }
 
     override fun getMedia(): String {
         return "CREATE TABLE media(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "id INTEGER PRIMARY KEY ," +
                 "description TEXT," +
                 "mediaType INTEGER," +
                 "title TEXT," +
