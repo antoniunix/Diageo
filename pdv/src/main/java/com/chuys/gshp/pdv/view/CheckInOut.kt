@@ -236,6 +236,4 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
         presenter.getReportReport()
         btn_init_check.setOnClickListener(this)
     }
-
-
 }
