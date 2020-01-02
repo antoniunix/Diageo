@@ -2,7 +2,6 @@ package com.chuys.gshp.comunication.data.repository
 
 import com.chuys.gshp.comunication.data.model.MediaData
 import com.chuys.gshp.comunication.domain.model.ComunicationModel
-import com.chuys.gshp.comunication.domain.model.MediaModel
 import com.chuys.gshp.shared.data.database.sqlite.provider.SqliteDBProvider
 
 class MediaEntity {
@@ -52,29 +51,37 @@ class MediaEntity {
     fun getItem(): List<ComunicationModel> {
         val db = sqliteHelper.readableDatabase
         val qry = "SELECT DISTINCT\n" +
-                "media.id,"
+                "media.id,\n" +
                 "media.title,\n" +
                 "media.url,\n" +
                 "media.description,\n" +
-                "media_type.ext\n" +
-                "media_type.ext\n" +
+                "media_type.ext,\n" +
                 "media_type.name\n" +
                 "from media\n" +
                 "inner join media_type ON media.mediaType=media_type.id"
         val cursor = db.rawQuery(qry, null)
-        val obj = listOf<ComunicationModel>()
+        val obj = ArrayList<ComunicationModel>()
         var catalogo: ComunicationModel
-        if(cursor.moveToFirst()){
-            val title= cursor.getColumnIndexOrThrow("title")
-            val url=cursor.getColumnIndexOrThrow("url")
-            val description=cursor.getColumnIndexOrThrow("description")
-            val nameFile=cursor.getColumnIndexOrThrow("id")
-            val ext= cursor.getColumnIndexOrThrow("ext")
+        if (cursor.moveToFirst()) {
+            val title = cursor.getColumnIndexOrThrow("title")
+            val url = cursor.getColumnIndexOrThrow("url")
+            val description = cursor.getColumnIndexOrThrow("description")
+            val nameFile = cursor.getColumnIndexOrThrow("id")
+            val ext = cursor.getColumnIndexOrThrow("ext")
             do {
-                catalogo=
-
-            }while (cursor.moveToNext())
+                catalogo = ComunicationModel(
+                    cursor.getString(nameFile)+cursor.getString(ext),
+                    cursor.getString(title),
+                    cursor.getString(url),
+                    cursor.getString(description),
+                    cursor.getString(ext), false
+                )
+                obj.add(catalogo)
+            } while (cursor.moveToNext())
         }
+        cursor.close()
+        db.close()
+        return obj
     }
 
     fun deleteAll() {

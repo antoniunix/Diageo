@@ -3,6 +3,7 @@ package com.chuys.gshp.comunication.data.repository
 import com.chuys.gshp.comunication.data.mapper.MediaMapper
 import com.chuys.gshp.comunication.data.model.MediaData
 import com.chuys.gshp.comunication.data.model.MediaTypeData
+import com.chuys.gshp.comunication.domain.model.ComunicationModel
 import com.chuys.gshp.comunication.domain.model.MediaModel
 import com.chuys.gshp.comunication.domain.repository.MediaRepository
 import com.chuys.gshp.shared.data.database.realtime.RealmTimeDbConfig
@@ -20,7 +21,7 @@ class MediaDataRepository : MediaRepository {
     lateinit var referenceMediaType: DatabaseReference
     val mapper = MediaMapper()
 
-    override fun getAllMedia(): Single<Resource<List<MediaModel>>> {
+    override fun getAllMedia(): Single<Resource<List<ComunicationModel>>> {
         getReferenceToDb()
         return getInfoFromRealDataBase()
     }
@@ -30,28 +31,32 @@ class MediaDataRepository : MediaRepository {
         referenceMediaType = RealmTimeDbConfig.getReference("data").child("mediaType")
     }
 
-    private fun getInfoFromRealDataBase(): Single<Resource<List<MediaModel>>> {
-        val modulList = ArrayList<MediaData>()
-        val modulTypeList = ArrayList<MediaTypeData>()
+    private fun getInfoFromRealDataBase(): Single<Resource<List<ComunicationModel>>> {
+        val mediaDatalList = ArrayList<MediaData>()
+        val mediaTypeList = ArrayList<MediaTypeData>()
         var isMediaComplete = false
         var isMediaTypeComplete = false
         return Single.create {
-
             referenceMediaType.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(p0: DataSnapshot) {
                     var itemType: MediaTypeData?
-                    for (snapshot in dataSnapshot.children) {
+                    for (snapshot in p0.children) {
                         try {
                             itemType = snapshot.getValue(MediaTypeData::class.java)
                             itemType?.id = snapshot.key?.toInt()
                         } catch (e: Exception) {
                             continue
                         }
-                        modulTypeList.add(itemType!!)
+                        mediaTypeList.add(itemType!!)
                     }
                     MediaTypeEntity().deleteAll()
-                    MediaTypeEntity().writeItem(modulTypeList)
+                    MediaTypeEntity().writeItem(mediaTypeList)
                     isMediaTypeComplete = true
+                    if(isMediaComplete){
+                        it.onSuccess(Resource.success(
+                            MediaEntity().getItem(), StringConstant.EMPTY_STRING
+                        ))
+                    }
                 }
 
                 override fun onCancelled(p0: DatabaseError) {
@@ -65,20 +70,20 @@ class MediaDataRepository : MediaRepository {
                     for (snapshot in dataSnapshot.children) {
                         try {
                             mediaModel = snapshot.getValue(MediaData::class.java)
-                            mediaModel?.id = snapshot.key?.toLong()
+                            mediaModel?.id = snapshot.key?.toInt()
                         } catch (e: Exception) {
                             continue
                         }
-                        modulList.add(mediaModel!!)
+                        mediaDatalList.add(mediaModel!!)
                     }
                     MediaEntity().deleteAll()
-                    MediaEntity().writeMedia(modulList)
+                    MediaEntity().writeMedia(mediaDatalList)
                     isMediaComplete = true
                     if (isMediaTypeComplete)
                         it.onSuccess(
                             Resource.success(
-                               //MediaEntity().writeMedia()
-                                mapper.transform(modulList), StringConstant.EMPTY_STRING
+                                //MediaEntity().writeMedia()
+                                MediaEntity().getItem(), StringConstant.EMPTY_STRING
                             )
                         )
                 }

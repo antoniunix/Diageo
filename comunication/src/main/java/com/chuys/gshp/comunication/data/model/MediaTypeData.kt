@@ -4,4 +4,6 @@ data class MediaTypeData(
     var id: Int?,
     val ext: String,
     val name: String
-)
+){
+    constructor():this(0,"","")
+}

@@ -11,7 +11,11 @@ import com.chuys.gshp.comunication.view.MediaAdapter
 import com.chuys.gshp.shared.domain.provider.ContextProvider
 import io.reactivex.disposables.CompositeDisposable
 
-class Presenter(val view: MediaContract.MediaViewContract, val mediaProvider: MediaProvider,val contextProvider: ContextProvider) :
+class Presenter(
+    val view: MediaContract.MediaViewContract,
+    val mediaProvider: MediaProvider,
+    val contextProvider: ContextProvider
+) :
     MediaContract.MediaPresenterContract {
 
     private val disposables = CompositeDisposable()
@@ -19,7 +23,7 @@ class Presenter(val view: MediaContract.MediaViewContract, val mediaProvider: Me
     override fun getAllMedia() {
         disposables.add(mediaProvider.getLisMediaUseCase().execute(null).subscribe { it ->
             if (it.isSuccess) {
-                val sortedList=it.data!!.sortedBy { it.mediaType }
+                val sortedList = it.data!!.sortedBy { it.mediaType }
                 view.loadRecyclerView(sortedList)
             } else {
                 view.showError()
@@ -37,22 +41,9 @@ class Presenter(val view: MediaContract.MediaViewContract, val mediaProvider: Me
     ) {
         val listAdapter = adapter as MediaAdapter
         disposables.add(listAdapter.clickEvent.subscribe { it ->
-            val file = createFile(createNameTemp(it),contextProvider.getContext())
-            view.initDownLoadManager(initDownLoadRequest(it.url, it.title, file))
-
+            val file = createFile(it.nameFile, contextProvider.getContext())
+            view.initDownLoadManager(initDownLoadRequest(it.url, it.title, file),file.path)
         })
     }
 
-    private fun createNameTemp(media:MediaModel):String{
-        val part=media.title.split("\\s".toRegex())[0]
-        return when (media.mediaType) {
-            1 ->  part+".pdf"
-            2 ->  part+".jpg"
-            3 ->  part+".png"
-            4 ->  part+".mp4"
-            5 ->  part+".html"
-            6 ->  part+".docx"
-            else -> "Otros"
-        }
-    }
 }

@@ -1,5 +1,6 @@
 package com.chuys.gshp.comunication.domain.usecase
 
+import com.chuys.gshp.comunication.domain.model.ComunicationModel
 import com.chuys.gshp.comunication.domain.model.MediaModel
 import com.chuys.gshp.comunication.domain.repository.MediaRepository
 import com.chuys.gshp.shared.domain.executor.PostExecutionThread
@@ -12,9 +13,9 @@ class GetListMediaUseCase constructor(
     private val mediaRepository: MediaRepository,
     threadExecutor: ThreadExecutor,
     postExecutionThread: PostExecutionThread
-) : SingleUseCase<Any, Resource<List<MediaModel>>>(threadExecutor, postExecutionThread) {
+) : SingleUseCase<Any, Resource<List<ComunicationModel>>>(threadExecutor, postExecutionThread) {
 
-    override fun buildUseCase(params: Any?): Single<Resource<List<MediaModel>>> {
+    override fun buildUseCase(params: Any?): Single<Resource<List<ComunicationModel>>> {
         return mediaRepository.getAllMedia()
     }
 }
