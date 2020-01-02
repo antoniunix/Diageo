@@ -14,7 +14,7 @@ data class PdvModel(
     val code: String,
     val codeNumber: Int,
     val address: String,
-    val lat: Double,
-    val lon: Double
+    var lat: Double,
+    var lon: Double
 
 ):Parcelable

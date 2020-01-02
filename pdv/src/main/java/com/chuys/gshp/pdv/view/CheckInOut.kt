@@ -34,6 +34,7 @@ import com.chuys.gshp.shared.data.job.JobExecutor
 import com.chuys.gshp.shared.data.job.UIThread
 import com.chuys.gshp.shared.data.provider.ContextDataProvider
 import com.chuys.gshp.shared.data.provider.GeolocationDataProvider
+import com.chuys.gshp.shared.domain.constant.DoubleConstants
 import com.chuys.gshp.shared.domain.constant.IntConstants
 import com.chuys.gshp.shared.domain.constant.StringConstant
 import com.chuys.gshp.shared.domain.provider.GeolocationProvider
@@ -58,11 +59,11 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
     private lateinit var checkProvider: CheckProvider
     private lateinit var kpiProvider: KpiProvider
     private lateinit var reportProvider: ReportProvider
-    private lateinit var pdvMarker : Marker
+    private lateinit var pdvMarker: Marker
     private lateinit var mMap: GoogleMap
     private val TAG = "CheckInOut"
     private lateinit var presenter: CheckContract.CheckPresenterContract
-    private lateinit var pdvbundle: PdvModel
+    private var pdvbundle: PdvModel? = null
     private lateinit var reportData: ReportReportModel
     var typeCheckInOut: Int = 0
     private lateinit var latLngPdv: LatLng
@@ -72,10 +73,8 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check)
         mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        pdvbundle = intent.extras.getParcelable<PdvModel>(StringConstant.KEYBUNDLE)
-        typeCheckInOut = intent.extras.getInt(StringConstant.CHECKBUNDLE)
         initPermission()
-       // initView()
+        // initView()
 
     }
 
@@ -86,11 +85,20 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
                 GeolocationDataProvider(JobExecutor(), UIThread(), contextProvider)
             checkProvider = CheckDataProvider(JobExecutor(), UIThread())
             reportProvider = ReportDataProvider(JobExecutor(), UIThread())
-            kpiProvider = KpiDataProvider(JobExecutor(),UIThread())
-            presenter = PresenterCheck(this, this, geolocationProvider, kpiProvider,checkProvider, reportProvider)
-
+            kpiProvider = KpiDataProvider(JobExecutor(), UIThread())
+            presenter = PresenterCheck(
+                this,
+                this,
+                geolocationProvider,
+                kpiProvider,
+                checkProvider,
+                reportProvider
+            )
             mapFragment.getMapAsync(this)
+            pdvbundle = intent.extras?.getParcelable(StringConstant.KEYBUNDLE)
             initView()
+            typeCheckInOut = intent.extras.getInt(StringConstant.CHECKBUNDLE)
+
         } else {
             ActivityCompat.requestPermissions(
                 this,
@@ -138,7 +146,10 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
             mMap.setMinZoomPreference(6.0f)
             mMap.setMaxZoomPreference(14.0f)
             mMap.isMyLocationEnabled = true
-            latLngPdv = LatLng(pdvbundle.lat, pdvbundle.lon)
+            latLngPdv = LatLng(
+                pdvbundle?.lat ?: DoubleConstants.latMex,
+                pdvbundle?.lon ?: DoubleConstants.lonMex
+            )
             pdvMarker = mMap.addMarker(MarkerOptions().position(latLngPdv))
             presenter.getUserLocation()
 
@@ -162,11 +173,11 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
 
 
     override fun getData(kpiData: KpiData) {
-        Toast.makeText(this,kpiData.incidences,Toast.LENGTH_LONG).show()
+        Toast.makeText(this, kpiData.incidences, Toast.LENGTH_LONG).show()
     }
 
     override fun showError() {
-        Toast.makeText(this,"Dev", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Dev", Toast.LENGTH_LONG).show()
 
     }
 
@@ -180,35 +191,37 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
                     type = IntConstants.CHECKOUT
                     bundle.putInt(StringConstant.CHECKBUNDLE, type)
                     bundle.putParcelable(StringConstant.KEYBUNDLE, pdvbundle)
-                    presenter.saveReportReport(pdvbundle.id.toLong())
+                    presenter.saveReportReport(pdvbundle?.id?.toLong() ?: 0)
                     presenter.saveCheckReport(this, bundle, IntConstants.CHECKIN)
                 } else {
                     type = IntConstants.CHECKIN
                     val dialogFinishReport = DialogFinishReport(this)
-                    val dialogBundle=Bundle()
-                    dialogBundle.putString(StringConstant.KEYBUNDLE,DateConvert().getHourAndMinutes(reportData.date_checkin))
-                    dialogFinishReport.arguments=dialogBundle
+                    val dialogBundle = Bundle()
+                    dialogBundle.putString(
+                        StringConstant.KEYBUNDLE,
+                        DateConvert().getHourAndMinutes(reportData.date_checkin)
+                    )
+                    dialogFinishReport.arguments = dialogBundle
                     dialogFinishReport.show(supportFragmentManager, "Dialog")
                 }
 
 
             }
         }
-
     }
 
     override fun saveCheckout() {
         val bundle = Bundle()
         presenter.saveCheckReport(this, bundle, IntConstants.CHECKOUT)
-        presenter.updateReport(this,reportData.idReport)
-        ActivityManager.changeToActivity(Activities.PDV_LIST,this)
+        presenter.updateReport(this, reportData.idReport)
+        ActivityManager.changeToActivity(Activities.PDV_LIST, this)
 
     }
 
     override fun setReportData(reportReportModel: ReportReportModel) {
-        reportData=reportReportModel
-        if(reportData.idReport>0){
-            typeCheckInOut=IntConstants.CHECKOUT
+        reportData = reportReportModel
+        if (reportData.idReport > 0) {
+            typeCheckInOut = IntConstants.CHECKOUT
         }
         when (typeCheckInOut) {
             IntConstants.CHECKIN -> btn_init_check.setText(getString(R.string.checkin_btn))
@@ -218,8 +231,8 @@ class CheckInOut : FragmentActivity(), OnMapReadyCallback,
     }
 
     private fun initView() {
-        txt_pdv_name.setText(pdvbundle.name)
-        txt_address.setText(pdvbundle.address)
+        txt_pdv_name.setText(pdvbundle?.name)
+        txt_address.setText(pdvbundle?.address)
         presenter.getReportReport()
         btn_init_check.setOnClickListener(this)
     }
