@@ -1,6 +1,7 @@
 package com.chuys.gshp.visits.view.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -60,7 +61,7 @@ class Visit : AppCompatActivity(), VisitContract.VisitViewContractt,
     }
 
     override fun showError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       Log.e("error","error ")
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
