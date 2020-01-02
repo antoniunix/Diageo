@@ -1,6 +1,7 @@
 package com.chuys.gshp.comunication.data.provider
 
 import com.chuys.gshp.comunication.data.repository.MediaDataRepository
+import com.chuys.gshp.comunication.domain.model.ComunicationModel
 import com.chuys.gshp.comunication.domain.model.MediaModel
 import com.chuys.gshp.comunication.domain.provider.MediaProvider
 import com.chuys.gshp.comunication.domain.usecase.GetListMediaUseCase
@@ -15,7 +16,7 @@ class MediaDataProvider (
 ): MediaProvider {
     private val repository = MediaDataRepository()
 
-    override fun getLisMediaUseCase(): SingleUseCase<Any, Resource<List<MediaModel>>> {
+    override fun getLisMediaUseCase(): SingleUseCase<Any, Resource<List<ComunicationModel>>> {
         return GetListMediaUseCase(repository,jobExecutor,uiThread)
     }
 
