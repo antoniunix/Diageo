@@ -9,7 +9,11 @@ import com.chuys.gshp.shared.domain.constant.StringConstant
 class ActivityManager {
 
     companion object {
-        fun changeToActivity(activityName: Activities, activity: Activity) {
+        fun changeToActivity(
+            activityName: Activities,
+            activity: Activity,
+            finish: Boolean = false
+        ) {
             when (activityName) {
                 Activities.SPLASH -> activity.startActivity(
                     Intent(
@@ -105,15 +109,18 @@ class ActivityManager {
                     )
                 )
             }
+
+            if (finish) activity.finish()
         }
 
         fun changeToActivityFromMenuItem(menuItem: MenuItem, activity: Activity) {
             when (menuItem.itemId) {
-                R.id.action_home -> changeToActivity(Activities.HOME, activity)
-                R.id.action_pdv -> changeToActivity(Activities.PDV_LIST, activity)
-                R.id.action_visit -> changeToActivity(Activities.VISIT, activity)
-                R.id.comunication -> changeToActivity(Activities.COMMUNICATION, activity)
+                R.id.action_home -> changeToActivity(Activities.HOME, activity, true)
+                R.id.action_pdv -> changeToActivity(Activities.PDV_LIST, activity, true)
+                R.id.action_visit -> changeToActivity(Activities.VISIT, activity, true)
+                R.id.comunication -> changeToActivity(Activities.COMMUNICATION, activity, true)
             }
+
         }
 
         fun changeToActivitywithBundle(
