@@ -1,9 +1,10 @@
 package com.chuys.gshp.comunication.domain.model
 
-data class MediaModel(
-    var id: Int?,
+data class ComunicationModel(
+    val nameFile: String,
     val title: String,
     val url: String,
     val description: String,
-    val mediaType: Int
+    val mediaType: String,
+    val existFile: Boolean
 )

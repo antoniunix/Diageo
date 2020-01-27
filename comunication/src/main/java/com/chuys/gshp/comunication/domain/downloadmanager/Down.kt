@@ -13,6 +13,7 @@ fun initDownLoadRequest(url: String, title: String, file: File): DownloadManager
         .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
         .setAllowedOverMetered(true)
         .setAllowedOverRoaming(true)
+        .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
         .setDestinationUri(Uri.fromFile(file))
 }
 

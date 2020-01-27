@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name_comunication">Comunicación</string>
-    <string name="download_completed">Descarga Completada</string>
+    <string name="download_completed">Descargado con éxito</string>
+
 </resources>

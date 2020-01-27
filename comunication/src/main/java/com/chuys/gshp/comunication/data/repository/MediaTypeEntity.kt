@@ -1,5 +1,6 @@
 package com.chuys.gshp.comunication.data.repository
 
+import com.chuys.gshp.comunication.data.model.MediaTypeData
 import com.chuys.gshp.comunication.domain.model.MediaTypeModel
 import com.chuys.gshp.shared.data.database.sqlite.provider.SqliteDBProvider
 
@@ -8,7 +9,7 @@ class MediaTypeEntity {
     private val sqliteHelper = SqliteDBProvider.SqliteDBHelper.getDbHelper()
     private val tableName = "media_type"
 
-    fun writeItem(valueList: List<MediaTypeModel>) {
+    fun writeItem(valueList: List<MediaTypeData>) {
         val db = sqliteHelper.writableDatabase
         try {
             val insStmnt = db.compileStatement(
@@ -19,7 +20,7 @@ class MediaTypeEntity {
             db.beginTransaction()
             for (value in valueList) {
                 try {
-                    insStmnt.bindLong(1, value.id.toLong())
+                    insStmnt.bindLong(1, value.id!!.toLong())
                 } catch (e: java.lang.Exception) {
                     insStmnt.bindNull(1)
                 }
@@ -41,5 +42,10 @@ class MediaTypeEntity {
         } finally {
             db.endTransaction()
         }
+    }
+
+    fun deleteAll() {
+        var db = sqliteHelper.getReadableDatabase()
+        db.execSQL("delete from " + tableName)
     }
 }
